@@ -1,25 +1,36 @@
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { GlobalStyle } from './Components/Styles/Styles';
 import { Main } from './Components/Main/Main';
+
 import { Profile } from './Components/Profile/Profile';
 
-function App() {
-  return (
-    <>
-      <GlobalStyle />
+import { GlobalStyle } from './Components/Styles/GlobalStyle';
+import { ThemeToggler } from './Components/Styles/Themes/ThemeToggler';
+import { useTheme } from './Components/Styles/Themes/useTheme';
 
-      <div className="App">
-        <BrowserRouter>
-          <Switch>
-            <Route path="/" exact component={Main} />
-            <Route path="/profile" exact component={Profile} />
-            <Route path="/" render={() => <div>404</div>} />
-          </Switch>
-        </BrowserRouter>
-      </div>
-    </>
+function App() {
+  const [theme, toggleTheme] = useTheme();
+
+  return (
+    <ThemeProvider theme={theme}>
+      <>
+        <GlobalStyle />
+
+        <div className="App">
+          <BrowserRouter>
+            <Switch>
+              {/* <Route path="/" exact component={Main} />
+              <Route path="/profile" exact component={Profile} /> */}
+              <Route path="/" exact component={Profile} />
+              <Route path="/" render={() => <div>404</div>} />
+            </Switch>
+          </BrowserRouter>
+          <ThemeToggler toggleTheme={toggleTheme} />
+        </div>
+      </>
+    </ThemeProvider>
   );
 }
 

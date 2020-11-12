@@ -1,8 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
+import { Theme } from './Themes/Themes';
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   body {
     font-family: 'Nunito Sans', sans-serif;
+    background: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.colour};
   }
 
   h1,
@@ -47,3 +50,5 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 14px;
   }
 `;
+
+export { GlobalStyle };
