@@ -3,9 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { Main } from './Components/Main/Main';
-
 import { Profile } from './Components/Profile/Profile';
-
 import { GlobalStyle } from './Components/Styles/GlobalStyle';
 import { ThemeToggler } from './Components/Styles/Themes/ThemeToggler';
 import { useTheme } from './Components/Styles/Themes/useTheme';
@@ -27,7 +25,7 @@ function App() {
               <Route path="/" render={() => <div>404</div>} />
             </Switch>
           </BrowserRouter>
-          <ThemeToggler toggleTheme={toggleTheme} />
+          {/* <ThemeToggler toggleTheme={toggleTheme} /> */}
         </div>
       </>
     </ThemeProvider>

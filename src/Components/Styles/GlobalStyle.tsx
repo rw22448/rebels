@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     font-family: 'Nunito Sans', sans-serif;
     background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.colour};
+    margin: 0px;
   }
 
   h1,
