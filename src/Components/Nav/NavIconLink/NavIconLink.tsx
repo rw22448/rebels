@@ -1,14 +1,14 @@
 import React from 'react';
-import { IconArea, NavIconContainer, Text } from './NavIcon.styles';
+import { IconArea, NavIconContainer, Text } from './NavIconLink.styles';
 
-interface NavIconProps {
+interface NavIconLinkProps {
   onClick?: () => void;
   icon: React.ReactNode;
   expanded?: boolean;
   text?: string;
 }
 
-const NavIcon = ({ onClick, icon, text, expanded }: NavIconProps) => {
+const NavIconLink = ({ onClick, icon, text, expanded }: NavIconLinkProps) => {
   return (
     <NavIconContainer onClick={onClick} text={text} expanded={expanded}>
       <IconArea>{icon}</IconArea>
@@ -17,4 +17,4 @@ const NavIcon = ({ onClick, icon, text, expanded }: NavIconProps) => {
   );
 };
 
-export { NavIcon };
+export { NavIconLink };

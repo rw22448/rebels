@@ -4,6 +4,7 @@ import { lightTheme, darkTheme, Theme } from '../Styles/Themes/Themes';
 interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
+  isLight: () => boolean;
 }
 
 interface ThemeContextProviderProps {
@@ -13,6 +14,7 @@ interface ThemeContextProviderProps {
 const ThemeContext = React.createContext<ThemeContextType>({
   theme: lightTheme,
   toggleTheme: () => {},
+  isLight: () => true,
 });
 
 const ThemeContextProvider = ({ children }: ThemeContextProviderProps) => {
@@ -24,10 +26,10 @@ const ThemeContextProvider = ({ children }: ThemeContextProviderProps) => {
   };
 
   const toggleTheme = () => {
-    theme === lightTheme
-      ? setMode('dark', darkTheme)
-      : setMode('light', lightTheme);
+    isLight() ? setMode('dark', darkTheme) : setMode('light', lightTheme);
   };
+
+  const isLight = () => theme === lightTheme;
 
   useEffect(() => {
     if (!localStorage.getItem('theme')) {
@@ -42,7 +44,7 @@ const ThemeContextProvider = ({ children }: ThemeContextProviderProps) => {
   });
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, isLight }}>
       {children}
     </ThemeContext.Provider>
   );

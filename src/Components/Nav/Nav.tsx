@@ -1,46 +1,45 @@
 import React, { useContext, useState } from 'react';
 import { Menu, Home, User, Book, Sun, Moon } from 'react-feather';
 import { Navigation, NavContainer } from './Nav.styles';
-import { NavIcon } from './NavIcon/NavIcon';
+import { NavIconLink } from './NavIconLink/NavIconLink';
 import { NavDivider } from './NavDivider/NavDivider';
 import { ThemeContext } from '../Contexts/ThemeContext';
+import {
+  NavIconHOC,
+  NavIconHOCProps,
+} from './NavIconLink/NavIconHOC/NavIconHOC';
 
 const Nav = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { toggleTheme, isLight } = useContext(ThemeContext);
 
   const [isOpen, setIsOpen] = useState(false);
+
+  const MenuIcon = NavIconHOC((props: NavIconHOCProps) => <Menu {...props} />);
+  const HomeIcon = NavIconHOC((props: NavIconHOCProps) => <Home {...props} />);
+  const UserIcon = NavIconHOC((props: NavIconHOCProps) => <User {...props} />);
+  const BookIcon = NavIconHOC((props: NavIconHOCProps) => <Book {...props} />);
+  const SunIcon = NavIconHOC((props: NavIconHOCProps) => <Sun {...props} />);
+  const MoonIcon = NavIconHOC((props: NavIconHOCProps) => <Moon {...props} />);
 
   return (
     <Navigation expanded={isOpen}>
       <NavContainer>
-        <NavIcon
+        <NavIconLink
           onClick={() => {
             setIsOpen(!isOpen);
           }}
-          icon={<Menu color="#a3a3a3" />}
+          icon={<MenuIcon />}
         />
-        <NavDivider />
-        <NavIcon
-          icon={<Home color="#a3a3a3" />}
-          expanded={isOpen}
-          text="Home"
-        />
-        <NavIcon
-          icon={<User color="#a3a3a3" />}
-          expanded={isOpen}
-          text="Profile"
-        />
-        <NavIcon
-          icon={<Book color="#a3a3a3" />}
-          expanded={isOpen}
-          text="Guide"
-        />
-        <NavDivider />
-        <NavIcon
+        <NavDivider expanded={isOpen} />
+        <NavIconLink icon={<HomeIcon />} expanded={isOpen} text="Home" />
+        <NavIconLink icon={<UserIcon />} expanded={isOpen} text="Search" />
+        <NavIconLink icon={<BookIcon />} expanded={isOpen} text="Guide" />
+        <NavDivider expanded={isOpen} />
+        <NavIconLink
           onClick={() => {
             toggleTheme();
           }}
-          icon={<Sun color="#a3a3a3" />}
+          icon={isLight() ? <MoonIcon /> : <SunIcon />}
           expanded={isOpen}
           text="Toggle theme"
         />

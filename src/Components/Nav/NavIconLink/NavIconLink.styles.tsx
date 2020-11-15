@@ -1,12 +1,15 @@
 import styled from 'styled-components';
+import { Theme } from '../../Styles/Themes/Themes';
 
 interface NavIconContainerProps {
   text: string | undefined;
   expanded: boolean | undefined;
+  theme: Theme;
 }
 
 interface TextProps {
   expanded: boolean | undefined;
+  theme: Theme;
 }
 
 const IconArea = styled.div`
@@ -26,26 +29,30 @@ const NavIconContainer = styled.div`
   &:hover,
   &:active {
     svg {
-      stroke: #24292e;
+      stroke: ${(props: NavIconContainerProps) =>
+        props.theme.nav.pseudo.contentColour};
     }
 
     * {
-      color: #24292e;
+      color: ${(props: NavIconContainerProps) =>
+        props.theme.nav.pseudo.contentColour};
     }
   }
 
   &:hover {
-    background-color: #ebebeb;
+    background-color: ${(props: NavIconContainerProps) =>
+      props.theme.nav.hover.linkColour};
   }
 
   &:active {
-    background-color: #d6d6d6;
+    background-color: ${(props: NavIconContainerProps) =>
+      props.theme.nav.active.linkColour};
   }
 `;
 
 const Text = styled.span`
   margin: 9px 0px 9px 12px;
-  color: #a3a3a3;
+  color: ${(props: TextProps) => props.theme.nav.contentColour};
   font-weight: 600;
 
   display: ${(props: TextProps) => (props.expanded ? 'initial' : 'none')};
