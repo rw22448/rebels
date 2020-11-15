@@ -46,7 +46,6 @@ const NavIconContainer = styled.div`
 const Text = styled.span`
   margin: 9px 0px 9px 12px;
   color: #a3a3a3;
-  user-select: none;
   font-weight: 600;
 
   display: ${(props: TextProps) => (props.expanded ? 'initial' : 'none')};

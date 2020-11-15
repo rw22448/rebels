@@ -1,35 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { Main } from './Components/Main/Main';
 import { Profile } from './Components/Profile/Profile';
+import { Page } from './Components/Page/Page';
 import { GlobalStyle } from './Components/Styles/GlobalStyle';
-import { ThemeToggler } from './Components/Styles/Themes/ThemeToggler';
-import { useTheme } from './Components/Styles/Themes/useTheme';
+import { ThemeContext } from './Components/Contexts/ThemeContext';
 
-function App() {
-  const [theme, toggleTheme] = useTheme();
+const App = () => {
+  const { theme } = useContext(ThemeContext);
 
   return (
-    <ThemeProvider theme={theme}>
-      <>
-        <GlobalStyle />
+    <>
+      <ThemeProvider theme={theme}>
+        <>
+          <GlobalStyle />
 
-        <div className="App">
-          <BrowserRouter>
-            <Switch>
-              {/* <Route path="/" exact component={Main} />
-              <Route path="/profile" exact component={Profile} /> */}
-              <Route path="/" exact component={Profile} />
-              <Route path="/" render={() => <div>404</div>} />
-            </Switch>
-          </BrowserRouter>
-          {/* <ThemeToggler toggleTheme={toggleTheme} /> */}
-        </div>
-      </>
-    </ThemeProvider>
+          <div className="App">
+            <BrowserRouter>
+              <Switch>
+                {/* <Route path="/" exact component={Main} /> */}
+                <Route
+                  path="/"
+                  exact
+                  render={() => <Page content={<Profile />} nav />}
+                />
+                <Route path="/" render={() => <div>404</div>} />
+              </Switch>
+            </BrowserRouter>
+          </div>
+        </>
+      </ThemeProvider>
+    </>
   );
-}
+};
 
 export default App;
