@@ -1,4 +1,11 @@
 interface Theme {
+  breakpoints: {
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
+  };
+
   background: string;
   colour: string;
   shadow: string;
@@ -21,7 +28,18 @@ interface Theme {
   };
 }
 
+const defaultBreakpoints = {
+  sm: '576px',
+  md: '768px',
+  lg: '992px',
+
+  // 72 (nav) + 1266 (profile content) + 24 * 2 (content margin)
+  xl: '1386px',
+};
+
 const lightTheme: Theme = {
+  breakpoints: defaultBreakpoints,
+
   background: '#EFEFEF',
   colour: '#24292e',
   shadow: 'rgba(0, 0, 0, 0.16)',
@@ -45,6 +63,8 @@ const lightTheme: Theme = {
 };
 
 const darkTheme: Theme = {
+  breakpoints: defaultBreakpoints,
+
   background: '#363D45',
   colour: '#FFF',
   shadow: 'rgba(0, 0, 0, 0.16)',
