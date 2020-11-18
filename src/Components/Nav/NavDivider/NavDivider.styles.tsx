@@ -10,7 +10,6 @@ interface DividerContainerProps {
 }
 
 const Divider = styled.div`
-  flex: none;
   margin: auto;
   width: calc(100% - 16px);
   height: 2px;
@@ -19,7 +18,6 @@ const Divider = styled.div`
 `;
 
 const DividerContainer = styled.div`
-  display: flex;
   width: ${(props: DividerContainerProps) =>
     props.expanded ? '172px' : '40px'};
   padding: 8px 0px;
