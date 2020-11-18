@@ -7,6 +7,7 @@ interface NavigationProps {
 }
 
 const Navigation = styled.nav`
+  flex: 0;
   width: ${(props: NavigationProps) => (props.expanded ? '204px' : '72px')};
   min-height: 100vh;
   user-select: none;
