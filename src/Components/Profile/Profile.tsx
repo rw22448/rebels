@@ -1,9 +1,13 @@
 import React from 'react';
+import { ProfileContainer, ProfileContent } from './Profile.styles';
+import { ProfileBanner } from './ProfileHeader/ProfileBanner/ProfileBanner';
 
 export const Profile = () => {
   return (
-    <>
-      <div style={{ margin: 'auto' }}>Profile</div>
-    </>
+    <ProfileContainer>
+      <ProfileContent>
+        <ProfileBanner />
+      </ProfileContent>
+    </ProfileContainer>
   );
 };
