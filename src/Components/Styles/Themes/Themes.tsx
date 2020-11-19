@@ -31,7 +31,9 @@ interface Theme {
 const defaultBreakpoints = {
   sm: '576px',
   md: '768px',
-  lg: '992px',
+
+  // 72 (nav) + 918 (profile content) + 24 * 2 (content margin)
+  lg: '1038px',
 
   // 72 (nav) + 1266 (profile content) + 24 * 2 (content margin)
   xl: '1386px',

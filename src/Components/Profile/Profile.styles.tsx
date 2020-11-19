@@ -7,8 +7,6 @@ const ProfileContainer = styled.div`
 
 const ProfileContent = styled.div`
   margin: 0 auto;
-
-  width: 1266px;
 `;
 
 export { ProfileContainer, ProfileContent };
