@@ -19,6 +19,7 @@ const IconArea = styled.div`
 `;
 
 const NavIconContainer = styled.div`
+  display: flex;
   border-radius: 4px;
 
   width: ${(props: NavIconContainerProps) =>
