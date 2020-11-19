@@ -32,11 +32,11 @@ const defaultBreakpoints = {
   sm: '576px',
   md: '768px',
 
-  // 72 (nav) + 918 (profile content) + 24 * 2 (content margin)
-  lg: '1038px',
+  // 204 (nav) + 918 (profile content) + 24 * 2 (content margin)
+  lg: '1170px',
 
-  // 72 (nav) + 1266 (profile content) + 24 * 2 (content margin)
-  xl: '1386px',
+  // 204 (nav) + 1266 (profile content) + 24 * 2 (content margin)
+  xl: '1518px',
 };
 
 const lightTheme: Theme = {
