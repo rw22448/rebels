@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { AlertCircle } from 'react-feather';
 import { Theme } from '../../../Styles/Themes/Themes';
 
 interface ProfileIconBackgroundProps {
