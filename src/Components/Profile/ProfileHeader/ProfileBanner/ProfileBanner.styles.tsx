@@ -10,15 +10,7 @@ const BannerContainer = styled.div`
   border-radius: 8px;
   overflow: hidden;
 
-  margin: 0px auto;
-
-  max-width: 1266px;
   max-height: 128px;
-
-  ${down('lg')} {
-    max-width: 918px;
-    max-height: 128px;
-  }
 
   ${down('md')} {
     display: none;
