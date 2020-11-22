@@ -12,7 +12,7 @@ const BannerContainer = styled.div`
 
   max-height: 128px;
 
-  ${down('md')} {
+  ${down('sm')} {
     display: none;
   }
 `;

@@ -1,5 +1,11 @@
 import React from 'react';
-import { AccountInfoContainer } from './AccountInfo.styles';
+import {
+  AccountDetailContainer,
+  AccountInfoContainer,
+  IconLevelContainer,
+  SummonerLevel,
+  SummonerName,
+} from './AccountInfo.styles';
 import { ProfileIconResolver } from './ProfileIconResolver';
 
 interface AccountInfoProps {
@@ -16,8 +22,15 @@ const AccountInfo = ({
   return (
     <>
       <AccountInfoContainer>
-        <ProfileIconResolver profileIconId={profileIconId} />
-        <div>{name}</div>
+        <IconLevelContainer>
+          <ProfileIconResolver profileIconId={profileIconId} />
+          <SummonerLevel>{summonerLevel}</SummonerLevel>
+        </IconLevelContainer>
+        <AccountDetailContainer>
+          <SummonerName>{name}</SummonerName>
+          <p>Last online: X days ago</p>
+          <div>OCE</div>
+        </AccountDetailContainer>
       </AccountInfoContainer>
     </>
   );

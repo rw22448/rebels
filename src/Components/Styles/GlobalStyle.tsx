@@ -49,6 +49,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
 
   p {
     font-size: 14px;
+    margin: 0;
   }
 `;
 

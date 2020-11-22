@@ -8,6 +8,7 @@ interface Theme {
 
   background: string;
   colour: string;
+  invertedColour: string;
   shadow: string;
 
   nav: {
@@ -30,7 +31,9 @@ interface Theme {
 
 const defaultBreakpoints = {
   sm: '576px',
-  md: '768px',
+
+  // 204 (nav) + 622 (profile content) + 24 * 2 (content margin)
+  md: '874px',
 
   // 204 (nav) + 918 (profile content) + 24 * 2 (content margin)
   lg: '1170px',
@@ -44,6 +47,7 @@ const lightTheme: Theme = {
 
   background: '#EFEFEF',
   colour: '#24292e',
+  invertedColour: '#E0E0E0',
   shadow: 'rgba(0, 0, 0, 0.16)',
 
   nav: {
@@ -68,7 +72,8 @@ const darkTheme: Theme = {
   breakpoints: defaultBreakpoints,
 
   background: '#363D45',
-  colour: '#FFF',
+  colour: '#E0E0E0',
+  invertedColour: '#24292e',
   shadow: 'rgba(0, 0, 0, 0.16)',
 
   nav: {

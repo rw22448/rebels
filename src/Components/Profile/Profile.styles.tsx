@@ -17,6 +17,14 @@ const ProfileContent = styled.div`
     ${down('lg')} {
       max-width: 918px;
     }
+
+    ${down('md')} {
+      max-width: 622px;
+    }
+
+    ${down('sm')} {
+      margin: 0;
+    }
   }
 `;
 
