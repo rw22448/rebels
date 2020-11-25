@@ -1,5 +1,10 @@
 import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
+import { Theme } from '../Styles/Themes/Themes';
+
+interface ProfileContentProps {
+  theme: Theme;
+}
 
 const ProfileContainer = styled.div`
   width: 100%;
@@ -12,14 +17,14 @@ const ProfileContent = styled.div`
   > div {
     margin: 0 auto;
 
-    max-width: 1266px;
+    max-width: ${(props: ProfileContentProps) => props.theme.contentSize.xl};
 
     ${down('lg')} {
-      max-width: 918px;
+      max-width: ${(props: ProfileContentProps) => props.theme.contentSize.lg};
     }
 
     ${down('md')} {
-      max-width: 622px;
+      max-width: ${(props: ProfileContentProps) => props.theme.contentSize.md};
     }
 
     ${down('sm')} {

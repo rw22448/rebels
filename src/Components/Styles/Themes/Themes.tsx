@@ -11,6 +11,12 @@ interface Theme {
   invertedColour: string;
   shadow: string;
 
+  contentSize: {
+    md: string;
+    lg: string;
+    xl: string;
+  };
+
   nav: {
     background: string;
     contentColour: string;
@@ -29,11 +35,17 @@ interface Theme {
   };
 }
 
+const contentSize = {
+  md: '656px',
+  lg: '918px',
+  xl: '1266px',
+};
+
 const defaultBreakpoints = {
   sm: '576px',
 
-  // 204 (nav) + 622 (profile content) + 24 * 2 (content margin)
-  md: '874px',
+  // 204 (nav) + 656 (profile content) + 24 * 2 (content margin)
+  md: '908px',
 
   // 204 (nav) + 918 (profile content) + 24 * 2 (content margin)
   lg: '1170px',
@@ -49,6 +61,8 @@ const lightTheme: Theme = {
   colour: '#24292e',
   invertedColour: '#E0E0E0',
   shadow: 'rgba(0, 0, 0, 0.16)',
+
+  contentSize: contentSize,
 
   nav: {
     background: '#FFFFFF',
@@ -75,6 +89,8 @@ const darkTheme: Theme = {
   colour: '#E0E0E0',
   invertedColour: '#24292e',
   shadow: 'rgba(0, 0, 0, 0.16)',
+
+  contentSize: contentSize,
 
   nav: {
     background: '#24292E',
