@@ -1,9 +1,5 @@
 import styled from 'styled-components';
-import { Theme } from '../../Styles/Themes/Themes';
-
-interface DividerProps {
-  theme: Theme;
-}
+import { PropsWithTheme } from '../../Styles/Themes/Themes';
 
 interface DividerContainerProps {
   expanded: boolean;
@@ -14,7 +10,7 @@ const Divider = styled.div`
   width: calc(100% - 16px);
   height: 2px;
   border-radius: 1px;
-  background-color: ${(props: DividerProps) => props.theme.nav.contentColour};
+  background-color: ${(props: PropsWithTheme) => props.theme.nav.contentColour};
 `;
 
 const DividerContainer = styled.div`

@@ -35,6 +35,10 @@ interface Theme {
   };
 }
 
+interface PropsWithTheme {
+  theme: Theme;
+}
+
 const contentSize = {
   md: '656px',
   lg: '918px',
@@ -111,4 +115,4 @@ const darkTheme: Theme = {
 };
 
 export { lightTheme, darkTheme };
-export type { Theme };
+export type { PropsWithTheme, Theme };

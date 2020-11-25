@@ -1,15 +1,13 @@
 import styled from 'styled-components';
-import { Theme } from '../../Styles/Themes/Themes';
+import { PropsWithTheme } from '../../Styles/Themes/Themes';
 
-interface NavIconContainerProps {
+interface NavIconContainerProps extends PropsWithTheme {
   text: string | undefined;
   expanded: boolean | undefined;
-  theme: Theme;
 }
 
-interface TextProps {
+interface TextProps extends PropsWithTheme {
   expanded: boolean | undefined;
-  theme: Theme;
 }
 
 const IconArea = styled.div`

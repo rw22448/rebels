@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 import { down } from 'styled-breakpoints';
-import { Theme } from '../../../Styles/Themes/Themes';
-
-interface SummonerLevelProps {
-  theme: Theme;
-}
+import { PropsWithTheme } from '../../../Styles/Themes/Themes';
 
 const AccountInfoContainer = styled.div`
   text-align: center;
@@ -33,8 +29,8 @@ const SummonerLevel = styled.div`
   display: inline;
   padding: 4px 8px;
   border-radius: 4px;
-  background-color: ${(props: SummonerLevelProps) => props.theme.colour};
-  color: ${(props: SummonerLevelProps) => props.theme.invertedColour};
+  background-color: ${(props: PropsWithTheme) => props.theme.colour};
+  color: ${(props: PropsWithTheme) => props.theme.invertedColour};
 
   position: relative;
   bottom: 16px;

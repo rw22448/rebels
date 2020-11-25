@@ -1,13 +1,9 @@
 import styled from 'styled-components';
 import { down } from 'styled-breakpoints';
-import { Theme } from '../../../Styles/Themes/Themes';
-
-interface BannerProps {
-  theme: Theme;
-}
+import { PropsWithTheme } from '../../../Styles/Themes/Themes';
 
 const Banner = styled.img`
-  max-width: ${(props: BannerProps) => props.theme.contentSize.xl};
+  max-width: ${(props: PropsWithTheme) => props.theme.contentSize.xl};
   height: 128px;
 `;
 

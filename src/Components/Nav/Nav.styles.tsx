@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { Theme } from '../Styles/Themes/Themes';
+import { PropsWithTheme } from '../Styles/Themes/Themes';
 
-interface NavigationProps {
+interface NavigationProps extends PropsWithTheme {
   expanded: boolean;
-  theme: Theme;
 }
 
 const Navigation = styled.nav`
