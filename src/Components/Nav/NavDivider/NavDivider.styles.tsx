@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 import { PropsWithTheme } from '../../Styles/Themes/Themes';
 
-interface DividerContainerProps {
-  expanded: boolean;
-}
-
 const Divider = styled.div`
   margin: auto;
   width: calc(100% - 16px);
@@ -14,8 +10,7 @@ const Divider = styled.div`
 `;
 
 const DividerContainer = styled.div`
-  width: ${(props: DividerContainerProps) =>
-    props.expanded ? '172px' : '40px'};
+  width: 100%;
   padding: 8px 0px;
 `;
 

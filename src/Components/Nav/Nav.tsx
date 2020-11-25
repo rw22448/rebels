@@ -30,11 +30,11 @@ const Nav = () => {
           }}
           icon={<MenuIcon />}
         />
-        <NavDivider expanded={isOpen} />
+        <NavDivider />
         <NavIconLink icon={<HomeIcon />} expanded={isOpen} text="Home" />
         <NavIconLink icon={<UserIcon />} expanded={isOpen} text="Search" />
         <NavIconLink icon={<BookIcon />} expanded={isOpen} text="Guide" />
-        <NavDivider expanded={isOpen} />
+        <NavDivider />
         <NavIconLink
           onClick={() => {
             toggleTheme();

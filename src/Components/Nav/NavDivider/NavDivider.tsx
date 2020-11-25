@@ -1,13 +1,9 @@
 import React from 'react';
 import { Divider, DividerContainer } from './NavDivider.styles';
 
-interface NavDividerProps {
-  expanded: boolean;
-}
-
-const NavDivider = ({ expanded }: NavDividerProps) => {
+const NavDivider = () => {
   return (
-    <DividerContainer expanded={expanded}>
+    <DividerContainer>
       <Divider />
     </DividerContainer>
   );
