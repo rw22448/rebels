@@ -17,6 +17,10 @@ interface Theme {
     xl: string;
   };
 
+  transitions: {
+    short: string;
+  };
+
   nav: {
     background: string;
     contentColour: string;
@@ -58,15 +62,23 @@ const defaultBreakpoints = {
   xl: '1518px',
 };
 
-const lightTheme: Theme = {
+const transitions = {
+  short: '0.2s',
+};
+
+const commonTheme = {
   breakpoints: defaultBreakpoints,
+  contentSize: contentSize,
+  transitions: transitions,
+};
+
+const lightTheme: Theme = {
+  ...commonTheme,
 
   background: '#EFEFEF',
   colour: '#24292e',
   invertedColour: '#E0E0E0',
   shadow: 'rgba(0, 0, 0, 0.16)',
-
-  contentSize: contentSize,
 
   nav: {
     background: '#FFFFFF',
@@ -87,21 +99,19 @@ const lightTheme: Theme = {
 };
 
 const darkTheme: Theme = {
-  breakpoints: defaultBreakpoints,
+  ...commonTheme,
 
   background: '#363D45',
   colour: '#E0E0E0',
   invertedColour: '#24292e',
   shadow: 'rgba(0, 0, 0, 0.16)',
 
-  contentSize: contentSize,
-
   nav: {
     background: '#24292E',
     contentColour: '#C4C4C4',
 
     pseudo: {
-      contentColour: '#FFFFFF',
+      contentColour: '#E0E0E0',
     },
 
     hover: {

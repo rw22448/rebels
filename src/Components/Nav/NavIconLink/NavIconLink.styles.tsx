@@ -24,6 +24,8 @@ const NavIconContainer = styled.div`
     props.expanded && props.text ? '172px' : '40px'};
   height: 40px;
 
+  cursor: pointer;
+
   &:hover,
   &:active {
     svg {
@@ -53,7 +55,13 @@ const Text = styled.span`
   color: ${(props: TextProps) => props.theme.nav.contentColour};
   font-weight: 600;
 
-  display: ${(props: TextProps) => (props.expanded ? 'initial' : 'none')};
+  visibility: ${(props: TextProps) => (props.expanded ? 'visible' : 'hidden')};
+  opacity: ${(props: TextProps) => (props.expanded ? '1' : '0')};
+
+  transition: ${(props: TextProps) =>
+    props.expanded
+      ? `opacity ${props.theme.transitions.short} ease ${props.theme.transitions.short}`
+      : `opacity 0.05s ease 0.05s`};
 `;
 
 export { IconArea, NavIconContainer, Text };

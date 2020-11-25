@@ -2,11 +2,22 @@ import { createGlobalStyle } from 'styled-components';
 import { Theme } from './Themes/Themes';
 
 const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  * {
+    transition: background-color ${({ theme }) => theme.transitions.short};
+  }
+
   body {
     font-family: 'Nunito Sans', sans-serif;
-    background: ${({ theme }) => theme.background};
+    background-color: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.colour};
     margin: 0px;
+
+    animation: fadeIn ${({ theme }) => theme.transitions.short};
   }
 
   h1,
@@ -14,7 +25,8 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   h3,
   h4,
   h5,
-  h6 {
+  h6,
+  p {
     margin: 0;
   }
 
@@ -49,7 +61,6 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
 
   p {
     font-size: 14px;
-    margin: 0;
   }
 `;
 
