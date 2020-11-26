@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   ProfileIcon,
-  ProfileIconBackground,
+  ProfileIconContainer,
 } from './ProfileIconResolver.styles';
 
 interface ProfileIconResolverProps {
@@ -12,7 +12,7 @@ const ProfileIconResolver = ({ profileIconId }: ProfileIconResolverProps) => {
   const [iconError, setIconError] = useState(false);
 
   return (
-    <ProfileIconBackground>
+    <ProfileIconContainer>
       {iconError ? (
         <ProfileIcon src="/images/deafultSummonerIcon.png" />
       ) : (
@@ -23,7 +23,7 @@ const ProfileIconResolver = ({ profileIconId }: ProfileIconResolverProps) => {
           }}
         />
       )}
-    </ProfileIconBackground>
+    </ProfileIconContainer>
   );
 };
 

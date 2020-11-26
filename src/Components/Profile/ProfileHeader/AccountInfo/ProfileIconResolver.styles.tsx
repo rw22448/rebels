@@ -17,7 +17,7 @@ const ProfileIcon = styled.img`
   }
 `;
 
-const ProfileIconBackground = styled.div`
+const ProfileIconContainer = styled.div`
   width: 128px;
   height: 128px;
 
@@ -33,4 +33,4 @@ const ProfileIconBackground = styled.div`
   }
 `;
 
-export { ProfileIcon, ProfileIconBackground };
+export { ProfileIcon, ProfileIconContainer };
