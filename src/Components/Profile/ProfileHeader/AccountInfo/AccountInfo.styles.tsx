@@ -23,12 +23,15 @@ const AccountInfoContainer = styled.div`
   }
 `;
 
-const IconLevelContainer = styled.div``;
-
-const SummonerLevel = styled.div`
+const Badge = styled.div`
   display: inline;
   padding: 4px 8px;
   border-radius: 4px;
+`;
+
+const IconLevelContainer = styled.div``;
+
+const SummonerLevelBadge = styled(Badge)`
   background-color: ${(props: PropsWithTheme) => props.theme.colour};
   color: ${(props: PropsWithTheme) => props.theme.invertedColour};
 
@@ -47,14 +50,27 @@ const AccountDetailContainer = styled.div`
     text-align: left;
 
     padding-left: 12px;
-    padding-top: 24px;
+    padding-top: 20px;
   }
+`;
+
+const RegionBadgeContainer = styled.div`
+  margin-top: 12px;
+`;
+
+const RegionBadge = styled(Badge)`
+  background-color: ${(props: PropsWithTheme) => props.theme.colours.blue};
+  color: #e0e0e0;
+
+  font-weight: ${(props: PropsWithTheme) => props.theme.fontWeight.semiBold};
 `;
 
 export {
   AccountInfoContainer,
-  SummonerLevel,
+  SummonerLevelBadge,
   SummonerName,
   IconLevelContainer,
   AccountDetailContainer,
+  RegionBadgeContainer,
+  RegionBadge,
 };

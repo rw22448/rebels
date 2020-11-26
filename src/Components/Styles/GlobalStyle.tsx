@@ -54,6 +54,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
 
   p {
     font-size: 14px;
+    color: #C4C4C4;
   }
 `;
 

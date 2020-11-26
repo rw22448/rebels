@@ -6,11 +6,6 @@ interface Theme {
     xl: string;
   };
 
-  background: string;
-  colour: string;
-  invertedColour: string;
-  shadow: string;
-
   contentSize: {
     md: string;
     lg: string;
@@ -21,6 +16,20 @@ interface Theme {
     short: string;
   };
 
+  colours: {
+    blue: string;
+  };
+
+  fontWeight: {
+    regular: string;
+    semiBold: string;
+    bold: string;
+  };
+
+  background: string;
+  colour: string;
+  invertedColour: string;
+  shadow: string;
   nav: {
     background: string;
     contentColour: string;
@@ -66,10 +75,22 @@ const transitions = {
   short: '0.2s',
 };
 
+const colours = {
+  blue: '#009ee2',
+};
+
+const fontWeight = {
+  regular: '400',
+  semiBold: '600',
+  bold: '700',
+};
+
 const commonTheme = {
   breakpoints,
   contentSize,
   transitions,
+  colours,
+  fontWeight,
 };
 
 const lightTheme: Theme = {

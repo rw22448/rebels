@@ -3,7 +3,9 @@ import {
   AccountDetailContainer,
   AccountInfoContainer,
   IconLevelContainer,
-  SummonerLevel,
+  RegionBadgeContainer,
+  RegionBadge,
+  SummonerLevelBadge,
   SummonerName,
 } from './AccountInfo.styles';
 import { ProfileIconResolver } from './ProfileIconResolver';
@@ -24,12 +26,14 @@ const AccountInfo = ({
       <AccountInfoContainer>
         <IconLevelContainer>
           <ProfileIconResolver profileIconId={profileIconId} />
-          <SummonerLevel>{summonerLevel}</SummonerLevel>
+          <SummonerLevelBadge>{summonerLevel}</SummonerLevelBadge>
         </IconLevelContainer>
         <AccountDetailContainer>
           <SummonerName>{name}</SummonerName>
           <p>Last online: X days ago</p>
-          <div>OCE</div>
+          <RegionBadgeContainer>
+            <RegionBadge>OCE</RegionBadge>
+          </RegionBadgeContainer>
         </AccountDetailContainer>
       </AccountInfoContainer>
     </>
