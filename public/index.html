@@ -24,13 +24,29 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <title>React App</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script>
+      if (!localStorage.getItem('theme')) {
+        localStorage.setItem('theme', 'light');
+      }
+
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('default-light');
+        document.body.style.backgroundColor = '#EFEFEF';
+      } else {
+        document.body.classList.add('default-dark');
+        document.body.style.backgroundColor = '#363D45';
+      }
+    </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.

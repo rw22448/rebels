@@ -13,10 +13,9 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
 
   body {
     font-family: 'Nunito Sans', sans-serif;
-    background-color: ${({ theme }) => theme.background};
+    background-color: ${({ theme }) => theme.background} !important;
     color: ${({ theme }) => theme.colour};
     margin: 0px;
-
     animation: fadeIn ${({ theme }) => theme.transitions.short};
   }
 

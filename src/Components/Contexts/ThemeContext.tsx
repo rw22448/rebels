@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { lightTheme, darkTheme, Theme } from '../Styles/Themes/Themes';
 
 interface ThemeContextType {
-  theme: Theme;
+  theme: Theme | {};
   toggleTheme: () => void;
   isLight: () => boolean;
 }
@@ -12,13 +12,15 @@ interface ThemeContextProviderProps {
 }
 
 const ThemeContext = React.createContext<ThemeContextType>({
-  theme: lightTheme,
+  theme: {},
   toggleTheme: () => {},
   isLight: () => true,
 });
 
 const ThemeContextProvider = ({ children }: ThemeContextProviderProps) => {
-  const [theme, setTheme] = useState(lightTheme);
+  const [theme, setTheme] = useState(
+    document.body.className === 'default-dark' ? darkTheme : lightTheme
+  );
 
   const setMode = (localTheme: string, theme: Theme) => {
     localStorage.setItem('theme', localTheme);
