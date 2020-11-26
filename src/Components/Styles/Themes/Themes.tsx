@@ -43,13 +43,7 @@ interface PropsWithTheme {
   theme: Theme;
 }
 
-const contentSize = {
-  md: '656px',
-  lg: '918px',
-  xl: '1266px',
-};
-
-const defaultBreakpoints = {
+const breakpoints = {
   sm: '576px',
 
   // 204 (nav) + 656 (profile content) + 24 * 2 (content margin)
@@ -62,14 +56,20 @@ const defaultBreakpoints = {
   xl: '1518px',
 };
 
+const contentSize = {
+  md: '656px',
+  lg: '918px',
+  xl: '1266px',
+};
+
 const transitions = {
   short: '0.2s',
 };
 
 const commonTheme = {
-  breakpoints: defaultBreakpoints,
-  contentSize: contentSize,
-  transitions: transitions,
+  breakpoints,
+  contentSize,
+  transitions,
 };
 
 const lightTheme: Theme = {
