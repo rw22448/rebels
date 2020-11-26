@@ -39,6 +39,9 @@
         localStorage.setItem('theme', 'light');
       }
 
+      // Used to remove white flash for dark theme when page refreshes
+      // classList is used to resolve which theme will load by default for elements on top of body
+      // backgroundColor is used to resolve the main body background so that there is no flashing on page refresh
       if (localStorage.getItem('theme') === 'light') {
         document.body.classList.add('default-light');
         document.body.style.backgroundColor = '#EFEFEF';

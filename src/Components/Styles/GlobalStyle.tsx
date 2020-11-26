@@ -2,11 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 import { Theme } from './Themes/Themes';
 
 const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
   * {
     transition: background-color ${({ theme }) => theme.transitions.short};
   }
@@ -16,7 +11,6 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     background-color: ${({ theme }) => theme.background} !important;
     color: ${({ theme }) => theme.colour};
     margin: 0px;
-    animation: fadeIn ${({ theme }) => theme.transitions.short};
   }
 
   h1,
