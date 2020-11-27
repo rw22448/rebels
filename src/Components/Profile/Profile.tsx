@@ -27,9 +27,10 @@ export const Profile = ({ match }: ProfileProps) => {
         <ProfileContent>
           <ProfileBanner />
           <AccountInfo
-            name={SummonerDTO.name}
+            name={match.params.username}
             profileIconId={SummonerDTO.profileIconId}
             summonerLevel={SummonerDTO.summonerLevel}
+            region={match.params.region}
           />
         </ProfileContent>
       </ProfileContainer>

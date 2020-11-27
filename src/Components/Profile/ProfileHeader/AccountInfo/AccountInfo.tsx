@@ -14,12 +14,14 @@ interface AccountInfoProps {
   name: string;
   profileIconId: number;
   summonerLevel: number;
+  region: string;
 }
 
 const AccountInfo = ({
   name,
   profileIconId,
   summonerLevel,
+  region,
 }: AccountInfoProps) => {
   return (
     <>
@@ -32,7 +34,7 @@ const AccountInfo = ({
           <SummonerName>{name}</SummonerName>
           <p>Last online: X days ago</p>
           <RegionBadgeContainer>
-            <RegionBadge>OCE</RegionBadge>
+            <RegionBadge>{region.toLocaleUpperCase()}</RegionBadge>
           </RegionBadgeContainer>
         </AccountDetailContainer>
       </AccountInfoContainer>
