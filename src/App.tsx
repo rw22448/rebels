@@ -4,9 +4,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { Main } from './Components/Main/Main';
 import { Profile } from './Components/Profile/Profile';
-import { Page } from './Components/Page/Page';
 import { GlobalStyle } from './Components/Styles/GlobalStyle';
 import { ThemeContext } from './Components/Contexts/ThemeContext';
+import { Flex } from './Components/Styles/CommonStyles';
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -19,15 +19,17 @@ const App = () => {
 
           <div className="App">
             <BrowserRouter>
-              <Switch>
-                {/* <Route path="/" exact component={Main} /> */}
-                <Route
-                  path="/"
-                  exact
-                  render={() => <Page content={<Profile />} nav />}
-                />
-                <Route path="/" render={() => <div>404</div>} />
-              </Switch>
+              <Flex>
+                <Switch>
+                  <Route path="/" exact component={Main} />
+                  <Route
+                    path="/profile/:region/:username"
+                    exact
+                    component={Profile}
+                  />
+                  <Route path="/" render={() => <div>404</div>} />
+                </Switch>
+              </Flex>
             </BrowserRouter>
           </div>
         </>

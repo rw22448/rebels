@@ -1,7 +1,12 @@
 import React from 'react';
+import { RouteComponentProps } from 'react-router-dom';
+import { Nav } from '../Nav/Nav';
 import { ProfileContainer, ProfileContent } from './Profile.styles';
 import { AccountInfo } from './ProfileHeader/AccountInfo/AccountInfo';
 import { ProfileBanner } from './ProfileHeader/ProfileBanner/ProfileBanner';
+
+interface ProfileProps
+  extends RouteComponentProps<{ region: string; username: string }> {}
 
 const SummonerDTO = {
   id: '3rXsLDAt1RlhsyVkUt_wSHOYvQYm1S1oFgTzx-oODy6_',
@@ -14,17 +19,20 @@ const SummonerDTO = {
   summonerLevel: 185,
 };
 
-export const Profile = () => {
+export const Profile = ({ match }: ProfileProps) => {
   return (
-    <ProfileContainer>
-      <ProfileContent>
-        <ProfileBanner />
-        <AccountInfo
-          name={SummonerDTO.name}
-          profileIconId={SummonerDTO.profileIconId}
-          summonerLevel={SummonerDTO.summonerLevel}
-        />
-      </ProfileContent>
-    </ProfileContainer>
+    <>
+      <Nav />
+      <ProfileContainer>
+        <ProfileContent>
+          <ProfileBanner />
+          <AccountInfo
+            name={SummonerDTO.name}
+            profileIconId={SummonerDTO.profileIconId}
+            summonerLevel={SummonerDTO.summonerLevel}
+          />
+        </ProfileContent>
+      </ProfileContainer>
+    </>
   );
 };
