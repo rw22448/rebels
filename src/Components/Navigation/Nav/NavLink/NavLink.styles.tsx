@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PropsWithTheme } from '../../Styles/Themes/Themes';
+import { PropsWithTheme } from '../../../Styles/Themes/Themes';
 
 interface NavIconContainerProps extends PropsWithTheme {
   text: string | undefined;

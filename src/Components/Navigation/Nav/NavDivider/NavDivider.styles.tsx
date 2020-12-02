@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PropsWithTheme } from '../../Styles/Themes/Themes';
+import { PropsWithTheme } from '../../../Styles/Themes/Themes';
 
 const Divider = styled.div`
   margin: auto;

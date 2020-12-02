@@ -1,6 +1,6 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { Nav } from '../Nav/Nav';
+import { Nav } from '../Navigation/Nav/Nav';
 import { ProfileContainer, ProfileContent } from './Profile.styles';
 import { AccountInfo } from './ProfileHeader/AccountInfo/AccountInfo';
 import { ProfileBanner } from './ProfileHeader/ProfileBanner/ProfileBanner';

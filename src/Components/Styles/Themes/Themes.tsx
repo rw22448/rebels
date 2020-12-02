@@ -18,6 +18,8 @@ interface Theme {
 
   colours: {
     blue: string;
+    black: string;
+    grey: string;
   };
 
   fontWeight: {
@@ -77,6 +79,8 @@ const transitions = {
 
 const colours = {
   blue: '#009ee2',
+  black: '#24292E',
+  grey: '#A3A3A3',
 };
 
 const fontWeight = {

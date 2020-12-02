@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconArea, NavIconContainer, Text } from './NavIconLink.styles';
+import { IconArea, NavIconContainer, Text } from './NavLink.styles';
 
 interface NavIconLinkProps {
   onClick?: () => void;
