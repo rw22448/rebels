@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   body {
     font-family: 'Nunito Sans', sans-serif;
     background-color: ${({ theme }) => theme.background} !important;
-    color: ${({ theme }) => theme.colour};
+    color: ${({ theme }) => theme.contentColour};
     margin: 0px;
   }
 

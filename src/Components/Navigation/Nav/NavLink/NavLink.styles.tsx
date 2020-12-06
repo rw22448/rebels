@@ -53,7 +53,7 @@ const NavIconContainer = styled.div`
 const Text = styled.span`
   margin: 9px 0px 9px 12px;
   color: ${(props: TextProps) => props.theme.nav.contentColour};
-  font-weight: ${(props: TextProps) => props.theme.fontWeight.semiBold};
+  font-weight: ${(props: TextProps) => props.theme.fontWeights.semiBold};
 
   visibility: ${(props: TextProps) => (props.expanded ? 'visible' : 'hidden')};
   opacity: ${(props: TextProps) => (props.expanded ? '1' : '0')};

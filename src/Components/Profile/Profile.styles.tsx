@@ -13,14 +13,14 @@ const ProfileContent = styled.div`
   > div {
     margin: 0 auto;
 
-    max-width: ${(props: PropsWithTheme) => props.theme.contentSize.xl};
+    max-width: ${(props: PropsWithTheme) => props.theme.contentSizes.xl};
 
     ${down('lg')} {
-      max-width: ${(props: PropsWithTheme) => props.theme.contentSize.lg};
+      max-width: ${(props: PropsWithTheme) => props.theme.contentSizes.lg};
     }
 
     ${down('md')} {
-      max-width: ${(props: PropsWithTheme) => props.theme.contentSize.md};
+      max-width: ${(props: PropsWithTheme) => props.theme.contentSizes.md};
     }
 
     ${down('sm')} {

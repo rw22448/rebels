@@ -32,8 +32,9 @@ const Badge = styled.div`
 const IconLevelContainer = styled.div``;
 
 const SummonerLevelBadge = styled(Badge)`
-  background-color: ${(props: PropsWithTheme) => props.theme.colour};
-  color: ${(props: PropsWithTheme) => props.theme.invertedColour};
+  background-color: ${(props: PropsWithTheme) =>
+    props.theme.invertedContainerColour};
+  color: ${(props: PropsWithTheme) => props.theme.invertedContentColour};
 
   position: relative;
   bottom: 16px;
@@ -62,7 +63,7 @@ const RegionBadge = styled(Badge)`
   background-color: ${(props: PropsWithTheme) => props.theme.colours.blue};
   color: #e0e0e0;
 
-  font-weight: ${(props: PropsWithTheme) => props.theme.fontWeight.semiBold};
+  font-weight: ${(props: PropsWithTheme) => props.theme.fontWeights.semiBold};
 `;
 
 export {
