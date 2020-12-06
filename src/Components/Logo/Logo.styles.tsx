@@ -24,7 +24,7 @@ const RebelSquare = styled(Square)`
 const BackgroundSquare = styled(Square)`
   box-sizing: border-box;
   border: ${(props: LogoProps) => props.size * 4 + 'px'} solid
-    ${(props: PropsWithTheme) => props.theme.colours.grey};
+    ${(props: PropsWithTheme) => props.theme.colours.blue};
   top: ${(props: LogoProps) => props.size * 4 + 'px'};
   right: ${(props: LogoProps) => props.size * 4 + 'px'};
 `;
@@ -39,8 +39,8 @@ const RebelIconContainer = styled.div`
 `;
 
 const LogoHeadingText = styled.h1`
-  font-size: 28px;
-  padding-left: 12px;
+  font-size: ${(props: LogoProps) => props.size * 28 + 'px'};
+  padding-left: ${(props: LogoProps) => props.size * 12 + 'px'};
 `;
 
 export {

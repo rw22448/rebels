@@ -24,7 +24,7 @@ const Logo = ({ size, withText }: LogoProps) => {
           </RebelIconContainer>
         </RebelSquare>
       </LogoContainer>
-      {withText && <LogoHeadingText>Rebels</LogoHeadingText>}
+      {withText && <LogoHeadingText size={size}>Rebels</LogoHeadingText>}
     </>
   );
 };

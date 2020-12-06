@@ -1,7 +1,12 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Flex = styled.div`
   display: flex;
 `;
 
-export { Flex };
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
+export { Flex, StyledLink };

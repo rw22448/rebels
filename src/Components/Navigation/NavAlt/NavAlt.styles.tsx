@@ -18,6 +18,9 @@ const Right = styled.div`
 
   margin-left: auto;
   text-align: right;
+  align-items: center;
+
+  user-select: none;
 `;
 
 export { NavigationAlt, NavAltContainer, Right };
