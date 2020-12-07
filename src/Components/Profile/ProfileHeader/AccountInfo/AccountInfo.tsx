@@ -8,7 +8,7 @@ import {
   SummonerLevelBadge,
   SummonerName,
 } from './AccountInfo.styles';
-import { ProfileIconResolver } from './ProfileIconResolver';
+import { ProfileIconResolver } from './ProfileIconResolver/ProfileIconResolver';
 
 interface AccountInfoProps {
   name: string;

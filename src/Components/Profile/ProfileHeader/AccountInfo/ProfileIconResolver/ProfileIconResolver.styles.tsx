@@ -1,6 +1,6 @@
 import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
-import { PropsWithTheme } from '../../../Styles/Themes/Themes';
+import { PropsWithTheme } from '../../../../Styles/Themes/Themes';
 
 const ProfileIcon = styled.img`
   width: 120px;

@@ -14,7 +14,7 @@ const ProfileIconResolver = ({ profileIconId }: ProfileIconResolverProps) => {
   return (
     <ProfileIconContainer>
       {iconError ? (
-        <ProfileIcon src="/images/deafultSummonerIcon.png" />
+        <ProfileIcon src="/images/deafult-summoner-icon.png" />
       ) : (
         <ProfileIcon
           src={`https://ddragon.leagueoflegends.com/cdn/10.22.1/img/profileicon/${profileIconId}.png`}
