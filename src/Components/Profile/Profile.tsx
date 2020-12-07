@@ -1,6 +1,7 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { Nav } from '../Navigation/Nav/Nav';
+import { Flex } from '../Styles/CommonStyles';
 import { ProfileContainer, ProfileContent } from './Profile.styles';
 import { AccountInfo } from './ProfileHeader/AccountInfo/AccountInfo';
 import { ProfileBanner } from './ProfileHeader/ProfileBanner/ProfileBanner';
@@ -22,18 +23,20 @@ const SummonerDTO = {
 export const Profile = ({ match }: ProfileProps) => {
   return (
     <>
-      <Nav />
-      <ProfileContainer>
-        <ProfileContent>
-          <ProfileBanner />
-          <AccountInfo
-            name={match.params.username}
-            profileIconId={SummonerDTO.profileIconId}
-            summonerLevel={SummonerDTO.summonerLevel}
-            region={match.params.region}
-          />
-        </ProfileContent>
-      </ProfileContainer>
+      <Flex>
+        <Nav />
+        <ProfileContainer>
+          <ProfileContent>
+            <ProfileBanner />
+            <AccountInfo
+              name={match.params.username}
+              profileIconId={SummonerDTO.profileIconId}
+              summonerLevel={SummonerDTO.summonerLevel}
+              region={match.params.region}
+            />
+          </ProfileContent>
+        </ProfileContainer>
+      </Flex>
     </>
   );
 };
