@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const NavigationAlt = styled.nav`
-  flex: 0;
   width: 100%;
   height: 48px;
 `;
