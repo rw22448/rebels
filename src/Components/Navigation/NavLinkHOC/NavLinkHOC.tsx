@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { ThemeContext } from '../../../../Contexts/ThemeContext';
-import { lightTheme, darkTheme } from '../../../../Styles/Themes/Themes';
+import { ThemeContext } from '../../Contexts/ThemeContext';
+import { lightTheme, darkTheme } from '../../Styles/Themes/Themes';
 
 interface NavLinkHOCProps {
   color: string;

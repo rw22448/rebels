@@ -4,7 +4,7 @@ import { Navigation, NavContainer } from './Nav.styles';
 import { NavIconLink } from './NavLink/NavLink';
 import { NavDivider } from './NavDivider/NavDivider';
 import { ThemeContext } from '../../Contexts/ThemeContext';
-import { NavLinkHOC, NavLinkHOCProps } from './NavLink/NavLinkHOC/NavLinkHOC';
+import { NavLinkHOC, NavLinkHOCProps } from '../NavLinkHOC/NavLinkHOC';
 
 const Nav = () => {
   const { toggleTheme, isLight } = useContext(ThemeContext);
