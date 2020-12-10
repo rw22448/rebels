@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { down, up } from 'styled-breakpoints';
 import { PropsWithTheme } from '../../../Styles/Themes/Themes';
 
 const AltText = styled.span`
@@ -14,6 +15,43 @@ const AltText = styled.span`
   }
 
   transition: color ${({ theme }) => theme.transitions.short};
+
+  ${down('sm')} {
+    display: none;
+  }
 `;
 
-export { AltText };
+const IconBadge = styled.div`
+  cursor: pointer;
+
+  background-color: ${(props: PropsWithTheme) =>
+    props.theme.navAlt.special.backgroundColour};
+  border-radius: 4px;
+
+  padding: 8px;
+  height: 24px;
+
+  ${up('md')} {
+    display: none;
+  }
+
+  &:hover,
+  &:active {
+    svg {
+      stroke: ${(props: PropsWithTheme) =>
+        props.theme.navAlt.pseudo.contentColour};
+    }
+  }
+
+  &:hover {
+    background-color: ${(props: PropsWithTheme) =>
+      props.theme.navAlt.special.hover.backgroundColour};
+  }
+
+  &:active {
+    background-color: ${(props: PropsWithTheme) =>
+      props.theme.navAlt.special.active.backgroundColour};
+  }
+`;
+
+export { AltText, IconBadge };

@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import { PropsWithTheme } from '../../../Styles/Themes/Themes';
-import { AltText } from '../NavAltLink/NavAltLink.styles';
+import { AltText, IconBadge } from '../NavAltLink/NavAltLink.styles';
 
-const AltButton = styled(AltText)`
-  padding: 8px 20px;
+const AltButtonContainer = styled.div``;
+
+const AltButtonText = styled(AltText)`
+  padding: 9px 20px;
 
   border-radius: 4px;
   background-color: ${(props: PropsWithTheme) =>
@@ -24,4 +26,6 @@ const AltButton = styled(AltText)`
   }
 `;
 
-export { AltButton };
+const ButtonIconBadge = styled(IconBadge)``;
+
+export { AltButtonContainer, AltButtonText, ButtonIconBadge };

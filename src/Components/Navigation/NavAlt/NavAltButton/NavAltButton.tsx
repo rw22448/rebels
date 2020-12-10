@@ -1,13 +1,23 @@
 import React from 'react';
-import { AltButton } from './NavAltButton.styles';
+import {
+  AltButtonText,
+  ButtonIconBadge,
+  AltButtonContainer,
+} from './NavAltButton.styles';
 
 interface NavAltButtonProps {
   text: string;
   onClick: () => void;
+  icon: React.ReactNode;
 }
 
-const NavAltButton = ({ text, onClick }: NavAltButtonProps) => {
-  return <AltButton onClick={onClick}>{text}</AltButton>;
+const NavAltButton = ({ text, onClick, icon }: NavAltButtonProps) => {
+  return (
+    <AltButtonContainer onClick={onClick}>
+      <AltButtonText>{text}</AltButtonText>
+      <ButtonIconBadge>{icon}</ButtonIconBadge>
+    </AltButtonContainer>
+  );
 };
 
 export { NavAltButton };
