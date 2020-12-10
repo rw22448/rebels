@@ -3,6 +3,7 @@ import { PropsWithTheme } from '../Styles/Themes/Themes';
 import { LogoProps } from './Logo';
 
 const LogoContainer = styled.div`
+  flex: none;
   width: ${(props: LogoProps) => props.size * 48 + 'px'};
   height: ${(props: LogoProps) => props.size * 48 + 'px'};
   position: relative;
