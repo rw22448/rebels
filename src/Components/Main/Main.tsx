@@ -3,6 +3,7 @@ import { NavAlt } from '../Navigation/NavAlt/NavAlt';
 import { Flex } from '../Styles/CommonStyles';
 import { Content } from './Main.styles';
 import { MainBanner } from './MainBanner/MainBanner';
+import { MainDescription } from './MainDescription/MainDescription';
 
 export const Main = () => {
   return (
@@ -14,6 +15,8 @@ export const Main = () => {
         </Content>
         <MainBanner />
       </Flex>
+
+      <MainDescription />
 
       <div>
         Rebels isn't endorsed by Riot Games and doesn't reflect the views or
