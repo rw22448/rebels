@@ -4,6 +4,7 @@ import { Flex } from '../Styles/CommonStyles';
 import { Content } from './Main.styles';
 import { MainBanner } from './MainBanner/MainBanner';
 import { MainDescription } from './MainDescription/MainDescription';
+import { SearchForm } from './SearchForm/SearchForm';
 
 export const Main = () => {
   return (
@@ -11,7 +12,7 @@ export const Main = () => {
       <Flex>
         <Content>
           <NavAlt />
-          <h1>Search</h1>
+          <SearchForm />
         </Content>
         <MainBanner />
       </Flex>
