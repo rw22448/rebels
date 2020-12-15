@@ -14,6 +14,8 @@ interface Theme {
 
   transitions: {
     short: string;
+    shorter: string;
+    shortest: string;
   };
 
   colours: {
@@ -99,6 +101,8 @@ const contentSizes = {
 
 const transitions = {
   short: '0.2s',
+  shorter: '0.1s',
+  shortest: '0.05s',
 };
 
 const colours = {
