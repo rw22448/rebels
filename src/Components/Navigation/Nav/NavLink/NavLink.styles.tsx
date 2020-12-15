@@ -48,6 +48,16 @@ const NavIconContainer = styled.div`
     background-color: ${(props: NavIconContainerProps) =>
       props.theme.nav.active.linkColour};
   }
+
+  transition: ${(props: NavIconContainerProps) => {
+    if (props.expanded) {
+      return `background-color ${props.theme.transitions.short},
+      width ${props.theme.transitions.short}`;
+    } else {
+      return `background-color ${props.theme.transitions.short},
+      width ${props.theme.transitions.short} ease ${props.theme.transitions.short}`;
+    }
+  }};
 `;
 
 const Text = styled.span`
@@ -60,8 +70,10 @@ const Text = styled.span`
 
   transition: ${(props: TextProps) =>
     props.expanded
-      ? `opacity ${props.theme.transitions.short} ease ${props.theme.transitions.short}`
-      : `opacity 0.05s ease 0.05s`};
+      ? `opacity ${props.theme.transitions.shorter} ease ${props.theme.transitions.short},
+      visibility ${props.theme.transitions.shorter} ease ${props.theme.transitions.short}`
+      : `opacity ${props.theme.transitions.shorter},
+      visibility ${props.theme.transitions.shorter}`};
 `;
 
 export { IconArea, NavIconContainer, Text };

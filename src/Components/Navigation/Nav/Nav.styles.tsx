@@ -13,10 +13,14 @@ const Navigation = styled.nav`
   background-color: ${(props: NavigationProps) => props.theme.nav.background};
   box-shadow: 3px 0px 6px ${(props: NavigationProps) => props.theme.shadow};
 
-  transition: min-width
-      ${(props: NavigationProps) => props.theme.transitions.short},
-    background-color
-      ${(props: NavigationProps) => props.theme.transitions.short};
+  transition: ${(props: NavigationProps) => {
+    if (props.expanded) {
+      return `background-color ${props.theme.transitions.short}, min-width ${props.theme.transitions.short}`;
+    } else {
+      return `background-color ${props.theme.transitions.short}, 
+      min-width ${props.theme.transitions.short} ease ${props.theme.transitions.short}`;
+    }
+  }};
 `;
 
 const NavContainer = styled.div`
