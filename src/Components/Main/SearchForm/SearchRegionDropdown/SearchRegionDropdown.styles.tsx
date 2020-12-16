@@ -10,9 +10,7 @@ interface DropdownListProps extends PropsWithTheme {
   expanded: boolean;
 }
 
-const Dropdown = styled.div`
-  width: 250px;
-`;
+const Dropdown = styled.div``;
 
 const DropdownLabel = styled.label`
   font-size: 20px;
