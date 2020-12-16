@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { Form } from 'formik';
 
-const StyledForm = styled.form``;
+const StyledForm = styled(Form)``;
 
 const SearchHeader = styled.h1`
   font-size: 80px;
