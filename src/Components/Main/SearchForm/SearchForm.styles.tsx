@@ -7,11 +7,15 @@ const SearchFormContainer = styled.div`
   margin: 172px auto 0px auto;
   padding: 0px 40px;
 
-  width: 918px;
+  /* 918px for content size - 17px to align with scroll bar width */
+  /* Only necessary for xl due to width contraint of container changing from lg down */
+  width: calc(918px - 17px);
   min-width: 275px;
+  max-width: 918px;
 
   ${down('lg')} {
     width: 1010px;
+    max-width: 1010px;
   }
 
   ${down('md')} {
