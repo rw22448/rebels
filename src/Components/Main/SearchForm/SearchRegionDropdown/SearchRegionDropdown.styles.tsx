@@ -54,11 +54,13 @@ const DropdownBox = styled.div`
 
   height: ${(props: DropdownBoxProps) => {
     if (props.expanded) {
-      return `${38 + 2 + 16 + 8 + props.length * 30}px`;
+      return `${54 + 2 + 16 + 8 + props.length * 30}px`;
     } else {
-      return '38px';
+      return '54px';
     }
   }};
+
+  box-sizing: border-box;
 
   padding: 8px 24px;
 
