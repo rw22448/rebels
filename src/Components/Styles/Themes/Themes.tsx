@@ -23,6 +23,7 @@ interface Theme {
     black: string;
     grey: string;
     red: string;
+    white: string;
   };
 
   fontWeights: {
@@ -31,7 +32,10 @@ interface Theme {
     bold: string;
   };
 
-  shadow: string;
+  shadows: {
+    shadowColour: string;
+    downShadow: string;
+  };
 
   background: string;
   contentColour: string;
@@ -111,6 +115,7 @@ const colours = {
   black: '#24292E',
   grey: '#A3A3A3',
   red: '#DE1A1A',
+  white: '#FFFFFF',
 };
 
 const fontWeights = {
@@ -119,14 +124,18 @@ const fontWeights = {
   bold: '700',
 };
 
+const shadows = {
+  shadowColour: 'rgba(0, 0, 0, 0.16)',
+  downShadow: '0px 3px 6px rgba(0, 0, 0, 0.16)',
+};
+
 const commonTheme = {
   breakpoints,
   contentSizes,
   transitions,
   colours,
   fontWeights,
-
-  shadow: 'rgba(0, 0, 0, 0.16)',
+  shadows,
 };
 
 const lightTheme: Theme = {

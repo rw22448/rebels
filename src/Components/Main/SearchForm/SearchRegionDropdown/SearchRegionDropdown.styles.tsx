@@ -65,7 +65,7 @@ const DropdownBox = styled.div`
   padding: 8px 24px;
 
   border-radius: 8px;
-  box-shadow: 0px 3px 6px ${(props: DropdownBoxProps) => props.theme.shadow};
+  box-shadow: ${(props: DropdownBoxProps) => props.theme.shadows.downShadow};
   background-color: ${(props: DropdownBoxProps) => props.theme.containerColour};
 
   transition: ${(props: DropdownBoxProps) =>

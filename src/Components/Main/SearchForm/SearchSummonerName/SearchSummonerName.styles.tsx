@@ -24,7 +24,7 @@ const StyledSearchTextField = styled.input`
   border: none;
   border-radius: 8px;
 
-  box-shadow: 0px 3px 6px ${(props: PropsWithTheme) => props.theme.shadow};
+  box-shadow: ${(props: PropsWithTheme) => props.theme.shadows.downShadow};
   background-color: ${(props: PropsWithTheme) => props.theme.containerColour};
 
   &:focus {

@@ -11,7 +11,8 @@ const Navigation = styled.nav`
   min-height: 100vh;
   user-select: none;
   background-color: ${(props: NavigationProps) => props.theme.nav.background};
-  box-shadow: 3px 0px 6px ${(props: NavigationProps) => props.theme.shadow};
+  box-shadow: 3px 0px 6px
+    ${(props: NavigationProps) => props.theme.shadows.shadowColour};
 
   transition: ${(props: NavigationProps) => {
     if (props.expanded) {
