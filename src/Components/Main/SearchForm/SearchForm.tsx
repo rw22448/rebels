@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik } from 'formik';
+import { Field, Formik } from 'formik';
 import {
   SearchDescription,
   SearchFormContainer,
@@ -7,6 +7,10 @@ import {
   StyledForm,
 } from './SearchForm.styles';
 import { SearchRegionDropdown } from './SearchRegionDropdown/SearchRegionDropdown';
+import { SearchSummonerName } from './SearchSummonerName/SearchSummonerName';
+
+const validateRebelsSummonerName = (value: string) =>
+  !value ? 'Summoner name is a required field.' : '';
 
 const SearchForm = () => {
   return (
@@ -18,17 +22,28 @@ const SearchForm = () => {
           world.
         </SearchDescription>
         <Formik
-          initialValues={{ rebelsSummonerRegion: 'oc1' }}
-          onSubmit={() => {}}
+          initialValues={{
+            rebelsSummonerRegion: 'oc1',
+            rebelsSummonerName: '',
+          }}
+          onSubmit={(values) => {
+            console.log(values);
+          }}
         >
-          {({ values, setFieldValue, initialValues }) => (
+          {({ setFieldValue, initialValues }) => (
             <StyledForm>
               <SearchRegionDropdown
                 onChangeHandler={setFieldValue}
                 initialRegion={initialValues.rebelsSummonerRegion}
               />
 
-              <pre>{JSON.stringify(values, null, 2)}</pre>
+              <Field
+                as={SearchSummonerName}
+                name="rebelsSummonerName"
+                validate={validateRebelsSummonerName}
+              />
+
+              <button type="submit">Submit</button>
             </StyledForm>
           )}
         </Formik>
