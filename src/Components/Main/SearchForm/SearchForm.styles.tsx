@@ -9,22 +9,20 @@ const SearchFormContainer = styled.div`
 
   /* 918px for content size - 17px to align with scroll bar width */
   /* Only necessary for xl due to width contraint of container changing from lg down */
-  width: calc(918px - 17px);
   min-width: 275px;
-  max-width: 918px;
+  max-width: calc(918px - 17px);
 
   ${down('lg')} {
-    width: 1010px;
     max-width: 1010px;
   }
 
   ${down('md')} {
-    width: 748px;
+    max-width: 748px;
     margin-top: 100px;
   }
 
   ${down('sm')} {
-    width: calc(100% - 80px);
+    max-width: calc(100% - 80px);
   }
 `;
 
