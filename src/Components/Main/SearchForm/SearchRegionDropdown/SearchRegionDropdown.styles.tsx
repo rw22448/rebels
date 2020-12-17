@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { down } from 'styled-breakpoints';
 import { PropsWithTheme } from '../../../Styles/Themes/Themes';
 
 interface DropdownBoxProps extends PropsWithTheme {
@@ -10,7 +11,17 @@ interface DropdownListProps extends PropsWithTheme {
   expanded: boolean;
 }
 
-const Dropdown = styled.div``;
+const Dropdown = styled.div`
+  max-width: 250px;
+
+  ${down('md')} {
+    grid-row: 2 / span 1;
+  }
+
+  ${down('sm')} {
+    max-width: 100%;
+  }
+`;
 
 const DropdownLabel = styled.label`
   font-size: 20px;
