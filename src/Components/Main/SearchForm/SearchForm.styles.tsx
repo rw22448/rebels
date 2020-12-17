@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
-import { down, up } from 'styled-breakpoints';
+import { down } from 'styled-breakpoints';
 import { StyledButton } from '../../Styles/CommonStyles';
 
 const SearchFormContainer = styled.div`
