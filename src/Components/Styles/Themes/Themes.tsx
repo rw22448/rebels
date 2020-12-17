@@ -19,7 +19,11 @@ interface Theme {
   };
 
   colours: {
-    blue: string;
+    blue: {
+      blue: string;
+      darkBlue: string;
+      darkerBlue: string;
+    };
     black: string;
     grey: string;
     red: string;
@@ -111,7 +115,11 @@ const transitions = {
 };
 
 const colours = {
-  blue: '#009ee2',
+  blue: {
+    blue: '#009ee2',
+    darkBlue: '#0081B8',
+    darkerBlue: '#004766',
+  },
   black: '#24292E',
   grey: '#A3A3A3',
   red: '#DE1A1A',

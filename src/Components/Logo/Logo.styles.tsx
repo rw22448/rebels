@@ -25,7 +25,7 @@ const RebelSquare = styled(Square)`
 const BackgroundSquare = styled(Square)`
   box-sizing: border-box;
   border: ${(props: LogoProps) => props.size * 4 + 'px'} solid
-    ${(props: PropsWithTheme) => props.theme.colours.blue};
+    ${(props: PropsWithTheme) => props.theme.colours.blue.blue};
   top: ${(props: LogoProps) => props.size * 4 + 'px'};
   right: ${(props: LogoProps) => props.size * 4 + 'px'};
 `;
