@@ -5,7 +5,7 @@ const SearchFormContainer = styled.div``;
 
 const StyledForm = styled(Form)`
   display: grid;
-  grid-template-columns: 250px auto;
+  grid-template-columns: 250px auto 160px;
   gap: 24px 12px;
 `;
 
