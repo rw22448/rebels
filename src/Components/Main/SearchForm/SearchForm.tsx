@@ -5,6 +5,7 @@ import {
   SearchFormContainer,
   SearchHeader,
   StyledForm,
+  SubmitButton,
 } from './SearchForm.styles';
 import { SearchRegionDropdown } from './SearchRegionDropdown/SearchRegionDropdown';
 import { SearchSummonerName } from './SearchSummonerName/SearchSummonerName';
@@ -43,7 +44,7 @@ const SearchForm = () => {
                 validate={validateRebelsSummonerName}
               />
 
-              <button type="submit">Submit</button>
+              <SubmitButton>Submit</SubmitButton>
             </StyledForm>
           )}
         </Formik>
