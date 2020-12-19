@@ -60,7 +60,7 @@ const RegionBadgeContainer = styled.div`
 `;
 
 const RegionBadge = styled(Badge)`
-  background-color: ${(props: PropsWithTheme) => props.theme.colours.blue};
+  background-color: ${(props: PropsWithTheme) => props.theme.colours.blue.blue};
   color: #e0e0e0;
 
   font-weight: ${(props: PropsWithTheme) => props.theme.fontWeights.semiBold};
