@@ -1,4 +1,5 @@
 import React from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import { NavAlt } from '../Navigation/NavAlt/NavAlt';
 import { Flex } from '../Styles/CommonStyles';
 import { Content } from './Main.styles';
@@ -6,13 +7,13 @@ import { MainBanner } from './MainBanner/MainBanner';
 import { MainDescription } from './MainDescription/MainDescription';
 import { SearchForm } from './SearchForm/SearchForm';
 
-export const Main = () => {
+export const Main = (routeComponentProps: RouteComponentProps) => {
   return (
     <>
       <Flex>
         <Content>
           <NavAlt />
-          <SearchForm />
+          <SearchForm {...routeComponentProps} />
         </Content>
         <MainBanner />
       </Flex>

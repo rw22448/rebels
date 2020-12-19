@@ -9,11 +9,12 @@ import {
 } from './SearchForm.styles';
 import { SearchRegionDropdown } from './SearchRegionDropdown/SearchRegionDropdown';
 import { SearchSummonerName } from './SearchSummonerName/SearchSummonerName';
+import { RouteComponentProps } from 'react-router-dom';
 
 const validateRebelsSummonerName = (value: string) =>
   !value ? 'Summoner name is a required field.' : '';
 
-const SearchForm = () => {
+const SearchForm = ({ history }: RouteComponentProps) => {
   return (
     <>
       <SearchFormContainer>
@@ -29,6 +30,10 @@ const SearchForm = () => {
           }}
           onSubmit={(values) => {
             console.log(values);
+
+            history.push(
+              `/profile/${values.rebelsSummonerRegion}/${values.rebelsSummonerName}`
+            );
           }}
         >
           {({ setFieldValue, initialValues }) => (
