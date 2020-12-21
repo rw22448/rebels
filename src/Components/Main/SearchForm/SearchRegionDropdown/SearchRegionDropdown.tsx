@@ -30,19 +30,18 @@ interface SearchRegionDropdownProps {
   initialRegion: string;
 }
 
-const initialRegionDisplayValue = (
+const getInitialRegionDisplayValue = (
   platforms: Platform[],
   initialRegion: string
 ) => {
-  const array = platforms.filter(
-    (platform) => platform.value === initialRegion
-  );
+  const found = platforms.some((platform) => platform.value === initialRegion);
 
-  if (array.length !== 0) {
-    return array[0].name;
+  if (!found) {
+    return '';
   }
 
-  return '';
+  return platforms.filter((platform) => platform.value === initialRegion)[0]
+    .name;
 };
 
 const SearchRegionDropdown = ({
@@ -53,7 +52,7 @@ const SearchRegionDropdown = ({
 
   const [expanded, setExpanded] = useState(false);
   const [regionDisplayValue, setRegionDisplayValue] = useState(
-    initialRegionDisplayValue(platforms, initialRegion)
+    getInitialRegionDisplayValue(platforms, initialRegion)
   );
 
   const dropdownRef = useRef<HTMLDivElement>(null);
