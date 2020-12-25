@@ -33,4 +33,14 @@ const ProfileLoadingContainer = styled.div`
   margin: auto;
 `;
 
-export { ProfileContainer, ProfileContent, ProfileLoadingContainer };
+const ProfileErrorContainer = styled.div`
+  margin: auto;
+  padding: 40px 24px 160px 24px;
+`;
+
+export {
+  ProfileContainer,
+  ProfileContent,
+  ProfileLoadingContainer,
+  ProfileErrorContainer,
+};
