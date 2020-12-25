@@ -26,7 +26,11 @@ interface Theme {
     };
     black: string;
     grey: string;
-    red: string;
+    red: {
+      red: string;
+      darkRed: string;
+      darkerRed: string;
+    };
     white: string;
   };
 
@@ -122,7 +126,11 @@ const colours = {
   },
   black: '#24292E',
   grey: '#A3A3A3',
-  red: '#DE1A1A',
+  red: {
+    red: '#DE1A1A',
+    darkRed: '#B71515',
+    darkerRed: '#800F0F',
+  },
   white: '#FFFFFF',
 };
 

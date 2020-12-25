@@ -49,7 +49,7 @@ const StyledSearchTextField = styled.input`
 
 const ErrorText = styled.div`
   margin-top: 8px;
-  color: ${(props: PropsWithTheme) => props.theme.colours.red};
+  color: ${(props: PropsWithTheme) => props.theme.colours.red.red};
 `;
 
 export {
