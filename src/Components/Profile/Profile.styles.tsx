@@ -29,4 +29,8 @@ const ProfileContent = styled.div`
   }
 `;
 
-export { ProfileContainer, ProfileContent };
+const ProfileLoadingContainer = styled.div`
+  margin: auto;
+`;
+
+export { ProfileContainer, ProfileContent, ProfileLoadingContainer };

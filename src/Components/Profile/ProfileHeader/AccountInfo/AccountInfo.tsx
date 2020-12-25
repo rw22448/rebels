@@ -11,10 +11,10 @@ import {
 import { ProfileIconResolver } from './ProfileIconResolver/ProfileIconResolver';
 
 interface AccountInfoProps {
-  name: string;
-  profileIconId: number;
-  summonerLevel: number;
-  region: string;
+  name?: string;
+  profileIconId?: number;
+  summonerLevel?: number;
+  region?: string;
 }
 
 const AccountInfo = ({
@@ -34,7 +34,7 @@ const AccountInfo = ({
           <SummonerName>{name}</SummonerName>
           <p>Last online: X days ago</p>
           <RegionBadgeContainer>
-            <RegionBadge>{region.toLocaleUpperCase()}</RegionBadge>
+            <RegionBadge>{region && region.toLocaleUpperCase()}</RegionBadge>
           </RegionBadgeContainer>
         </AccountDetailContainer>
       </AccountInfoContainer>

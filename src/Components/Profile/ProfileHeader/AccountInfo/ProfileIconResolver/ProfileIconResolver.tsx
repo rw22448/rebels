@@ -5,7 +5,7 @@ import {
 } from './ProfileIconResolver.styles';
 
 interface ProfileIconResolverProps {
-  profileIconId: number;
+  profileIconId?: number;
 }
 
 const ProfileIconResolver = ({ profileIconId }: ProfileIconResolverProps) => {
