@@ -14,7 +14,7 @@ import {
   DropdownSelectedValueText,
   LabelWrapper,
 } from './SearchRegionDropdown.styles';
-import { HorizontalRule } from '../../../Styles/Common/HorizontalRule';
+import { HorizontalRule } from '../../../Styles/Common/HorizontalRule/HorizontalRule';
 
 interface Platform {
   name: string;

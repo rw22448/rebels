@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PropsWithTheme } from '../Themes/Themes';
+import { PropsWithTheme } from '../../Themes/Themes';
 
 interface BaseHorizontalRuleProps extends PropsWithTheme {
   width: number | 'full';
