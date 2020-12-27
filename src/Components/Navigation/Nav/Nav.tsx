@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Menu, Home, User, Book, Sun, Moon } from 'react-feather';
+import { RouteComponentProps } from 'react-router-dom';
 import { Navigation, NavContainer } from './Nav.styles';
 import { NavIconLink } from './NavLink/NavLink';
 import { NavDivider } from './NavDivider/NavDivider';
 import { ThemeContext } from '../../Contexts/ThemeContext';
 import { NavLinkHOC, NavLinkHOCProps } from '../NavLinkHOC/NavLinkHOC';
 
-const Nav = () => {
+const Nav = ({ history }: RouteComponentProps) => {
   const { toggleTheme, isLight } = useContext(ThemeContext);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +29,14 @@ const Nav = () => {
           icon={<MenuIcon />}
         />
         <NavDivider />
-        <NavIconLink icon={<HomeIcon />} expanded={isOpen} text="Home" />
+        <NavIconLink
+          onClick={() => {
+            history.push('/');
+          }}
+          icon={<HomeIcon />}
+          expanded={isOpen}
+          text="Home"
+        />
         <NavIconLink icon={<UserIcon />} expanded={isOpen} text="Profile" />
         <NavIconLink icon={<BookIcon />} expanded={isOpen} text="Guide" />
         <NavDivider />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import { RouteComponentProps } from 'react-router-dom';
@@ -46,20 +46,26 @@ const fetchProfileDataByName = async (
     });
 };
 
-export const Profile = ({ match }: ProfileProps) => {
-  const {
-    data,
-    isLoading,
-    isError,
-    isSuccess,
-  } = useQuery('fetchProfileDataByName', () =>
-    fetchProfileDataByName(match.params.region, match.params.summonerName)
+export const Profile = (routeComponentProps: ProfileProps) => {
+  const params = routeComponentProps.match.params;
+  const [summonerData, setSummonerData] = useState<SummonerDTO>();
+
+  const { data, isLoading, isError, isSuccess } = useQuery(
+    'fetchProfileDataByName',
+    () => {
+      return fetchProfileDataByName(params.region, params.summonerName);
+    },
+    {
+      onSuccess: (data) => {
+        setSummonerData(data);
+      },
+    }
   );
 
   return (
     <>
       <Flex>
-        <Nav />
+        <Nav {...routeComponentProps} />
 
         {isError && (
           <ProfileErrorContainer>
@@ -78,10 +84,11 @@ export const Profile = ({ match }: ProfileProps) => {
             <ProfileContent>
               <ProfileBanner />
               <AccountInfo
-                name={data?.name}
+                name={summonerData?.name}
+                // Passing data instead of summonerData to avoid failing to load into state refresh, instead allowing it to work first time
                 profileIconId={data?.profileIconId}
-                summonerLevel={data?.summonerLevel}
-                region={match.params.region}
+                summonerLevel={summonerData?.summonerLevel}
+                region={params.region}
               />
             </ProfileContent>
           </ProfileContainer>
