@@ -43,7 +43,7 @@ const fetchProfileDataByName = async (
     .then((result) => result.data as SummonerDTO)
     .catch((error) => {
       if (error.response) {
-        console.log(error.response);
+        console.error(error.response);
       }
 
       throw error;
@@ -89,14 +89,19 @@ export const Profile = () => {
               <ProfileBanner />
               <AccountInfo
                 name={summonerData?.name}
-                // Passing data instead of summonerData to avoid failing to load into state refresh, instead allowing it to work first time
+                // Passing data from useQuery instead of summonerData from
+                // state to avoid failing to load from initial undefined
+                // state, instead allowing it to work first time
                 profileIconId={data?.profileIconId}
                 summonerLevel={summonerData?.summonerLevel}
                 region={region}
               />
               <div className="mainContent">
                 <ProfileSideGrid className="leftSideGrid">
-                  <RankBannerModule />
+                  <RankBannerModule
+                    region={region}
+                    summonerId={summonerData?.id}
+                  />
                   <div className="latestStats">Latest stats</div>
                 </ProfileSideGrid>
                 <div

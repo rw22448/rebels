@@ -1,5 +1,16 @@
 import styled from 'styled-components';
+import { PropsWithTheme } from '../../Styles/Themes/Themes';
 
-const ProfileModuleHeader = styled.h2``;
+const ProfileModuleHeader = styled.h2`
+  margin-bottom: 4px;
+`;
 
-export { ProfileModuleHeader };
+const ProfileModuleContent = styled.div`
+  border-radius: 8px;
+  box-sizing: border-box;
+  box-shadow: ${(props: PropsWithTheme) => props.theme.shadows.downShadow};
+  padding: 24px;
+  background-color: ${(props: PropsWithTheme) => props.theme.containerColour};
+`;
+
+export { ProfileModuleHeader, ProfileModuleContent };

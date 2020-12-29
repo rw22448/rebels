@@ -3,12 +3,16 @@ import { ProfileModuleHeader } from './ProfileModule.styles';
 
 interface ProfileModuleProps {
   heading: string;
+  children: React.ReactNode;
 }
 
-const ProfileModule = ({ heading }: ProfileModuleProps) => {
+const ProfileModule = ({ heading, children }: ProfileModuleProps) => {
   return (
     <>
-      <ProfileModuleHeader>{heading}</ProfileModuleHeader>
+      <div>
+        <ProfileModuleHeader>{heading}</ProfileModuleHeader>
+        {children}
+      </div>
     </>
   );
 };
