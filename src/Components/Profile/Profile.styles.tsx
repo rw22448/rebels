@@ -43,6 +43,8 @@ const ProfileSideGrid = styled.div`
 
   grid-template-columns: 324px;
   gap: 24px;
+
+  margin-right: 24px;
 `;
 
 export {
