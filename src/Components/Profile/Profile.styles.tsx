@@ -38,9 +38,17 @@ const ProfileErrorContainer = styled.div`
   padding: 40px 24px 160px 24px;
 `;
 
+const ProfileSideGrid = styled.div`
+  display: inline-grid;
+
+  grid-template-columns: 324px;
+  gap: 24px;
+`;
+
 export {
   ProfileContainer,
   ProfileContent,
   ProfileLoadingContainer,
   ProfileErrorContainer,
+  ProfileSideGrid,
 };

@@ -11,9 +11,11 @@ import {
   ProfileContent,
   ProfileErrorContainer,
   ProfileLoadingContainer,
+  ProfileSideGrid,
 } from './Profile.styles';
 import { AccountInfo } from './ProfileHeader/AccountInfo/AccountInfo';
 import { ProfileBanner } from './ProfileHeader/ProfileBanner/ProfileBanner';
+import { RankBannerModule } from './RankBannerModule/RankBannerModule';
 
 interface ProfileParams {
   region: string;
@@ -92,6 +94,18 @@ export const Profile = () => {
                 summonerLevel={summonerData?.summonerLevel}
                 region={region}
               />
+              <div className="mainContent">
+                <ProfileSideGrid className="leftSideGrid">
+                  <RankBannerModule />
+                  <div className="latestStats">Latest stats</div>
+                </ProfileSideGrid>
+                <div
+                  style={{ display: 'inline-block' }}
+                  className="matchHistory"
+                >
+                  Match history
+                </div>
+              </div>
             </ProfileContent>
           </ProfileContainer>
         )}
