@@ -9,12 +9,14 @@ import {
 } from './SearchForm.styles';
 import { SearchRegionDropdown } from './SearchRegionDropdown/SearchRegionDropdown';
 import { SearchSummonerName } from './SearchSummonerName/SearchSummonerName';
-import { RouteComponentProps } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const validateRebelsSummonerName = (value: string) =>
   !value ? 'Summoner name is a required field.' : '';
 
-const SearchForm = ({ history }: RouteComponentProps) => {
+const SearchForm = () => {
+  const history = useHistory();
+
   return (
     <>
       <SearchFormContainer>

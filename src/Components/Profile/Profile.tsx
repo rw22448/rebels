@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useQuery } from 'react-query';
-import { RouteComponentProps } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Nav } from '../Navigation/Nav/Nav';
 import { Loading } from '../Styles/Common/Loading/Loading';
 import { Error } from '../Styles/Common/Error/Error';
@@ -15,8 +15,10 @@ import {
 import { AccountInfo } from './ProfileHeader/AccountInfo/AccountInfo';
 import { ProfileBanner } from './ProfileHeader/ProfileBanner/ProfileBanner';
 
-interface ProfileProps
-  extends RouteComponentProps<{ region: string; summonerName: string }> {}
+interface ProfileParams {
+  region: string;
+  summonerName: string;
+}
 
 interface SummonerDTO {
   id: string;
@@ -46,14 +48,14 @@ const fetchProfileDataByName = async (
     });
 };
 
-export const Profile = (routeComponentProps: ProfileProps) => {
-  const params = routeComponentProps.match.params;
+export const Profile = () => {
+  const { region, summonerName } = useParams<ProfileParams>();
   const [summonerData, setSummonerData] = useState<SummonerDTO>();
 
   const { data, isLoading, isError, isSuccess } = useQuery(
     'fetchProfileDataByName',
     () => {
-      return fetchProfileDataByName(params.region, params.summonerName);
+      return fetchProfileDataByName(region, summonerName);
     },
     {
       onSuccess: (data) => {
@@ -65,7 +67,7 @@ export const Profile = (routeComponentProps: ProfileProps) => {
   return (
     <>
       <Flex>
-        <Nav {...routeComponentProps} />
+        <Nav />
 
         {isError && (
           <ProfileErrorContainer>
@@ -88,7 +90,7 @@ export const Profile = (routeComponentProps: ProfileProps) => {
                 // Passing data instead of summonerData to avoid failing to load into state refresh, instead allowing it to work first time
                 profileIconId={data?.profileIconId}
                 summonerLevel={summonerData?.summonerLevel}
-                region={params.region}
+                region={region}
               />
             </ProfileContent>
           </ProfileContainer>
