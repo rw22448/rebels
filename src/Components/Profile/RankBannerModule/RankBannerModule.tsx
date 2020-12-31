@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import { ProfileModule } from '../ProfileModule/ProfileModule';
-import { ProfileModuleContent } from '../ProfileModule/ProfileModule.styles';
+import {
+  RankBannerModuleContent,
+  RankBorder,
+  RankInfoContainer,
+  SetName,
+} from './RankBannerModule.styles';
+
+const SET_NAME = 'Set 4 | Fates';
 
 interface RankBannerModuleProps {
   region: string;
@@ -21,7 +28,17 @@ interface LeagueEntryDTO {
   summonerId: string;
   summonerName: string;
   queueType: string;
-  tier: string;
+  tier:
+    | 'IRON'
+    | 'BRONZE'
+    | 'SILVER'
+    | 'GOLD'
+    | 'PLATINUM'
+    | 'DIAMOND'
+    | 'MASTER'
+    | 'GRANDMASTER'
+    | 'CHALLENGER'
+    | 'UNRANKED';
   rank: string;
   leaguePoints: number;
   wins: number;
@@ -54,7 +71,7 @@ const fetchRankDetailsBySummonerId = async (
 const RankBannerModule = ({ region, summonerId }: RankBannerModuleProps) => {
   const [rankData, setRankData] = useState<LeagueEntryDTO>();
 
-  const {} = useQuery(
+  const { isSuccess } = useQuery(
     'fetchRankDetailsBySummonerId',
     () => {
       return fetchRankDetailsBySummonerId(region, summonerId);
@@ -66,11 +83,23 @@ const RankBannerModule = ({ region, summonerId }: RankBannerModuleProps) => {
     }
   );
 
+  let rankTier = rankData?.tier || 'UNRANKED';
+
   return (
     <>
-      <ProfileModule heading="Season rank">
-        <ProfileModuleContent>{JSON.stringify(rankData)}</ProfileModuleContent>
-      </ProfileModule>
+      {isSuccess && (
+        <ProfileModule heading="Season rank">
+          <RankBannerModuleContent tier={rankTier}>
+            <SetName tier={rankTier}>{SET_NAME}</SetName>
+
+            <RankInfoContainer>
+              <RankBorder tier={rankTier}></RankBorder>
+            </RankInfoContainer>
+
+            {JSON.stringify(rankData)}
+          </RankBannerModuleContent>
+        </ProfileModule>
+      )}
     </>
   );
 };
