@@ -56,8 +56,8 @@ export const Profile = () => {
 
   const { data, isLoading, isError, isSuccess } = useQuery(
     'fetchProfileDataByName',
-    () => {
-      return fetchProfileDataByName(region, summonerName);
+    async () => {
+      return await fetchProfileDataByName(region, summonerName);
     },
     {
       onSuccess: (data) => {

@@ -73,22 +73,23 @@ const RankBannerModule = ({ region, summonerId }: RankBannerModuleProps) => {
 
   const { isSuccess } = useQuery(
     'fetchRankDetailsBySummonerId',
-    () => {
-      return fetchRankDetailsBySummonerId(region, summonerId);
+    async () => {
+      return await fetchRankDetailsBySummonerId(region, summonerId);
     },
     {
       onSuccess: (data) => {
         setRankData(data);
       },
+      enabled: !!summonerId,
     }
   );
 
-  let rankTier = rankData?.tier || 'UNRANKED';
+  let rankTier = rankData?.tier || undefined;
 
   return (
     <>
-      {isSuccess && (
-        <ProfileModule heading="Season rank">
+      <ProfileModule heading="Season rank">
+        {isSuccess && rankTier && (
           <RankBannerModuleContent tier={rankTier}>
             <SetName tier={rankTier}>{SET_NAME}</SetName>
 
@@ -98,8 +99,8 @@ const RankBannerModule = ({ region, summonerId }: RankBannerModuleProps) => {
 
             {JSON.stringify(rankData)}
           </RankBannerModuleContent>
-        </ProfileModule>
-      )}
+        )}
+      </ProfileModule>
     </>
   );
 };
