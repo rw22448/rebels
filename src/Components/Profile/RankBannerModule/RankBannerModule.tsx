@@ -3,12 +3,23 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import { ProfileModule } from '../ProfileModule/ProfileModule';
 import {
+  LeaguePoints,
+  PlayerRankData,
   RankBannerModuleContent,
   RankBorder,
   RankInfoContainer,
+  RankName,
+  Right,
   SetName,
+  StyledTierName,
+  GamesPlayed,
+  Losses,
+  WinRate,
+  Wins,
+  DetailedRankInfo,
 } from './RankBannerModule.styles';
 import { RankIconResolver } from './RankIconResolver/RankIconResolver';
+import { HorizontalRule } from '../../Styles/Common/HorizontalRule/HorizontalRule';
 
 const SET_NAME = 'Set 4 | Fates';
 
@@ -102,7 +113,48 @@ const RankBannerModule = ({ region, summonerId }: RankBannerModuleProps) => {
               </RankBorder>
             </RankInfoContainer>
 
-            {JSON.stringify(rankData)}
+            <PlayerRankData>
+              <RankName tier={rankTier}>
+                <StyledTierName>{rankData?.tier}</StyledTierName>
+                <span>{` ${rankData?.rank}`}</span>
+              </RankName>
+
+              <LeaguePoints
+                tier={rankTier}
+              >{`${rankData?.leaguePoints} LP`}</LeaguePoints>
+            </PlayerRankData>
+
+            {!(
+              rankData?.tier === undefined || rankData?.tier === 'UNRANKED'
+            ) && (
+              <DetailedRankInfo tier={rankTier}>
+                <HorizontalRule
+                  width="full"
+                  ruleColour={rankData?.tier === 'GOLD' ? '#FFFFFF' : '#C4C4C4'}
+                  padding={24}
+                />
+                <Wins>
+                  Total wins: <Right>{rankData?.wins}</Right>
+                </Wins>
+                <Losses>
+                  Losses: <Right>{rankData?.losses}</Right>
+                </Losses>
+                <WinRate>
+                  Win rate:{' '}
+                  <Right>
+                    {(
+                      (rankData?.wins / (rankData?.wins + rankData?.losses)) *
+                      100
+                    ).toFixed(1)}
+                    %
+                  </Right>
+                </WinRate>
+                <GamesPlayed>
+                  Games played:{' '}
+                  <Right>{rankData?.wins + rankData?.losses}</Right>
+                </GamesPlayed>
+              </DetailedRankInfo>
+            )}
           </RankBannerModuleContent>
         )}
       </ProfileModule>

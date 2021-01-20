@@ -27,7 +27,7 @@ const getHeaderColour = (tier: Tier, theme: Theme): string => {
     case 'IRON':
       return '#585B5F';
     default:
-      return '#E0E0E0';
+      return '#FFFFFF';
   }
 };
 
@@ -46,6 +46,47 @@ const getRankBorderColour = (tier: Tier, theme: Theme): string => {
   };
 
   return borderColours[tier];
+};
+
+const getRankNameColour = (tier: Tier, theme: Theme): string => {
+  const borderColours = {
+    IRON: '#585B5F',
+    BRONZE: '#9E5D34',
+    SILVER: '#C4C4C4',
+    GOLD: '#F8F807',
+    PLATINUM: '#21B0C0',
+    DIAMOND: '#938CCF',
+    MASTER: '#AD4895',
+    GRANDMASTER: '#EF2E38',
+    CHALLENGER: '#FFB60A',
+    UNRANKED: theme.contentColour,
+  };
+
+  return borderColours[tier];
+};
+
+const getLeaguePointsColour = (tier: Tier): string => {
+  switch (tier) {
+    case 'UNRANKED':
+    case 'IRON':
+      return '#24292E';
+    default:
+      return '#FFFFFF';
+  }
+};
+
+const getDetailedRankInfoTextColour = (tier: Tier): string => {
+  switch (tier) {
+    case 'IRON':
+      return '#A3A3A3';
+    case 'GOLD':
+      return '#FFFFFF';
+    case 'PLATINUM':
+    case 'DIAMOND':
+      return '#E0E0E0';
+    default:
+      return '#C4C4C4';
+  }
 };
 
 interface RankBannerProps extends PropsWithTheme {
@@ -77,4 +118,70 @@ const RankBorder = styled.div`
     ${(props: RankBannerProps) => getRankBorderColour(props.tier, props.theme)};
 `;
 
-export { RankBannerModuleContent, SetName, RankInfoContainer, RankBorder };
+const PlayerRankData = styled.div`
+  text-align: center;
+`;
+
+const RankName = styled.h4`
+  font-size: 24px;
+  color: ${(props: RankBannerProps) =>
+    getRankNameColour(props.tier, props.theme)};
+`;
+
+const StyledTierName = styled.span`
+  display: inline-block;
+  text-transform: lowercase;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+`;
+
+const LeaguePoints = styled.h4`
+  font-size: 24px;
+  color: ${(props: RankBannerProps) => getLeaguePointsColour(props.tier)};
+`;
+
+const DetailedRankInfo = styled.div`
+  color: ${(props: RankBannerProps) =>
+    getDetailedRankInfoTextColour(props.tier)};
+`;
+
+const RankDetailText = styled.div`
+  display: flex;
+`;
+
+const Wins = styled(RankDetailText)`
+  color: ${(props: PropsWithTheme) => props.theme.colours.green};
+`;
+
+const Losses = styled(RankDetailText)``;
+
+const WinRate = styled(RankDetailText)`
+  color: ${(props: PropsWithTheme) => props.theme.colours.blue.blue};
+`;
+
+const GamesPlayed = styled(RankDetailText)``;
+
+const Right = styled.span`
+  flex: 0;
+  margin-left: auto;
+  text-align: right;
+`;
+
+export {
+  RankBannerModuleContent,
+  SetName,
+  RankInfoContainer,
+  RankBorder,
+  PlayerRankData,
+  RankName,
+  StyledTierName,
+  LeaguePoints,
+  DetailedRankInfo,
+  Wins,
+  Losses,
+  WinRate,
+  GamesPlayed,
+  Right,
+};
