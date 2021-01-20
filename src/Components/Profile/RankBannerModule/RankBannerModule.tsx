@@ -8,8 +8,21 @@ import {
   RankInfoContainer,
   SetName,
 } from './RankBannerModule.styles';
+import { RankIconResolver } from './RankIconResolver/RankIconResolver';
 
 const SET_NAME = 'Set 4 | Fates';
+
+type Tier =
+  | 'IRON'
+  | 'BRONZE'
+  | 'SILVER'
+  | 'GOLD'
+  | 'PLATINUM'
+  | 'DIAMOND'
+  | 'MASTER'
+  | 'GRANDMASTER'
+  | 'CHALLENGER'
+  | 'UNRANKED';
 
 interface RankBannerModuleProps {
   region: string;
@@ -28,17 +41,7 @@ interface LeagueEntryDTO {
   summonerId: string;
   summonerName: string;
   queueType: string;
-  tier:
-    | 'IRON'
-    | 'BRONZE'
-    | 'SILVER'
-    | 'GOLD'
-    | 'PLATINUM'
-    | 'DIAMOND'
-    | 'MASTER'
-    | 'GRANDMASTER'
-    | 'CHALLENGER'
-    | 'UNRANKED';
+  tier: Tier;
   rank: string;
   leaguePoints: number;
   wins: number;
@@ -94,7 +97,9 @@ const RankBannerModule = ({ region, summonerId }: RankBannerModuleProps) => {
             <SetName tier={rankTier}>{SET_NAME}</SetName>
 
             <RankInfoContainer>
-              <RankBorder tier={rankTier}></RankBorder>
+              <RankBorder tier={rankTier}>
+                <RankIconResolver tier={rankTier} />
+              </RankBorder>
             </RankInfoContainer>
 
             {JSON.stringify(rankData)}
@@ -106,3 +111,4 @@ const RankBannerModule = ({ region, summonerId }: RankBannerModuleProps) => {
 };
 
 export { RankBannerModule };
+export type { Tier };

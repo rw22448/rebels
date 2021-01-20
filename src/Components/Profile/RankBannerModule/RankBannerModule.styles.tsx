@@ -1,18 +1,7 @@
 import styled from 'styled-components';
 import { PropsWithTheme, Theme } from '../../Styles/Themes/Themes';
 import { ProfileModuleContent } from '../ProfileModule/ProfileModule.styles';
-
-type Tier =
-  | 'IRON'
-  | 'BRONZE'
-  | 'SILVER'
-  | 'GOLD'
-  | 'PLATINUM'
-  | 'DIAMOND'
-  | 'MASTER'
-  | 'GRANDMASTER'
-  | 'CHALLENGER'
-  | 'UNRANKED';
+import { Tier } from './RankBannerModule';
 
 const getRankBannerContainerColour = (tier: Tier, theme: Theme): string => {
   const backgroundColours = {
