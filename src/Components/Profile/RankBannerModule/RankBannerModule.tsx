@@ -21,7 +21,7 @@ import {
 import { RankIconResolver } from './RankIconResolver/RankIconResolver';
 import { HorizontalRule } from '../../Styles/Common/HorizontalRule/HorizontalRule';
 
-const SET_NAME = 'Set 4 | Fates';
+const SET_NAME = 'Set 4.5 | Festival of Beasts';
 
 type Tier =
   | 'IRON'
