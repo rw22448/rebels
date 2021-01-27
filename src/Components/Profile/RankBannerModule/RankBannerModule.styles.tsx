@@ -65,9 +65,10 @@ const getRankNameColour = (tier: Tier, theme: Theme): string => {
   return borderColours[tier];
 };
 
-const getLeaguePointsColour = (tier: Tier): string => {
+const getLeaguePointsColour = (tier: Tier, theme: Theme): string => {
   switch (tier) {
     case 'UNRANKED':
+      return theme.contentColour;
     case 'IRON':
       return '#24292E';
     default:
@@ -139,7 +140,8 @@ const StyledTierName = styled.span`
 
 const LeaguePoints = styled.h4`
   font-size: 24px;
-  color: ${(props: RankBannerProps) => getLeaguePointsColour(props.tier)};
+  color: ${(props: RankBannerProps) =>
+    getLeaguePointsColour(props.tier, props.theme)};
 `;
 
 const DetailedRankInfo = styled.div`
