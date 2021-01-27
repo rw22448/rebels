@@ -39,12 +39,27 @@ const ProfileErrorContainer = styled.div`
 `;
 
 const ProfileSideGrid = styled.div`
-  display: inline-grid;
-
-  grid-template-columns: 324px;
+  display: grid;
   gap: 24px;
 
-  margin-right: 24px;
+  ${down('lg')} {
+    grid-template-columns: auto 324px;
+  }
+`;
+
+const MainContent = styled.div`
+  display: grid;
+
+  grid-template-columns: 324px auto;
+  gap: 24px;
+
+  ${down('lg')} {
+    grid-template-columns: 918px;
+  }
+
+  ${down('md')} {
+    grid-template-columns: 656px;
+  }
 `;
 
 export {
@@ -53,4 +68,5 @@ export {
   ProfileLoadingContainer,
   ProfileErrorContainer,
   ProfileSideGrid,
+  MainContent,
 };

@@ -7,6 +7,7 @@ import { Loading } from '../Styles/Common/Loading/Loading';
 import { Error } from '../Styles/Common/Error/Error';
 import { Flex } from '../Styles/CommonStyles';
 import {
+  MainContent,
   ProfileContainer,
   ProfileContent,
   ProfileErrorContainer,
@@ -16,6 +17,7 @@ import {
 import { AccountInfo } from './ProfileHeader/AccountInfo/AccountInfo';
 import { ProfileBanner } from './ProfileHeader/ProfileBanner/ProfileBanner';
 import { RankBannerModule } from './RankBannerModule/RankBannerModule';
+import { ProfileModule } from './ProfileModule/ProfileModule';
 
 interface ProfileParams {
   region: string;
@@ -96,21 +98,21 @@ export const Profile = () => {
                 summonerLevel={summonerData?.summonerLevel}
                 region={region}
               />
-              <div className="mainContent">
-                <ProfileSideGrid className="leftSideGrid">
+              <MainContent>
+                <ProfileSideGrid>
                   <RankBannerModule
                     region={region}
                     summonerId={summonerData?.id}
                   />
-                  <div className="latestStats">Latest stats</div>
+                  <ProfileModule heading="Latest stats">
+                    <div>Latest stats</div>
+                  </ProfileModule>
                 </ProfileSideGrid>
-                <div
-                  style={{ display: 'inline-block' }}
-                  className="matchHistory"
-                >
-                  Match history
-                </div>
-              </div>
+
+                <ProfileModule heading="Match history">
+                  <div>Match history</div>
+                </ProfileModule>
+              </MainContent>
             </ProfileContent>
           </ProfileContainer>
         )}
