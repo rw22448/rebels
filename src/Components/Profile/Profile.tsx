@@ -56,7 +56,7 @@ export const Profile = () => {
   const { region, summonerName } = useParams<ProfileParams>();
   const [summonerData, setSummonerData] = useState<SummonerDTO>();
 
-  const { data, isLoading, isError, isSuccess } = useQuery(
+  const { data, isError, isLoading, isSuccess } = useQuery(
     'fetchProfileDataByName',
     async () => {
       return await fetchProfileDataByName(region, summonerName);
