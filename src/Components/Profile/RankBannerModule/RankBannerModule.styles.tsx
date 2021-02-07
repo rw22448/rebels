@@ -1,3 +1,4 @@
+import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
 import { PropsWithTheme, Theme } from '../../Styles/Themes/Themes';
 import { ProfileModuleContent } from '../ProfileModule/ProfileModule.styles';
@@ -95,18 +96,38 @@ interface RankBannerProps extends PropsWithTheme {
 }
 
 const RankBannerModuleContent = styled(ProfileModuleContent)`
+  display: grid;
+
+  grid-template-columns: auto;
+
   background: ${(props: RankBannerProps) =>
     getRankBannerContainerColour(props.tier, props.theme)};
+
+  ${down('lg')} {
+    grid-template-columns: 226px 50px auto;
+  }
+
+  ${down('md')} {
+    grid-template-columns: 260px;
+  }
 `;
 
 const SetName = styled.h4`
   color: ${(props: RankBannerProps) =>
     getHeaderColour(props.tier, props.theme)};
   text-align: center;
+
+  ${down('md')} {
+    font-size: 16px;
+  }
 `;
 
 const RankInfoContainer = styled.div`
   padding: 24px 0px;
+
+  ${down('md')} {
+    padding: 8px 16px 8px 0px;
+  }
 `;
 
 const RankBorder = styled.div`
@@ -117,16 +138,35 @@ const RankBorder = styled.div`
   border-radius: 60px;
   border: 6px solid
     ${(props: RankBannerProps) => getRankBorderColour(props.tier, props.theme)};
+
+  ${down('md')} {
+    width: 80px;
+    height: 80px;
+
+    border: 4px solid
+      ${(props: RankBannerProps) =>
+        getRankBorderColour(props.tier, props.theme)};
+  }
 `;
 
 const PlayerRankData = styled.div`
   text-align: center;
+
+  ${down('md')} {
+    align-self: center;
+
+    text-align: start;
+  }
 `;
 
 const RankName = styled.h4`
   font-size: 24px;
   color: ${(props: RankBannerProps) =>
     getRankNameColour(props.tier, props.theme)};
+
+  ${down('md')} {
+    font-size: 20px;
+  }
 `;
 
 const StyledTierName = styled.span`
@@ -142,6 +182,10 @@ const LeaguePoints = styled.h4`
   font-size: 24px;
   color: ${(props: RankBannerProps) =>
     getLeaguePointsColour(props.tier, props.theme)};
+
+  ${down('md')} {
+    font-size: 20px;
+  }
 `;
 
 const DetailedRankInfo = styled.div`
@@ -171,6 +215,44 @@ const Right = styled.span`
   text-align: right;
 `;
 
+const HorizontalRuleContainer = styled.div`
+  padding: 8px 0px;
+
+  display: initial;
+
+  ${down('lg')} {
+    display: none;
+  }
+
+  ${down('md')} {
+    display: initial;
+
+    padding: 0px;
+  }
+`;
+
+const VerticalRuleContainer = styled.div`
+  display: none;
+
+  ${down('lg')} {
+    display: initial;
+  }
+
+  ${down('md')} {
+    display: none;
+  }
+`;
+
+const IconTierPointsContainer = styled.div`
+  display: initial;
+
+  ${down('md')} {
+    display: flex;
+
+    justify-content: center;
+  }
+`;
+
 export {
   RankBannerModuleContent,
   SetName,
@@ -186,4 +268,7 @@ export {
   WinRate,
   GamesPlayed,
   Right,
+  HorizontalRuleContainer,
+  VerticalRuleContainer,
+  IconTierPointsContainer,
 };

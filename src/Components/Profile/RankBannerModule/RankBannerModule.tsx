@@ -17,9 +17,13 @@ import {
   WinRate,
   Wins,
   DetailedRankInfo,
+  HorizontalRuleContainer,
+  VerticalRuleContainer,
+  IconTierPointsContainer,
 } from './RankBannerModule.styles';
 import { RankIconResolver } from './RankIconResolver/RankIconResolver';
 import { HorizontalRule } from '../../Styles/Common/HorizontalRule/HorizontalRule';
+import { VerticalRule } from '../../Styles/Common/VerticalRule/VerticalRule';
 
 const SET_NAME = 'Set 4.5 | Festival of Beasts';
 
@@ -85,7 +89,7 @@ const fetchRankDetailsBySummonerId = async (
 const RankBannerModule = ({ region, summonerId }: RankBannerModuleProps) => {
   const [rankData, setRankData] = useState<LeagueEntryDTO>();
 
-  const { isSuccess } = useQuery(
+  const { isError, isLoading, isSuccess } = useQuery(
     'fetchRankDetailsBySummonerId',
     async () => {
       return await fetchRankDetailsBySummonerId(region, summonerId);
@@ -98,41 +102,66 @@ const RankBannerModule = ({ region, summonerId }: RankBannerModuleProps) => {
     }
   );
 
-  let rankTier = rankData?.tier || undefined;
+  let rankTier = rankData?.tier;
 
   return (
     <>
       <ProfileModule heading="Season rank">
-        {isSuccess && rankTier && (
+        {isError && <div>Error!</div>}
+
+        {isLoading && <div>Loading!</div>}
+
+        {/* isSuccess is the given pre-condition, however we append rankTier != undefined so we don't load data using undefined in child components */}
+        {/* rankData != undefined check is used to ensure wins and losses attributes are numbers and not undefined */}
+        {isSuccess && rankData && rankTier && (
           <RankBannerModuleContent tier={rankTier}>
-            <SetName tier={rankTier}>{SET_NAME}</SetName>
+            <div>
+              <SetName tier={rankTier}>{SET_NAME}</SetName>
 
-            <RankInfoContainer>
-              <RankBorder tier={rankTier}>
-                <RankIconResolver tier={rankTier} />
-              </RankBorder>
-            </RankInfoContainer>
+              <IconTierPointsContainer>
+                <RankInfoContainer>
+                  <RankBorder tier={rankTier}>
+                    <RankIconResolver tier={rankTier} />
+                  </RankBorder>
+                </RankInfoContainer>
 
-            <PlayerRankData>
-              <RankName tier={rankTier}>
-                <StyledTierName>{rankData?.tier}</StyledTierName>
-                <span>{` ${rankData?.rank}`}</span>
-              </RankName>
+                <PlayerRankData>
+                  <RankName tier={rankTier}>
+                    <StyledTierName>{rankTier}</StyledTierName>
+                    <span>{` ${rankData?.rank}`}</span>
+                  </RankName>
 
-              <LeaguePoints
-                tier={rankTier}
-              >{`${rankData?.leaguePoints} LP`}</LeaguePoints>
-            </PlayerRankData>
+                  <LeaguePoints
+                    tier={rankTier}
+                  >{`${rankData?.leaguePoints} LP`}</LeaguePoints>
+                </PlayerRankData>
+              </IconTierPointsContainer>
+            </div>
 
-            {!(
-              rankData?.tier === undefined || rankData?.tier === 'UNRANKED'
-            ) && (
+            <HorizontalRuleContainer>
+              <HorizontalRule
+                width="full"
+                ruleColour={rankTier === 'GOLD' ? '#FFFFFF' : '#C4C4C4'}
+                padding={16}
+              />
+            </HorizontalRuleContainer>
+
+            <VerticalRuleContainer>
+              <VerticalRule
+                height="full"
+                ruleColour={rankTier === 'GOLD' ? '#FFFFFF' : '#C4C4C4'}
+                padding={24}
+              />
+            </VerticalRuleContainer>
+
+            {rankTier === 'UNRANKED' && (
               <DetailedRankInfo tier={rankTier}>
-                <HorizontalRule
-                  width="full"
-                  ruleColour={rankData?.tier === 'GOLD' ? '#FFFFFF' : '#C4C4C4'}
-                  padding={24}
-                />
+                <div>No data to show</div>
+              </DetailedRankInfo>
+            )}
+
+            {!(rankTier === 'UNRANKED') && (
+              <DetailedRankInfo tier={rankTier}>
                 <Wins>
                   Total wins: <Right>{rankData?.wins}</Right>
                 </Wins>
