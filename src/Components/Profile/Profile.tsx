@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
@@ -34,6 +34,27 @@ interface SummonerDTO {
   summonerLevel: number;
 }
 
+const resolveRegionalRoute = (region: string): string => {
+  switch (region) {
+    case 'eun1':
+    case 'euw1':
+    case 'tr1':
+    case 'ru':
+      return 'europe';
+    case 'oc1':
+    case 'jp1':
+    case 'kr':
+      return 'asia';
+    case 'na1':
+    case 'la1':
+    case 'la2':
+    case 'br1':
+      return 'americas';
+    default:
+      return 'americas';
+  }
+};
+
 const fetchProfileDataByName = async (
   region: string,
   summonerName: string
@@ -55,6 +76,7 @@ const fetchProfileDataByName = async (
 export const Profile = () => {
   const { region, summonerName } = useParams<ProfileParams>();
   const [summonerData, setSummonerData] = useState<SummonerDTO>();
+  const [regionalRoute, setRegionalRoute] = useState<string>();
 
   const { data, isError, isLoading, isSuccess } = useQuery(
     'fetchProfileDataByName',
@@ -67,6 +89,10 @@ export const Profile = () => {
       },
     }
   );
+
+  useEffect(() => {
+    setRegionalRoute(resolveRegionalRoute(region));
+  }, [region]);
 
   return (
     <>
