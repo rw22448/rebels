@@ -14,7 +14,7 @@ const getRankBannerContainerColour = (tier: Tier, theme: Theme): string => {
     DIAMOND: '#2F2963',
     MASTER: '#481E3E',
     GRANDMASTER: '#494D5A',
-    CHALLENGER: 'linear-gradient(#BFBEBE, #434343)',
+    CHALLENGER: 'linear-gradient(#8a8a8a, #434343)',
     UNRANKED: theme.containerColour,
   };
 
@@ -82,9 +82,12 @@ const getDetailedRankInfoTextColour = (tier: Tier): string => {
     case 'IRON':
       return '#A3A3A3';
     case 'GOLD':
+    case 'CHALLENGER':
       return '#FFFFFF';
     case 'PLATINUM':
     case 'DIAMOND':
+    case 'MASTER':
+    case 'GRANDMASTER':
       return '#E0E0E0';
     default:
       return '#C4C4C4';
