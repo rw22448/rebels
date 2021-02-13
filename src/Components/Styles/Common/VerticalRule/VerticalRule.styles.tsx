@@ -21,7 +21,7 @@ const StyledVerticalRule = styled(BaseVerticalRule)`
   width: 2px;
   border-radius: 1px;
   background-color: ${(props: BaseVerticalRuleProps) =>
-    props.ruleColour ? props.ruleColour : props.theme.nav.contentColour};
+    props.ruleColour ? props.ruleColour : props.theme.contentColour};
 `;
 
 export { VerticalRuleContainer, StyledVerticalRule };

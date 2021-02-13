@@ -21,7 +21,7 @@ const StyledHorizontalRule = styled(BaseHorizontalRule)`
   height: 2px;
   border-radius: 1px;
   background-color: ${(props: BaseHorizontalRuleProps) =>
-    props.ruleColour ? props.ruleColour : props.theme.nav.contentColour};
+    props.ruleColour ? props.ruleColour : props.theme.contentColour};
 `;
 
 export { HorizontalRuleContainer, StyledHorizontalRule };
