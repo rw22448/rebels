@@ -1,10 +1,14 @@
 import React from 'react';
 import { StyledLoading } from './Loading.styles';
 
-const Loading = () => {
+interface LoadingProps {
+  size?: number;
+}
+
+const Loading = ({ size }: LoadingProps) => {
   return (
     <>
-      <StyledLoading />
+      <StyledLoading size={size || 60} />
     </>
   );
 };
