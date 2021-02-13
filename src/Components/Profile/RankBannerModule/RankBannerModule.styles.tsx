@@ -1,5 +1,5 @@
-import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
+import { down } from 'styled-breakpoints';
 import { PropsWithTheme, Theme } from '../../Styles/Themes/Themes';
 import { ProfileModuleContent } from '../ProfileModule/ProfileModule.styles';
 import { Tier } from './RankBannerModule';

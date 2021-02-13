@@ -24,6 +24,7 @@ import {
 import { RankIconResolver } from './RankIconResolver/RankIconResolver';
 import { HorizontalRule } from '../../Styles/Common/HorizontalRule/HorizontalRule';
 import { VerticalRule } from '../../Styles/Common/VerticalRule/VerticalRule';
+import { ErrorLoadingModule } from '../../Styles/Common/ErrorLoadingModule/ErrorLoadingModule';
 
 const SET_NAME = 'Set 4.5 | Festival of Beasts';
 
@@ -89,7 +90,7 @@ const fetchRankDetailsBySummonerId = async (
 const RankBannerModule = ({ region, summonerId }: RankBannerModuleProps) => {
   const [rankData, setRankData] = useState<LeagueEntryDTO>();
 
-  const { isError, isLoading, isSuccess } = useQuery(
+  const { isError, isLoading, isSuccess, refetch } = useQuery(
     'fetchRankDetailsBySummonerId',
     async () => {
       return await fetchRankDetailsBySummonerId(region, summonerId);
@@ -107,9 +108,11 @@ const RankBannerModule = ({ region, summonerId }: RankBannerModuleProps) => {
   return (
     <>
       <ProfileModule heading="Season rank">
-        {isError && <div>Error!</div>}
-
-        {isLoading && <div>Loading!</div>}
+        <ErrorLoadingModule
+          isError={isError}
+          isLoading={isLoading}
+          refetch={refetch}
+        />
 
         {/* isSuccess is the given pre-condition, however we append rankTier != undefined so we don't load data using undefined in child components */}
         {/* rankData != undefined check is used to ensure wins and losses attributes are numbers and not undefined */}

@@ -13,4 +13,10 @@ const ProfileModuleContent = styled.div`
   background-color: ${(props: PropsWithTheme) => props.theme.containerColour};
 `;
 
-export { ProfileModuleHeader, ProfileModuleContent };
+const ModuleContainer = styled(ProfileModuleContent)`
+  display: flex;
+
+  justify-content: center;
+`;
+
+export { ProfileModuleHeader, ProfileModuleContent, ModuleContainer };
