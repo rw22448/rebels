@@ -6,6 +6,8 @@ const StyledAlertCircle = styled(AlertCircle).attrs(() => ({
 }))``;
 
 const StyledRefreshCw = styled(RefreshCw)`
+  transition: color 0.2s, background-color 0.2s;
+
   &:hover {
     cursor: pointer;
   }

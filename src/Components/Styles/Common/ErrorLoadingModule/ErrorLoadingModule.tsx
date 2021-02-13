@@ -27,7 +27,7 @@ const ErrorLoadingModule = ({
       {isError && (
         <ModuleContainer>
           <StyledAlertCircle />
-          <VerticalRule height={24} ruleColour={'#24292E'} padding={16} />
+          <VerticalRule height={24} padding={16} />
           <StyledRefreshCw
             onClick={() => {
               refetch();
