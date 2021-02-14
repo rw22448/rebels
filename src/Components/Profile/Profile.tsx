@@ -94,6 +94,10 @@ export const Profile = () => {
     setRegionalRoute(resolveRegionalRoute(region));
   }, [region]);
 
+  useEffect(() => {
+    document.title = `Rebels | ${summonerName}`;
+  });
+
   return (
     <>
       <Flex>

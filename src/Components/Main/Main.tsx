@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavAlt } from '../Navigation/NavAlt/NavAlt';
 import { Flex } from '../Styles/CommonStyles';
 import { Content } from './Main.styles';
@@ -7,6 +7,10 @@ import { MainDescription } from './MainDescription/MainDescription';
 import { SearchForm } from './SearchForm/SearchForm';
 
 export const Main = () => {
+  useEffect(() => {
+    document.title = 'Rebels';
+  });
+
   return (
     <>
       <Flex>
