@@ -18,6 +18,7 @@ import { AccountInfo } from './ProfileHeader/AccountInfo/AccountInfo';
 import { ProfileBanner } from './ProfileHeader/ProfileBanner/ProfileBanner';
 import { RankBannerModule } from './RankBannerModule/RankBannerModule';
 import { ProfileModule } from './ProfileModule/ProfileModule';
+import { MatchHistoryModule } from './MatchHistoryModule/MatchHistoryModule';
 
 interface ProfileParams {
   region: string;
@@ -41,10 +42,10 @@ const resolveRegionalRoute = (region: string): string => {
     case 'tr1':
     case 'ru':
       return 'europe';
-    case 'oc1':
     case 'jp1':
     case 'kr':
       return 'asia';
+    case 'oc1':
     case 'na1':
     case 'la1':
     case 'la2':
@@ -77,6 +78,7 @@ export const Profile = () => {
   const { region, summonerName } = useParams<ProfileParams>();
   const [summonerData, setSummonerData] = useState<SummonerDTO>();
   const [regionalRoute, setRegionalRoute] = useState<string>();
+  const [matchHistoryIds, setMatchHistoryIds] = useState<string[]>();
 
   const { data, isError, isLoading, isSuccess } = useQuery(
     'fetchProfileDataByName',
@@ -139,9 +141,13 @@ export const Profile = () => {
                   </ProfileModule>
                 </ProfileSideGrid>
 
-                <ProfileModule heading="Match history">
-                  <div>Match history</div>
-                </ProfileModule>
+                <MatchHistoryModule
+                  regionalRoute={regionalRoute}
+                  puuid={summonerData?.puuid}
+                  setMatchHistoryIds={setMatchHistoryIds}
+                />
+
+                {matchHistoryIds}
               </MainContent>
             </ProfileContent>
           </ProfileContainer>
