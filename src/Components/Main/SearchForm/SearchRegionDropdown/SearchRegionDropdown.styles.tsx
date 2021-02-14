@@ -25,6 +25,10 @@ const Dropdown = styled.div`
 
 const DropdownLabel = styled.label`
   font-size: 20px;
+
+  &:hover {
+    cursor: text;
+  }
 `;
 
 const LabelWrapper = styled.div`
