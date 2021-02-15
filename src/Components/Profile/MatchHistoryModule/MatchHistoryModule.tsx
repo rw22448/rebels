@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import { ProfileModule } from '../ProfileModule/ProfileModule';
@@ -40,8 +40,6 @@ const MatchHistoryModule = ({
   puuid,
   setMatchHistoryIds,
 }: MatchHistoryModuleProps) => {
-  const [matchIds, setMatchIds] = useState<string[]>();
-
   const { isError, isLoading, isSuccess, refetch } = useQuery(
     'fetchMatchesByPuuid',
     async () => {
@@ -49,16 +47,11 @@ const MatchHistoryModule = ({
     },
     {
       onSuccess: (data) => {
-        setMatchIds(data);
         setMatchHistoryIds(data);
       },
       enabled: !!(regionalRoute && puuid),
     }
   );
-
-  useEffect(() => {
-    console.log(regionalRoute, puuid);
-  });
 
   return (
     <>

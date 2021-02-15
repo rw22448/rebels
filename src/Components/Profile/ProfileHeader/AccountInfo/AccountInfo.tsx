@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   AccountDetailContainer,
   AccountInfoContainer,
@@ -15,14 +15,49 @@ interface AccountInfoProps {
   profileIconId?: number;
   summonerLevel?: number;
   region?: string;
+  latestMatchDateTime: string;
 }
+
+const calculateLastOnlineAgo = (dateTimeString: string): string => {
+  const currentDate = new Date();
+  const date = new Date(dateTimeString);
+
+  const differenceInDays = Math.floor(
+    (currentDate.getTime() - date.getTime()) / (1000 * 60 * 60 * 24)
+  );
+
+  if (differenceInDays === 0) {
+    return 'Today';
+  }
+
+  if (differenceInDays === 1) {
+    return '1 day ago';
+  }
+
+  if (differenceInDays > 30) {
+    return 'One month ago';
+  }
+
+  if (differenceInDays >= 60) {
+    return 'Over one month ago';
+  }
+
+  return `${differenceInDays} days ago`;
+};
 
 const AccountInfo = ({
   name,
   profileIconId,
   summonerLevel,
   region,
+  latestMatchDateTime,
 }: AccountInfoProps) => {
+  const [lastOnlineAgo, setlastOnlineAgo] = useState<string>();
+
+  useEffect(() => {
+    setlastOnlineAgo(calculateLastOnlineAgo(latestMatchDateTime));
+  }, [latestMatchDateTime]);
+
   return (
     <>
       <AccountInfoContainer>
@@ -32,7 +67,7 @@ const AccountInfo = ({
         </IconLevelContainer>
         <AccountDetailContainer>
           <SummonerName>{name}</SummonerName>
-          <p>Last online: X days ago</p>
+          <p>Last online: {lastOnlineAgo}</p>
           <RegionBadgeContainer>
             <RegionBadge>{region && region.toLocaleUpperCase()}</RegionBadge>
           </RegionBadgeContainer>

@@ -116,7 +116,7 @@ export const Profile = () => {
   const [summonerData, setSummonerData] = useState<SummonerDTO>();
   const [regionalRoute, setRegionalRoute] = useState<string>();
   const [matchHistoryIds, setMatchHistoryIds] = useState<string[]>();
-  const [latestMatchDateTime, setLatestMatchDateTime] = useState<string>();
+  const [latestMatchDateTime, setLatestMatchDateTime] = useState<string>('');
 
   const {
     data: profileData,
@@ -195,6 +195,7 @@ export const Profile = () => {
                 profileIconId={profileData?.profileIconId}
                 summonerLevel={summonerData?.summonerLevel}
                 region={region}
+                latestMatchDateTime={latestMatchDateTime}
               />
               <MainContent>
                 <ProfileSideGrid>
