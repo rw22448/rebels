@@ -18,8 +18,8 @@ import {
 import { AccountInfo } from './ProfileHeader/AccountInfo/AccountInfo';
 import { ProfileBanner } from './ProfileHeader/ProfileBanner/ProfileBanner';
 import { RankBannerModule } from './RankBannerModule/RankBannerModule';
-import { ProfileModule } from './ProfileModule/ProfileModule';
 import { MatchHistoryModule } from './MatchHistoryModule/MatchHistoryModule';
+import { LatestStatsModule } from './LatestStatsModule/LatestStatsModule';
 
 interface ProfileParams {
   region: string;
@@ -36,9 +36,68 @@ interface SummonerDTO {
   summonerLevel: number;
 }
 
+interface MetadataDTO {
+  data_version: string;
+  match_id: string;
+  participants: string[];
+}
+
+interface CompanionDTO {
+  content_ID: string;
+  skin_ID: number;
+  species: string;
+}
+
+interface TraitsDTO {
+  name: string;
+  num_units: number;
+  style: number;
+  tier_current: number;
+  tier_total: number;
+}
+
+interface UnitsDTO {
+  items: number[];
+  character_id: string;
+  chosen: string;
+  name: string;
+  rarity: number;
+  tier: number;
+}
+
+interface ParticipantDTO {
+  companion: CompanionDTO;
+  gold_left: number;
+  last_round: number;
+  level: number;
+  placement: number;
+  players_eliminated: number;
+  puuid: string;
+  time_eliminated: number;
+  total_damage_to_players: number;
+  traits: TraitsDTO[];
+  units: UnitsDTO[];
+}
+
+interface InfoDTO {
+  game_datetime: number;
+  game_length: number;
+  game_variation: string;
+  game_version: string;
+  participants: ParticipantDTO[];
+  queue_id: number;
+  tft_set_number: number;
+}
+
+interface MatchDTO {
+  metadata: MetadataDTO;
+  info: InfoDTO;
+}
+
 interface CustomMatchDTO {
   latestMatchDateTime: string;
   matchIds: string[];
+  results: MatchDTO[];
 }
 
 const resolveRegionalRoute = (region: string): string => {
@@ -71,6 +130,29 @@ const fetchProfileDataByName = async (
       `${process.env.REACT_APP_BACKEND_BASE_URL}/${region}/get-summoner/by-name/${summonerName}`
     )
     .then((result) => result.data as SummonerDTO)
+    .catch((error) => {
+      if (error.response) {
+        console.error(error.response);
+      }
+
+      throw error;
+    });
+};
+
+const fetchMatchesByPuuid = async (
+  region: string | undefined,
+  puuid: string | undefined
+): Promise<string[]> => {
+  return await axios
+    .get(
+      `${process.env.REACT_APP_BACKEND_BASE_URL}/${region}/get-matches/by-puuid/${puuid}`,
+      {
+        params: {
+          count: process.env.REACT_APP_PROFILE_MAX_MATCH_HISTORY_COUNT || 20,
+        },
+      }
+    )
+    .then((result) => result.data as string[])
     .catch((error) => {
       if (error.response) {
         console.error(error.response);
@@ -117,6 +199,7 @@ export const Profile = () => {
   const [regionalRoute, setRegionalRoute] = useState<string>();
   const [matchHistoryIds, setMatchHistoryIds] = useState<string[]>();
   const [latestMatchDateTime, setLatestMatchDateTime] = useState<string>('');
+  const [allMatchData, setAllMatchData] = useState<MatchDTO[]>([]);
 
   const {
     data: profileData,
@@ -136,10 +219,28 @@ export const Profile = () => {
   );
 
   const {
-    data: matchHistoryData,
+    isError: matchesIsError,
+    isLoading: matchesIsLoading,
+    isSuccess: matchesIsSuccess,
+    refetch: matchesRefetch,
+  } = useQuery(
+    'fetchMatchesByPuuid',
+    async () => {
+      return await fetchMatchesByPuuid(regionalRoute, summonerData?.puuid);
+    },
+    {
+      onSuccess: (data) => {
+        setMatchHistoryIds(data);
+      },
+      enabled: !!(regionalRoute && summonerData?.puuid),
+    }
+  );
+
+  const {
     isError: matchHistoryIsError,
     isLoading: matchHistoryIsLoading,
     isSuccess: matchHistoryIsSuccess,
+    refetch: matchHistoryRefetch,
   } = useQuery(
     'fetchMatchHistoryByMatchHistoryIds',
     async () => {
@@ -152,6 +253,7 @@ export const Profile = () => {
       onSuccess: (data) => {
         console.log(data);
 
+        setAllMatchData(data.results);
         setLatestMatchDateTime(data.latestMatchDateTime);
       },
       enabled: !!(matchHistoryIds && regionalRoute),
@@ -203,15 +305,19 @@ export const Profile = () => {
                     region={region}
                     summonerId={summonerData?.id}
                   />
-                  <ProfileModule heading="Latest stats">
-                    <div>Latest stats</div>
-                  </ProfileModule>
+                  <LatestStatsModule
+                    matchHistoryIsError={matchHistoryIsError}
+                    matchHistoryIsLoading={matchHistoryIsLoading}
+                    matchHistoryIsSuccess={matchHistoryIsSuccess}
+                    matchHistoryRefetch={matchHistoryRefetch}
+                  />
                 </ProfileSideGrid>
 
                 <MatchHistoryModule
-                  regionalRoute={regionalRoute}
-                  puuid={summonerData?.puuid}
-                  setMatchHistoryIds={setMatchHistoryIds}
+                  matchesIsError={matchesIsError || matchHistoryIsError}
+                  matchesIsLoading={matchesIsLoading || matchHistoryIsLoading}
+                  matchesIsSuccess={matchesIsSuccess && matchHistoryIsSuccess}
+                  matchesRefetch={matchesRefetch}
                 />
 
                 {matchHistoryIds}
