@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import queryString from 'query-string';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { Nav } from '../Navigation/Nav/Nav';
@@ -33,6 +34,11 @@ interface SummonerDTO {
   profileIconId: number;
   revisionDate: number;
   summonerLevel: number;
+}
+
+interface CustomMatchDTO {
+  latestMatchDateTime: string;
+  matchIds: string[];
 }
 
 const resolveRegionalRoute = (region: string): string => {
@@ -74,13 +80,50 @@ const fetchProfileDataByName = async (
     });
 };
 
+const fetchMatchHistoryByMatchHistoryIds = async (
+  matchHistoryIds: string[],
+  regionalRoute: string | undefined
+): Promise<CustomMatchDTO> => {
+  const matchIdsObject = {
+    matchIds: matchHistoryIds,
+  };
+
+  const matchIdsArrayQueryString = queryString.stringify(matchIdsObject, {
+    arrayFormat: 'index',
+  });
+
+  return await axios
+    .get(
+      `${process.env.REACT_APP_BACKEND_BASE_URL}/get-match-details?${matchIdsArrayQueryString}`,
+      {
+        params: {
+          regionalRoute: regionalRoute,
+        },
+      }
+    )
+    .then((result) => result.data as CustomMatchDTO)
+    .catch((error) => {
+      if (error.response) {
+        console.error(error.response);
+      }
+
+      throw error;
+    });
+};
+
 export const Profile = () => {
   const { region, summonerName } = useParams<ProfileParams>();
   const [summonerData, setSummonerData] = useState<SummonerDTO>();
   const [regionalRoute, setRegionalRoute] = useState<string>();
   const [matchHistoryIds, setMatchHistoryIds] = useState<string[]>();
+  const [latestMatchDateTime, setLatestMatchDateTime] = useState<string>();
 
-  const { data, isError, isLoading, isSuccess } = useQuery(
+  const {
+    data: profileData,
+    isError: profileIsError,
+    isLoading: profileIsLoading,
+    isSuccess: profileIsSuccess,
+  } = useQuery(
     'fetchProfileDataByName',
     async () => {
       return await fetchProfileDataByName(region, summonerName);
@@ -89,6 +132,29 @@ export const Profile = () => {
       onSuccess: (data) => {
         setSummonerData(data);
       },
+    }
+  );
+
+  const {
+    data: matchHistoryData,
+    isError: matchHistoryIsError,
+    isLoading: matchHistoryIsLoading,
+    isSuccess: matchHistoryIsSuccess,
+  } = useQuery(
+    'fetchMatchHistoryByMatchHistoryIds',
+    async () => {
+      return await fetchMatchHistoryByMatchHistoryIds(
+        matchHistoryIds as string[],
+        regionalRoute
+      );
+    },
+    {
+      onSuccess: (data) => {
+        console.log(data);
+
+        setLatestMatchDateTime(data.latestMatchDateTime);
+      },
+      enabled: !!(matchHistoryIds && regionalRoute),
     }
   );
 
@@ -105,19 +171,19 @@ export const Profile = () => {
       <Flex>
         <Nav />
 
-        {isError && (
+        {profileIsError && (
           <ProfileErrorContainer>
             <Error />
           </ProfileErrorContainer>
         )}
 
-        {isLoading && (
+        {profileIsLoading && (
           <ProfileLoadingContainer>
             <Loading />
           </ProfileLoadingContainer>
         )}
 
-        {isSuccess && (
+        {profileIsSuccess && (
           <ProfileContainer>
             <ProfileContent>
               <ProfileBanner />
@@ -126,7 +192,7 @@ export const Profile = () => {
                 // Passing data from useQuery instead of summonerData from
                 // state to avoid failing to load from initial undefined
                 // state, instead allowing it to work first time
-                profileIconId={data?.profileIconId}
+                profileIconId={profileData?.profileIconId}
                 summonerLevel={summonerData?.summonerLevel}
                 region={region}
               />
