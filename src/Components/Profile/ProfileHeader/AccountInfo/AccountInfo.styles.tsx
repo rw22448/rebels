@@ -66,6 +66,12 @@ const RegionBadge = styled(Badge)`
   font-weight: ${(props: PropsWithTheme) => props.theme.fontWeights.semiBold};
 `;
 
+const LastOnlineSpan = styled.span`
+  @media (max-width: 420px) {
+    display: none;
+  }
+`;
+
 export {
   AccountInfoContainer,
   SummonerLevelBadge,
@@ -74,4 +80,5 @@ export {
   AccountDetailContainer,
   RegionBadgeContainer,
   RegionBadge,
+  LastOnlineSpan,
 };

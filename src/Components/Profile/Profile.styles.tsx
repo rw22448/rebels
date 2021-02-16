@@ -24,6 +24,7 @@ const ProfileContent = styled.div`
     }
 
     ${down('sm')} {
+      max-width: 788px;
       margin: 0;
     }
   }
@@ -45,6 +46,11 @@ const ProfileSideGrid = styled.div`
   ${down('lg')} {
     grid-template-columns: auto 324px;
   }
+
+  ${down('sm')} {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const MainContent = styled.div`
@@ -59,6 +65,11 @@ const MainContent = styled.div`
 
   ${down('md')} {
     grid-template-columns: 656px;
+  }
+
+  ${down('sm')} {
+    display: flex;
+    flex-direction: column;
   }
 `;
 

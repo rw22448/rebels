@@ -7,6 +7,7 @@ import {
   RegionBadge,
   SummonerLevelBadge,
   SummonerName,
+  LastOnlineSpan,
 } from './AccountInfo.styles';
 import { ProfileIconResolver } from './ProfileIconResolver/ProfileIconResolver';
 
@@ -35,11 +36,11 @@ const calculateLastOnlineAgo = (dateTimeString: string): string => {
   }
 
   if (differenceInDays > 30) {
-    return 'One month ago';
+    return '1 month ago';
   }
 
   if (differenceInDays >= 60) {
-    return 'Over one month ago';
+    return Math.floor(differenceInDays % 30) + ' months ago';
   }
 
   return `${differenceInDays} days ago`;
@@ -67,7 +68,10 @@ const AccountInfo = ({
         </IconLevelContainer>
         <AccountDetailContainer>
           <SummonerName>{name}</SummonerName>
-          <p>Last online: {lastOnlineAgo}</p>
+          <p>
+            <LastOnlineSpan>Last online: </LastOnlineSpan>
+            {lastOnlineAgo}
+          </p>
           <RegionBadgeContainer>
             <RegionBadge>{region && region.toLocaleUpperCase()}</RegionBadge>
           </RegionBadgeContainer>

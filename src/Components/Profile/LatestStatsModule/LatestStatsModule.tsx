@@ -2,6 +2,7 @@ import React from 'react';
 import { UseQueryResult } from 'react-query';
 import { ErrorLoadingModule } from '../../Styles/Common/ErrorLoadingModule/ErrorLoadingModule';
 import { ProfileModule } from '../ProfileModule/ProfileModule';
+import { ProfileModuleContent } from '../ProfileModule/ProfileModule.styles';
 
 interface LatestStatsModuleProps {
   matchHistoryIsError: boolean;
@@ -21,14 +22,16 @@ const LatestStatsModule = ({
 }: LatestStatsModuleProps) => {
   return (
     <>
-      <ProfileModule heading="Match history">
+      <ProfileModule heading="Latest stats">
         <ErrorLoadingModule
           isError={matchHistoryIsError}
           isLoading={matchHistoryIsLoading}
           refetch={matchHistoryRefetch}
         />
 
-        {matchHistoryIsSuccess && <div>Latest stats</div>}
+        {matchHistoryIsSuccess && (
+          <ProfileModuleContent>Latest stats</ProfileModuleContent>
+        )}
       </ProfileModule>
     </>
   );

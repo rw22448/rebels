@@ -113,6 +113,10 @@ const RankBannerModuleContent = styled(ProfileModuleContent)`
   ${down('md')} {
     grid-template-columns: 260px;
   }
+
+  ${down('sm')} {
+    grid-template-columns: auto;
+  }
 `;
 
 const SetName = styled.h4`
