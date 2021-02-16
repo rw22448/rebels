@@ -253,6 +253,8 @@ export const Profile = () => {
                     matchHistoryIsLoading={matchHistoryIsLoading}
                     matchHistoryIsSuccess={matchHistoryIsSuccess}
                     matchHistoryRefetch={matchHistoryRefetch}
+                    data={allMatchData}
+                    puuid={summonerData?.puuid}
                   />
                 </ProfileSideGrid>
 
@@ -262,11 +264,11 @@ export const Profile = () => {
                   matchesIsSuccess={matchesIsSuccess && matchHistoryIsSuccess}
                   matchesRefetch={matchesRefetch}
                 />
-                <div>
+                {/* <div>
                   {matchHistoryIds.map((match) => (
                     <div>{match}</div>
                   ))}
-                </div>
+                </div> */}
               </MainContent>
             </ProfileContent>
           </ProfileContainer>
