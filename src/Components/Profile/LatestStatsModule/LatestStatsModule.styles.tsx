@@ -1,6 +1,27 @@
 import styled from 'styled-components';
 import { PropsWithTheme } from '../../Styles/Themes/Themes';
 
+const getAverageRankContainerColour = (averageRank: number): string => {
+  const i = Math.floor(averageRank);
+
+  switch (i) {
+    case 1:
+      return '#00C989';
+    case 2:
+      return '#009EE2';
+    case 3:
+      return '#33C2FF';
+    case 4:
+      return '#85DAFF';
+    default:
+      return '#C4C4C4';
+  }
+};
+
+interface AverageRankNumberContainerProps {
+  averageRank: number;
+}
+
 const AverageRankContainer = styled.div`
   display: flex;
 `;
@@ -14,7 +35,8 @@ const AverageRankNumberContainer = styled.div`
   width: 64px;
   height: 64px;
 
-  background-color: ${(props: PropsWithTheme) => props.theme.colours.blue.blue};
+  background-color: ${(props: AverageRankNumberContainerProps) =>
+    getAverageRankContainerColour(props.averageRank)};
 
   border-radius: 8px;
 `;

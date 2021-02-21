@@ -81,7 +81,7 @@ const LatestStatsModule = ({
           <ProfileModuleContent>
             {!!averageRank && (
               <AverageRankContainer>
-                <AverageRankNumberContainer>
+                <AverageRankNumberContainer averageRank={averageRank}>
                   <AverageRank>{averageRank}</AverageRank>
                 </AverageRankNumberContainer>
                 <AverageRankText>
