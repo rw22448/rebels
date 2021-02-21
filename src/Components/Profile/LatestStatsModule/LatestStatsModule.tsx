@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { UseQueryResult } from 'react-query';
 import { ErrorLoadingModule } from '../../Styles/Common/ErrorLoadingModule/ErrorLoadingModule';
+import { HorizontalRule } from '../../Styles/Common/HorizontalRule/HorizontalRule';
 import { MatchDTO } from '../MatchDTO';
 import { ProfileModule } from '../ProfileModule/ProfileModule';
 import { ProfileModuleContent } from '../ProfileModule/ProfileModule.styles';
@@ -9,6 +10,10 @@ import {
   AverageRankContainer,
   AverageRankNumberContainer,
   AverageRankText,
+  LatestStatsContainer,
+  Newest,
+  Oldest,
+  StatsSummaryContainer,
   SubText,
 } from './LatestStatsModule.styles';
 
@@ -90,7 +95,20 @@ const LatestStatsModule = ({
                     <SubText>Over last {totalGames} games</SubText>
                   </AverageRankText>
                 </AverageRankContainer>
-                <div>Content</div>
+                <LatestStatsContainer>
+                  <Newest>Newest</Newest>
+                  <StatsSummaryContainer>
+                    <div>1</div>
+                  </StatsSummaryContainer>
+                  <Oldest>Oldest</Oldest>
+                </LatestStatsContainer>
+                <HorizontalRule
+                  width={'full'}
+                  ruleColour={'#C4C4C4'}
+                  padding={24}
+                />
+                <div>Wins</div>
+                <div>Top placements</div>
               </>
             )}
           </ProfileModuleContent>

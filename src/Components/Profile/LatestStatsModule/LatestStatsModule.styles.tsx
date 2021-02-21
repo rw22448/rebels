@@ -55,7 +55,29 @@ const AverageRankText = styled.div`
 `;
 
 const SubText = styled.div`
-  color: ${(props: PropsWithTheme) => props.theme.colours.grey};
+  color: ${(props: PropsWithTheme) => props.theme.colours.grey.darkGrey};
+`;
+
+const LatestStatsContainer = styled.div`
+  margin-top: 16px;
+`;
+
+const StatsSummaryContainer = styled.div`
+  margin: 8px 0px;
+
+  display: grid;
+  gap: 4px;
+  grid-template-columns: repeat(10, 24px);
+`;
+
+const Newest = styled.div`
+  text-align: start;
+  color: ${(props: PropsWithTheme) => props.theme.colours.grey.darkGrey};
+`;
+
+const Oldest = styled.div`
+  text-align: end;
+  color: ${(props: PropsWithTheme) => props.theme.colours.grey.darkGrey};
 `;
 
 export {
@@ -64,4 +86,8 @@ export {
   AverageRank,
   AverageRankText,
   SubText,
+  LatestStatsContainer,
+  StatsSummaryContainer,
+  Newest,
+  Oldest,
 };
