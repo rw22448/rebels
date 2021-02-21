@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { PropsWithTheme } from '../../Styles/Themes/Themes';
 
-const getAverageRankContainerColour = (averageRank: number): string => {
-  const i = Math.floor(averageRank);
+const getAverageRankContainerColour = (averageRank: string): string => {
+  const i = Math.floor(parseInt(averageRank));
 
   switch (i) {
     case 1:
@@ -19,7 +19,7 @@ const getAverageRankContainerColour = (averageRank: number): string => {
 };
 
 interface AverageRankNumberContainerProps {
-  averageRank: number;
+  averageRank: string;
 }
 
 const AverageRankContainer = styled.div`

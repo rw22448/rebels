@@ -24,7 +24,7 @@ interface LatestStatsModuleProps {
   puuid: string | undefined;
 }
 
-const calculateAverageRank = (array: number[]): number | undefined => {
+const calculateAverageRank = (array: number[]): string | undefined => {
   if (array.length === 0) {
     return undefined;
   }
@@ -35,7 +35,7 @@ const calculateAverageRank = (array: number[]): number | undefined => {
     rankTotal += array[i];
   }
 
-  return Number((rankTotal / array.length).toFixed(1));
+  return (rankTotal / array.length).toFixed(1);
 };
 
 const LatestStatsModule = ({
@@ -46,7 +46,7 @@ const LatestStatsModule = ({
   data,
   puuid,
 }: LatestStatsModuleProps) => {
-  const [averageRank, setAverageRank] = useState<number>();
+  const [averageRank, setAverageRank] = useState<string>();
   const [totalGames, setTotalGames] = useState<number>(0);
 
   useEffect(() => {
@@ -80,15 +80,18 @@ const LatestStatsModule = ({
         {matchHistoryIsSuccess && (
           <ProfileModuleContent>
             {!!averageRank && (
-              <AverageRankContainer>
-                <AverageRankNumberContainer averageRank={averageRank}>
-                  <AverageRank>{averageRank}</AverageRank>
-                </AverageRankNumberContainer>
-                <AverageRankText>
-                  <div>Average rank</div>
-                  <SubText>Over last {totalGames} games</SubText>
-                </AverageRankText>
-              </AverageRankContainer>
+              <>
+                <AverageRankContainer>
+                  <AverageRankNumberContainer averageRank={averageRank}>
+                    <AverageRank>{averageRank}</AverageRank>
+                  </AverageRankNumberContainer>
+                  <AverageRankText>
+                    <div>Average rank</div>
+                    <SubText>Over last {totalGames} games</SubText>
+                  </AverageRankText>
+                </AverageRankContainer>
+                <div>Content</div>
+              </>
             )}
           </ProfileModuleContent>
         )}
