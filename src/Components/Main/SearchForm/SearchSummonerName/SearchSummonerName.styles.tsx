@@ -43,7 +43,7 @@ const StyledSearchTextField = styled.input`
   }
 
   &::placeholder {
-    color: ${(props: PropsWithTheme) => props.theme.colours.grey};
+    color: ${(props: PropsWithTheme) => props.theme.colours.grey.grey};
   }
 `;
 

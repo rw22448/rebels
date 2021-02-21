@@ -43,7 +43,7 @@ const getRankBorderColour = (tier: Tier, theme: Theme): string => {
     MASTER: '#AD4895',
     GRANDMASTER: '#EF2E38',
     CHALLENGER: '#00A9E0',
-    UNRANKED: theme.colours.grey,
+    UNRANKED: theme.colours.grey.grey,
   };
 
   return borderColours[tier];

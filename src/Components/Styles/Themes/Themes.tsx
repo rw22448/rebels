@@ -26,8 +26,11 @@ interface Theme {
       darkerBlue: string;
     };
     black: string;
-    grey: string;
-    lightGrey: string;
+    grey: {
+      lightGrey: string;
+      grey: string;
+      darkGrey: string;
+    };
     red: {
       red: string;
       darkRed: string;
@@ -128,8 +131,11 @@ const colours = {
     darkerBlue: '#004766',
   },
   black: '#24292E',
-  grey: '#A3A3A3',
-  lightGrey: '#E0E0E0',
+  grey: {
+    lightGrey: '#E0E0E0',
+    grey: '#A3A3A3',
+    darkGrey: '#C4C4C4',
+  },
   red: {
     red: '#DE1A1A',
     darkRed: '#B71515',
