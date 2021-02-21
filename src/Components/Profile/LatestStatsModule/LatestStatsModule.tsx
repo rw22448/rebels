@@ -4,6 +4,13 @@ import { ErrorLoadingModule } from '../../Styles/Common/ErrorLoadingModule/Error
 import { MatchDTO } from '../MatchDTO';
 import { ProfileModule } from '../ProfileModule/ProfileModule';
 import { ProfileModuleContent } from '../ProfileModule/ProfileModule.styles';
+import {
+  AverageRank,
+  AverageRankContainer,
+  AverageRankNumberContainer,
+  AverageRankText,
+  SubText,
+} from './LatestStatsModule.styles';
 
 interface LatestStatsModuleProps {
   matchHistoryIsError: boolean;
@@ -17,9 +24,9 @@ interface LatestStatsModuleProps {
   puuid: string | undefined;
 }
 
-const calculateAverageRank = (array: number[]): number => {
+const calculateAverageRank = (array: number[]): number | undefined => {
   if (array.length === 0) {
-    return 4.5;
+    return undefined;
   }
 
   let rankTotal = 0;
@@ -28,7 +35,7 @@ const calculateAverageRank = (array: number[]): number => {
     rankTotal += array[i];
   }
 
-  return rankTotal / array.length;
+  return Number((rankTotal / array.length).toFixed(1));
 };
 
 const LatestStatsModule = ({
@@ -39,7 +46,8 @@ const LatestStatsModule = ({
   data,
   puuid,
 }: LatestStatsModuleProps) => {
-  const [averageRank, setAverageRank] = useState(0);
+  const [averageRank, setAverageRank] = useState<number>();
+  const [totalGames, setTotalGames] = useState<number>(0);
 
   useEffect(() => {
     if (data.length > 0) {
@@ -56,6 +64,7 @@ const LatestStatsModule = ({
       });
 
       setAverageRank(calculateAverageRank(resultArray));
+      setTotalGames(resultArray.length);
     }
   }, [data, puuid]);
 
@@ -70,10 +79,17 @@ const LatestStatsModule = ({
 
         {matchHistoryIsSuccess && (
           <ProfileModuleContent>
-            <div>
-              <div>{averageRank}</div>
-              <div>Average rank</div>
-            </div>
+            {!!averageRank && (
+              <AverageRankContainer>
+                <AverageRankNumberContainer>
+                  <AverageRank>{averageRank}</AverageRank>
+                </AverageRankNumberContainer>
+                <AverageRankText>
+                  <div>Average rank</div>
+                  <SubText>Over last {totalGames} games</SubText>
+                </AverageRankText>
+              </AverageRankContainer>
+            )}
           </ProfileModuleContent>
         )}
       </ProfileModule>
