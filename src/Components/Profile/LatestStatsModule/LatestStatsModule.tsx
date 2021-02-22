@@ -11,11 +11,13 @@ import {
   AverageRankNumberContainer,
   AverageRankText,
   LatestStatsContainer,
+  LatestStatsContent,
   Newest,
   Oldest,
   StatsSummaryContainer,
   SubText,
 } from './LatestStatsModule.styles';
+import { MatchBadge } from './MatchBadge/MatchBadge';
 
 interface LatestStatsModuleProps {
   matchHistoryIsError: boolean;
@@ -53,6 +55,7 @@ const LatestStatsModule = ({
 }: LatestStatsModuleProps) => {
   const [averageRank, setAverageRank] = useState<string>();
   const [totalGames, setTotalGames] = useState<number>(0);
+  const [placementsArray, setPlacementsArray] = useState<number[]>([]);
 
   useEffect(() => {
     if (data.length > 0) {
@@ -70,12 +73,19 @@ const LatestStatsModule = ({
 
       setAverageRank(calculateAverageRank(resultArray));
       setTotalGames(resultArray.length);
+      setPlacementsArray(resultArray);
     }
   }, [data, puuid]);
 
   return (
     <>
       <ProfileModule heading="Latest stats">
+        {!matchHistoryIsError &&
+          !matchHistoryIsLoading &&
+          !matchHistoryIsSuccess && (
+            <ProfileModuleContent></ProfileModuleContent>
+          )}
+
         <ErrorLoadingModule
           isError={matchHistoryIsError}
           isLoading={matchHistoryIsLoading}
@@ -85,7 +95,7 @@ const LatestStatsModule = ({
         {matchHistoryIsSuccess && (
           <ProfileModuleContent>
             {!!averageRank && (
-              <>
+              <LatestStatsContent>
                 <AverageRankContainer>
                   <AverageRankNumberContainer averageRank={averageRank}>
                     <AverageRank>{averageRank}</AverageRank>
@@ -98,7 +108,9 @@ const LatestStatsModule = ({
                 <LatestStatsContainer>
                   <Newest>Newest</Newest>
                   <StatsSummaryContainer>
-                    <div>1</div>
+                    {placementsArray.map((placement, index) => (
+                      <MatchBadge key={index} placement={placement} />
+                    ))}
                   </StatsSummaryContainer>
                   <Oldest>Oldest</Oldest>
                 </LatestStatsContainer>
@@ -107,9 +119,11 @@ const LatestStatsModule = ({
                   ruleColour={'#C4C4C4'}
                   padding={24}
                 />
-                <div>Wins</div>
-                <div>Top placements</div>
-              </>
+                <div>
+                  <div>Wins</div>
+                  <div>Top placements</div>
+                </div>
+              </LatestStatsContent>
             )}
           </ProfileModuleContent>
         )}

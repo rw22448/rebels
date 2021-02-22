@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { down } from 'styled-breakpoints';
 import { PropsWithTheme } from '../../Styles/Themes/Themes';
 
 const getAverageRankContainerColour = (averageRank: string): string => {
@@ -21,6 +22,10 @@ const getAverageRankContainerColour = (averageRank: string): string => {
 interface AverageRankNumberContainerProps {
   averageRank: string;
 }
+
+const LatestStatsContent = styled.div`
+  min-width: 276px;
+`;
 
 const AverageRankContainer = styled.div`
   display: flex;
@@ -68,6 +73,10 @@ const StatsSummaryContainer = styled.div`
   display: grid;
   gap: 4px;
   grid-template-columns: repeat(10, 24px);
+
+  ${down('sm')} {
+    gap: 4px calc((100% - 240px) / 9);
+  }
 `;
 
 const Newest = styled.div`
@@ -81,6 +90,7 @@ const Oldest = styled.div`
 `;
 
 export {
+  LatestStatsContent,
   AverageRankContainer,
   AverageRankNumberContainer,
   AverageRank,
