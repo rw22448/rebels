@@ -108,9 +108,12 @@ const LatestStatsModule = ({
                 <LatestStatsContainer>
                   <Newest>Newest</Newest>
                   <StatsSummaryContainer>
-                    {placementsArray.map((placement, index) => (
-                      <MatchBadge key={index} placement={placement} />
-                    ))}
+                    {placementsArray.map(
+                      (placement, index) =>
+                        index < 20 && (
+                          <MatchBadge key={index} placement={placement} />
+                        )
+                    )}
                   </StatsSummaryContainer>
                   <Oldest>Oldest</Oldest>
                 </LatestStatsContainer>
