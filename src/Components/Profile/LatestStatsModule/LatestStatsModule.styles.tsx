@@ -75,6 +75,7 @@ const StatsSummaryContainer = styled.div`
   grid-template-columns: repeat(10, 24px);
 
   ${down('sm')} {
+    /* 100% of container (flex for mobile) - 240px (24px wide badges * 10 per row) / 9 (9 grid gaps between 10 elements) */
     gap: 4px calc((100% - 240px) / 9);
   }
 `;

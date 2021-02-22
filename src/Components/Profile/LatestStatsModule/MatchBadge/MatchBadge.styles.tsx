@@ -23,8 +23,6 @@ const getMatchBadgeContainerColour = (placement: number): string => {
 };
 
 const MatchBadgeContainer = styled.div`
-  box-sizing: border-box;
-
   width: 24px;
   height: 24px;
 
