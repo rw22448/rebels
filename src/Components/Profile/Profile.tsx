@@ -140,8 +140,8 @@ export const Profile = () => {
   const { region, summonerName } = useParams<ProfileParams>();
   const [summonerData, setSummonerData] = useState<SummonerDTO>();
   const [regionalRoute, setRegionalRoute] = useState<string>();
-  const [matchHistoryIds, setMatchHistoryIds] = useState<string[]>([]);
-  const [latestMatchDateTime, setLatestMatchDateTime] = useState<string>('');
+  const [matchHistoryIds, setMatchHistoryIds] = useState<string[]>();
+  const [latestMatchDateTime, setLatestMatchDateTime] = useState<string>();
   const [allMatchData, setAllMatchData] = useState<MatchDTO[]>([]);
 
   const {
@@ -199,7 +199,7 @@ export const Profile = () => {
         setAllMatchData(data.results);
         setLatestMatchDateTime(data.latestMatchDateTime);
       },
-      enabled: !!(matchHistoryIds && regionalRoute),
+      enabled: !!matchHistoryIds,
     }
   );
 

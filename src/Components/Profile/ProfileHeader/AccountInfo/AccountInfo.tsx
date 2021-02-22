@@ -16,10 +16,14 @@ interface AccountInfoProps {
   profileIconId?: number;
   summonerLevel?: number;
   region?: string;
-  latestMatchDateTime: string;
+  latestMatchDateTime: string | undefined;
 }
 
-const calculateLastOnlineAgo = (dateTimeString: string): string => {
+const calculateLastOnlineAgo = (dateTimeString: string | undefined): string => {
+  if (!dateTimeString) {
+    return 'Unknown';
+  }
+
   const currentDate = new Date();
   const date = new Date(dateTimeString);
 
