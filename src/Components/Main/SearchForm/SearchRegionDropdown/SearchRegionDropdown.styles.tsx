@@ -21,6 +21,8 @@ const Dropdown = styled.div`
   ${down('sm')} {
     max-width: 100%;
   }
+
+  z-index: 1;
 `;
 
 const DropdownLabel = styled.label`
