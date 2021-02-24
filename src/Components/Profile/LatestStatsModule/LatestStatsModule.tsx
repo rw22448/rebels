@@ -14,8 +14,11 @@ import {
   LatestStatsContent,
   Newest,
   Oldest,
+  Right,
   StatsSummaryContainer,
   SubText,
+  Tops,
+  Wins,
 } from './LatestStatsModule.styles';
 import { MatchBadge } from './MatchBadge/MatchBadge';
 
@@ -56,10 +59,14 @@ const LatestStatsModule = ({
   const [averageRank, setAverageRank] = useState<string>();
   const [totalGames, setTotalGames] = useState<number>(0);
   const [placementsArray, setPlacementsArray] = useState<number[]>([]);
+  const [wins, setWins] = useState<number>(0);
+  const [tops, setTops] = useState<number>(0);
 
   useEffect(() => {
     if (data.length > 0) {
       let resultArray: number[] = [];
+      let wins: number = 0;
+      let tops: number = 0;
 
       const participantsArray = data.map((match) => match.info.participants);
 
@@ -67,6 +74,11 @@ const LatestStatsModule = ({
         participantList.forEach((participant) => {
           if (participant.puuid === puuid) {
             resultArray.push(participant.placement);
+
+            if (participant.placement <= 4) {
+              tops++;
+              if (participant.placement === 1) wins++;
+            }
           }
         });
       });
@@ -74,6 +86,8 @@ const LatestStatsModule = ({
       setAverageRank(calculateAverageRank(resultArray));
       setTotalGames(resultArray.length);
       setPlacementsArray(resultArray);
+      setWins(wins);
+      setTops(tops);
     }
   }, [data, puuid]);
 
@@ -123,8 +137,12 @@ const LatestStatsModule = ({
                   padding={24}
                 />
                 <div>
-                  <div>Wins</div>
-                  <div>Top placements</div>
+                  <Wins>
+                    Wins <Right>{wins}</Right>
+                  </Wins>
+                  <Tops>
+                    Top placements <Right>{tops}</Right>
+                  </Tops>
                 </div>
               </LatestStatsContent>
             )}

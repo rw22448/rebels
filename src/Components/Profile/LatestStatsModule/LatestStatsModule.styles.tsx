@@ -90,6 +90,21 @@ const Oldest = styled.div`
   color: ${(props: PropsWithTheme) => props.theme.colours.grey.darkGrey};
 `;
 
+const Wins = styled.div`
+  display: flex;
+  color: ${(props: PropsWithTheme) => props.theme.colours.green};
+`;
+
+const Tops = styled.div`
+  display: flex;
+`;
+
+const Right = styled.span`
+  flex: 0;
+  margin-left: auto;
+  text-align: right;
+`;
+
 export {
   LatestStatsContent,
   AverageRankContainer,
@@ -101,4 +116,7 @@ export {
   StatsSummaryContainer,
   Newest,
   Oldest,
+  Wins,
+  Tops,
+  Right,
 };
