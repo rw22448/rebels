@@ -166,13 +166,13 @@ const RankBannerModule = ({ region, summonerId }: RankBannerModuleProps) => {
             {!(rankTier === 'UNRANKED') && (
               <DetailedRankInfo tier={rankTier}>
                 <Wins>
-                  Total wins: <Right>{rankData?.wins}</Right>
+                  Total wins <Right>{rankData?.wins}</Right>
                 </Wins>
                 <Losses>
-                  Losses: <Right>{rankData?.losses}</Right>
+                  Losses <Right>{rankData?.losses}</Right>
                 </Losses>
                 <WinRate>
-                  Win rate:{' '}
+                  Win rate{' '}
                   <Right>
                     {(
                       (rankData?.wins / (rankData?.wins + rankData?.losses)) *
@@ -182,7 +182,7 @@ const RankBannerModule = ({ region, summonerId }: RankBannerModuleProps) => {
                   </Right>
                 </WinRate>
                 <GamesPlayed>
-                  Games played:{' '}
+                  Games played{' '}
                   <Right>{rankData?.wins + rankData?.losses}</Right>
                 </GamesPlayed>
               </DetailedRankInfo>
