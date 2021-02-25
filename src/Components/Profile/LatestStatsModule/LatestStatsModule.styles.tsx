@@ -74,6 +74,12 @@ const SubText = styled.div`
 
 const LatestStatsContainer = styled.div`
   margin-top: 16px;
+
+  margin-bottom: 8px;
+
+  ${down('md')} {
+    margin-bottom: 0px;
+  }
 `;
 
 const StatsSummaryContainer = styled.div`
@@ -128,8 +134,11 @@ const Right = styled.span`
 `;
 
 const DetailText = styled.div`
+  margin-top: 8px;
+
   ${down('md')} {
     display: none;
+    margin-top: 0px;
   }
 `;
 
