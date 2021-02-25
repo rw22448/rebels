@@ -10,6 +10,9 @@ import {
   AverageRankContainer,
   AverageRankNumberContainer,
   AverageRankText,
+  DetailText,
+  DetailTextAlt,
+  GreenText,
   LatestStatsContainer,
   LatestStatsContent,
   Newest,
@@ -19,6 +22,7 @@ import {
   SubText,
   Tops,
   Wins,
+  WinsAndTops,
 } from './LatestStatsModule.styles';
 import { MatchBadge } from './MatchBadge/MatchBadge';
 
@@ -134,16 +138,24 @@ const LatestStatsModule = ({
                 <HorizontalRule
                   width={'full'}
                   ruleColour={'#C4C4C4'}
-                  padding={24}
+                  padding={16}
                 />
-                <div>
+                <DetailText>
                   <Wins>
                     Wins <Right>{wins}</Right>
                   </Wins>
                   <Tops>
                     Top placements <Right>{tops}</Right>
                   </Tops>
-                </div>
+                </DetailText>
+                <DetailTextAlt>
+                  <WinsAndTops>
+                    <GreenText>Wins</GreenText> + Top placements
+                    <Right>
+                      <GreenText>{wins}</GreenText> + {tops}
+                    </Right>
+                  </WinsAndTops>
+                </DetailTextAlt>
               </LatestStatsContent>
             )}
           </ProfileModuleContent>

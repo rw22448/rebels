@@ -44,11 +44,20 @@ const AverageRankNumberContainer = styled.div`
     getAverageRankContainerColour(props.averageRank)};
 
   border-radius: 8px;
+
+  ${down('md')} {
+    width: 54px;
+    height: 54px;
+  }
 `;
 
 const AverageRank = styled.h1`
   font-size: 32px;
   color: ${(props: PropsWithTheme) => props.theme.colours.white};
+
+  ${down('md')} {
+    font-size: 24px;
+  }
 `;
 
 const AverageRankText = styled.div`
@@ -90,19 +99,46 @@ const Oldest = styled.div`
   color: ${(props: PropsWithTheme) => props.theme.colours.grey.darkGrey};
 `;
 
-const Wins = styled.div`
+const Text = styled.div`
   display: flex;
+`;
+
+const Wins = styled(Text)`
   color: ${(props: PropsWithTheme) => props.theme.colours.green};
 `;
 
-const Tops = styled.div`
-  display: flex;
+const Tops = styled(Text)``;
+
+const WinsAndTops = styled(Text)``;
+
+const GreenText = styled.span`
+  color: ${(props: PropsWithTheme) => props.theme.colours.green};
+
+  display: contents;
 `;
 
 const Right = styled.span`
   flex: 0;
   margin-left: auto;
   text-align: right;
+
+  ${down('md')} {
+    flex: auto;
+  }
+`;
+
+const DetailText = styled.div`
+  ${down('md')} {
+    display: none;
+  }
+`;
+
+const DetailTextAlt = styled.div`
+  display: none;
+
+  ${down('md')} {
+    display: initial;
+  }
 `;
 
 export {
@@ -118,5 +154,9 @@ export {
   Oldest,
   Wins,
   Tops,
+  WinsAndTops,
+  GreenText,
   Right,
+  DetailText,
+  DetailTextAlt,
 };
