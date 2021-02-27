@@ -14,6 +14,14 @@ import { useHistory } from 'react-router-dom';
 const validateRebelsSummonerName = (value: string) =>
   !value ? 'Summoner name is a required field.' : '';
 
+const getLocalRegion = (): string => {
+  if (!localStorage.getItem('initialRegion')) {
+    localStorage.setItem('initialRegion', 'oc1');
+  }
+
+  return localStorage.getItem('initialRegion') || 'oc1';
+};
+
 const SearchForm = () => {
   const history = useHistory();
 
@@ -27,7 +35,7 @@ const SearchForm = () => {
         </SearchDescription>
         <Formik
           initialValues={{
-            rebelsSummonerRegion: 'oc1',
+            rebelsSummonerRegion: getLocalRegion(),
             rebelsSummonerName: '',
           }}
           onSubmit={(values) => {

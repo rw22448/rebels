@@ -114,6 +114,8 @@ const SearchRegionDropdown = ({
                       (target as HTMLElement).getAttribute('value')
                     );
                     setRegionDisplayValue(platform.name);
+                    localStorage.setItem('initialRegion', platform.value);
+
                     dropdownRef.current?.blur();
                   }}
                 >
