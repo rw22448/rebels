@@ -17,7 +17,7 @@ const Subtitle = styled.h4`
 
 const Description = styled.div`
   margin-top: 8px;
-  color: ${(props: PropsWithTheme) => props.theme.colours.grey.grey};
+  color: ${(props: PropsWithTheme) => props.theme.colours.grey.darkGrey};
 `;
 
 const RetryButton = styled(StyledButton)`

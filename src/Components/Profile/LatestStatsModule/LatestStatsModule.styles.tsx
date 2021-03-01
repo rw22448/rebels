@@ -97,12 +97,12 @@ const StatsSummaryContainer = styled.div`
 
 const Newest = styled.div`
   text-align: start;
-  color: ${(props: PropsWithTheme) => props.theme.colours.grey.darkGrey};
+  color: ${(props: PropsWithTheme) => props.theme.colours.grey.grey};
 `;
 
 const Oldest = styled.div`
   text-align: end;
-  color: ${(props: PropsWithTheme) => props.theme.colours.grey.darkGrey};
+  color: ${(props: PropsWithTheme) => props.theme.colours.grey.grey};
 `;
 
 const Text = styled.div`
@@ -150,6 +150,10 @@ const DetailTextAlt = styled.div`
   }
 `;
 
+const Warning = styled.div`
+  color: ${(props: PropsWithTheme) => props.theme.colours.grey.grey};
+`;
+
 export {
   LatestStatsContent,
   AverageRankContainer,
@@ -168,4 +172,5 @@ export {
   Right,
   DetailText,
   DetailTextAlt,
+  Warning,
 };

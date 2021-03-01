@@ -133,8 +133,8 @@ const colours = {
   black: '#24292E',
   grey: {
     lightGrey: '#E0E0E0',
-    grey: '#A3A3A3',
-    darkGrey: '#C4C4C4',
+    grey: '#C4C4C4',
+    darkGrey: '#A3A3A3',
   },
   red: {
     red: '#DE1A1A',

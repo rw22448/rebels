@@ -21,6 +21,7 @@ import {
   StatsSummaryContainer,
   SubText,
   Tops,
+  Warning,
   Wins,
   WinsAndTops,
 } from './LatestStatsModule.styles';
@@ -112,52 +113,55 @@ const LatestStatsModule = ({
 
         {matchHistoryIsSuccess && (
           <ProfileModuleContent>
-            {!!averageRank && (
-              <LatestStatsContent>
-                <AverageRankContainer>
-                  <AverageRankNumberContainer averageRank={averageRank}>
-                    <AverageRank>{averageRank}</AverageRank>
-                  </AverageRankNumberContainer>
-                  <AverageRankText>
-                    <div>Average rank</div>
-                    <SubText>Over last {totalGames} games</SubText>
-                  </AverageRankText>
-                </AverageRankContainer>
-                <LatestStatsContainer>
-                  <Newest>Newest</Newest>
-                  <StatsSummaryContainer>
-                    {placementsArray.map(
-                      (placement, index) =>
-                        index < 20 && (
-                          <MatchBadge key={index} placement={placement} />
-                        )
-                    )}
-                  </StatsSummaryContainer>
-                  <Oldest>Oldest</Oldest>
-                </LatestStatsContainer>
-                <HorizontalRule
-                  width={'full'}
-                  ruleColour={'#C4C4C4'}
-                  padding={16}
-                />
-                <DetailText>
-                  <Wins>
-                    Wins <Right>{wins}</Right>
-                  </Wins>
-                  <Tops>
-                    Top placements <Right>{tops}</Right>
-                  </Tops>
-                </DetailText>
-                <DetailTextAlt>
-                  <WinsAndTops>
-                    <GreenText>Wins</GreenText> + Top placements
-                    <Right>
-                      <GreenText>{wins}</GreenText> + {tops}
-                    </Right>
-                  </WinsAndTops>
-                </DetailTextAlt>
-              </LatestStatsContent>
-            )}
+            <LatestStatsContent>
+              {!!averageRank && (
+                <>
+                  <AverageRankContainer>
+                    <AverageRankNumberContainer averageRank={averageRank}>
+                      <AverageRank>{averageRank}</AverageRank>
+                    </AverageRankNumberContainer>
+                    <AverageRankText>
+                      <div>Average rank</div>
+                      <SubText>Over last {totalGames} games</SubText>
+                    </AverageRankText>
+                  </AverageRankContainer>
+                  <LatestStatsContainer>
+                    <Newest>Newest</Newest>
+                    <StatsSummaryContainer>
+                      {placementsArray.map(
+                        (placement, index) =>
+                          index < 20 && (
+                            <MatchBadge key={index} placement={placement} />
+                          )
+                      )}
+                    </StatsSummaryContainer>
+                    <Oldest>Oldest</Oldest>
+                  </LatestStatsContainer>
+                  <HorizontalRule
+                    width={'full'}
+                    ruleColour={'#C4C4C4'}
+                    padding={16}
+                  />
+                  <DetailText>
+                    <Wins>
+                      Wins <Right>{wins}</Right>
+                    </Wins>
+                    <Tops>
+                      Top placements <Right>{tops}</Right>
+                    </Tops>
+                  </DetailText>
+                  <DetailTextAlt>
+                    <WinsAndTops>
+                      <GreenText>Wins</GreenText> &middot; Top placements
+                      <Right>
+                        <GreenText>{wins}</GreenText> &middot; {tops}
+                      </Right>
+                    </WinsAndTops>
+                  </DetailTextAlt>
+                </>
+              )}
+              {!averageRank && <Warning>No recent matches to display.</Warning>}
+            </LatestStatsContent>
           </ProfileModuleContent>
         )}
       </ProfileModule>
