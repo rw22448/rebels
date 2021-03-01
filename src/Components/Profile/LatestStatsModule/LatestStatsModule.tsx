@@ -160,7 +160,9 @@ const LatestStatsModule = ({
                   </DetailTextAlt>
                 </>
               )}
-              {!averageRank && <Warning>No recent matches to display.</Warning>}
+              {data.length < 1 && (
+                <Warning>No recent matches to display.</Warning>
+              )}
             </LatestStatsContent>
           </ProfileModuleContent>
         )}
