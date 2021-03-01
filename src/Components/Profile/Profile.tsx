@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import queryString from 'query-string';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { Nav } from '../Navigation/Nav/Nav';
@@ -82,47 +81,16 @@ const fetchProfileDataByName = async (
     });
 };
 
-const fetchMatchesByPuuid = async (
-  region: string | undefined,
+const fetchMatchHistoryByMatchHistoryIds = async (
+  regionalRoute: string | undefined,
   puuid: string | undefined
-): Promise<string[]> => {
+): Promise<CustomMatchDTO> => {
   return await axios
     .get(
-      `${process.env.REACT_APP_BACKEND_BASE_URL}/${region}/get-matches/by-puuid/${puuid}`,
+      `${process.env.REACT_APP_BACKEND_BASE_URL}/${regionalRoute}/get-latest-match-details/by-puuid/${puuid}`,
       {
         params: {
           count: process.env.REACT_APP_PROFILE_MAX_MATCH_HISTORY_COUNT || 20,
-        },
-      }
-    )
-    .then((result) => result.data as string[])
-    .catch((error) => {
-      if (error.response) {
-        console.error(error.response);
-      }
-
-      throw error;
-    });
-};
-
-const fetchMatchHistoryByMatchHistoryIds = async (
-  matchHistoryIds: string[],
-  regionalRoute: string | undefined
-): Promise<CustomMatchDTO> => {
-  const matchIdsObject = {
-    matchIds: matchHistoryIds,
-  };
-
-  const matchIdsArrayQueryString = queryString.stringify(matchIdsObject, {
-    arrayFormat: 'index',
-  });
-
-  return await axios
-    .get(
-      `${process.env.REACT_APP_BACKEND_BASE_URL}/get-match-details?${matchIdsArrayQueryString}`,
-      {
-        params: {
-          regionalRoute: regionalRoute,
         },
       }
     )
@@ -140,7 +108,6 @@ export const Profile = () => {
   const { region, summonerName } = useParams<ProfileParams>();
   const [summonerData, setSummonerData] = useState<SummonerDTO>();
   const [regionalRoute, setRegionalRoute] = useState<string>();
-  const [matchHistoryIds, setMatchHistoryIds] = useState<string[]>();
   const [latestMatchDateTime, setLatestMatchDateTime] = useState<string>();
   const [allMatchData, setAllMatchData] = useState<MatchDTO[]>([]);
 
@@ -162,24 +129,6 @@ export const Profile = () => {
   );
 
   const {
-    isError: matchesIsError,
-    isLoading: matchesIsLoading,
-    isSuccess: matchesIsSuccess,
-    refetch: matchesRefetch,
-  } = useQuery(
-    'fetchMatchesByPuuid',
-    async () => {
-      return await fetchMatchesByPuuid(regionalRoute, summonerData?.puuid);
-    },
-    {
-      onSuccess: (data) => {
-        setMatchHistoryIds(data);
-      },
-      enabled: !!(regionalRoute && summonerData?.puuid),
-    }
-  );
-
-  const {
     isError: matchHistoryIsError,
     isLoading: matchHistoryIsLoading,
     isSuccess: matchHistoryIsSuccess,
@@ -188,8 +137,8 @@ export const Profile = () => {
     'fetchMatchHistoryByMatchHistoryIds',
     async () => {
       return await fetchMatchHistoryByMatchHistoryIds(
-        matchHistoryIds as string[],
-        regionalRoute
+        regionalRoute,
+        summonerData?.puuid
       );
     },
     {
@@ -199,7 +148,7 @@ export const Profile = () => {
         setAllMatchData(data.results);
         setLatestMatchDateTime(data.latestMatchDateTime);
       },
-      enabled: !!matchHistoryIds,
+      enabled: !!(regionalRoute && summonerData?.puuid),
     }
   );
 
@@ -259,16 +208,12 @@ export const Profile = () => {
                 </ProfileSideGrid>
 
                 <MatchHistoryModule
-                  matchesIsError={matchesIsError || matchHistoryIsError}
-                  matchesIsLoading={matchesIsLoading || matchHistoryIsLoading}
-                  matchesIsSuccess={matchesIsSuccess && matchHistoryIsSuccess}
-                  matchesRefetch={matchesRefetch}
+                  matchesIsError={matchHistoryIsError}
+                  matchesIsLoading={matchHistoryIsLoading}
+                  matchesIsSuccess={matchHistoryIsSuccess}
+                  matchesRefetch={matchHistoryRefetch}
+                  data={allMatchData}
                 />
-                {/* <div>
-                  {matchHistoryIds.map((match) => (
-                    <div>{match}</div>
-                  ))}
-                </div> */}
               </MainContent>
             </ProfileContent>
           </ProfileContainer>
