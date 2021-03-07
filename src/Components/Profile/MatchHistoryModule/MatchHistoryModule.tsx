@@ -2,6 +2,11 @@ import React from 'react';
 import { UseQueryResult } from 'react-query';
 import { ProfileModule } from '../ProfileModule/ProfileModule';
 import { ErrorLoadingModule } from '../../Styles/Common/ErrorLoadingModule/ErrorLoadingModule';
+import { Warning } from '../LatestStatsModule/LatestStatsModule.styles';
+import { MatchDTO } from '../MatchDTO';
+import { ProfileModuleContent } from '../ProfileModule/ProfileModule.styles';
+import { MatchContent, MatchHistoryGrid } from './MatchHistoryModule.styles';
+import { MatchBasicInfo } from './MatchBasicInfo/MatchBasicInfo';
 
 interface MatchHistoryModuleProps {
   matchesIsError: boolean;
@@ -11,13 +16,33 @@ interface MatchHistoryModuleProps {
     throwOnError: boolean;
     cancelRefetch: boolean;
   }) => Promise<UseQueryResult>;
+  data: MatchDTO[];
+  puuid: string | undefined;
 }
+
+const calculatePlacementForMatch = (
+  match: MatchDTO,
+  puuid: string | undefined
+): number => {
+  const participantsArray = match.info.participants;
+  let output = 0;
+
+  participantsArray.forEach((participant) => {
+    if (participant.puuid === puuid) {
+      output = participant.placement;
+    }
+  });
+
+  return output;
+};
 
 const MatchHistoryModule = ({
   matchesIsError,
   matchesIsLoading,
   matchesIsSuccess,
   matchesRefetch,
+  data,
+  puuid,
 }: MatchHistoryModuleProps) => {
   return (
     <>
@@ -29,7 +54,27 @@ const MatchHistoryModule = ({
         />
 
         {matchesIsSuccess && (
-          <div>{process.env.REACT_APP_PROFILE_MAX_MATCH_HISTORY_COUNT}</div>
+          <>
+            {data.length >= 1 && (
+              <MatchHistoryGrid>
+                {data.map((match, index) => (
+                  <ProfileModuleContent key={index}>
+                    <MatchContent>
+                      <MatchBasicInfo
+                        placement={calculatePlacementForMatch(match, puuid)}
+                      />
+                    </MatchContent>
+                  </ProfileModuleContent>
+                ))}
+              </MatchHistoryGrid>
+            )}
+
+            {data.length < 1 && (
+              <ProfileModuleContent>
+                <Warning>No recent matches to display.</Warning>
+              </ProfileModuleContent>
+            )}
+          </>
         )}
       </ProfileModule>
     </>

@@ -213,6 +213,7 @@ export const Profile = () => {
                   matchesIsSuccess={matchHistoryIsSuccess}
                   matchesRefetch={matchHistoryRefetch}
                   data={allMatchData}
+                  puuid={summonerData?.puuid}
                 />
               </MainContent>
             </ProfileContent>
