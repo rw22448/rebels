@@ -26,7 +26,7 @@ import { HorizontalRule } from '../../Styles/Common/HorizontalRule/HorizontalRul
 import { VerticalRule } from '../../Styles/Common/VerticalRule/VerticalRule';
 import { ErrorLoadingModule } from '../../Styles/Common/ErrorLoadingModule/ErrorLoadingModule';
 
-const SET_NAME = 'Set 4.5 | Festival of Beasts';
+const SET_NAME = `${process.env.REACT_APP_TFT_SET_NAME}`;
 
 type Tier =
   | 'IRON'
