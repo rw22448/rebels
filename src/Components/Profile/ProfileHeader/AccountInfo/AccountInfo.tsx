@@ -39,12 +39,12 @@ const calculateLastOnlineAgo = (dateTimeString: string | undefined): string => {
     return '1 day ago';
   }
 
-  if (differenceInDays > 30) {
-    return '1 month ago';
+  if (differenceInDays >= 60) {
+    return Math.floor(differenceInDays / 30) + ' months ago';
   }
 
-  if (differenceInDays >= 60) {
-    return Math.floor(differenceInDays % 30) + ' months ago';
+  if (differenceInDays > 30) {
+    return '1 month ago';
   }
 
   return `${differenceInDays} days ago`;

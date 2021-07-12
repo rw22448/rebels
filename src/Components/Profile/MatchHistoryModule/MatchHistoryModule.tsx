@@ -62,6 +62,11 @@ const MatchHistoryModule = ({
                     <MatchContent>
                       <MatchBasicInfo
                         placement={calculatePlacementForMatch(match, puuid)}
+                        gameType={
+                          match.info.queue_id === 1100 ? 'Ranked' : 'Normal'
+                        }
+                        gameLength={match.info.game_length}
+                        datePlayed={match.info.game_datetime}
                       />
                     </MatchContent>
                   </ProfileModuleContent>
