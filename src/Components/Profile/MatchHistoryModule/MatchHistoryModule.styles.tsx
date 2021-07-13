@@ -12,6 +12,7 @@ const MatchHistoryGrid = styled.div`
 
 const MatchContent = styled.div`
   display: flex;
+  height: 68px;
 `;
 
 export { Warning, MatchHistoryGrid, MatchContent };

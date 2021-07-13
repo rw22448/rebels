@@ -27,7 +27,6 @@ const ColouredPlacementBar = styled.div`
     getPlacementColour(props.placement)};
 
   width: 8px;
-  height: 68px;
   border-radius: 2px;
 
   ${down('sm')} {
