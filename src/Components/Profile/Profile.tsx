@@ -20,6 +20,7 @@ import { RankBannerModule } from './RankBannerModule/RankBannerModule';
 import { MatchHistoryModule } from './MatchHistoryModule/MatchHistoryModule';
 import { LatestStatsModule } from './LatestStatsModule/LatestStatsModule';
 import { MatchDTO } from './MatchDTO';
+import { HorizontalRule } from '../Styles/Common/HorizontalRule/HorizontalRule';
 
 interface ProfileParams {
   region: string;
@@ -228,6 +229,16 @@ export const Profile = () => {
                   puuid={summonerData?.puuid}
                 />
               </MainContent>
+              <HorizontalRule width="full" padding={48} />
+              <div>
+                <p>
+                  Rebels isn't endorsed by Riot Games and doesn't reflect the
+                  views or opinions of Riot Games or anyone officially involved
+                  in producing or managing Riot Games properties. Riot Games,
+                  and all associated properties are trademarks or registered
+                  trademarks of Riot Games, Inc.
+                </p>
+              </div>
             </ProfileContent>
           </ProfileContainer>
         )}
