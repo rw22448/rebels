@@ -12,4 +12,25 @@ const Content = styled.div`
   }
 `;
 
-export { Content };
+const DividerImageContainer = styled.div`
+  display: flex;
+  margin: 48px 0px;
+
+  ${down('sm')} {
+    display: none;
+  }
+`;
+
+const DividerImage = styled.img`
+  margin: auto;
+`;
+
+const Disclaimer = styled.p`
+  margin: 24px 80px;
+
+  ${down('sm')} {
+    margin: 24px;
+  }
+`;
+
+export { Content, DividerImageContainer, DividerImage, Disclaimer };
