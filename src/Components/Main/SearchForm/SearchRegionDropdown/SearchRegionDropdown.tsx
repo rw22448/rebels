@@ -95,8 +95,8 @@ const SearchRegionDropdown = ({
                 }
               }}
             >
-              {!expanded && <ChevronDown size={24} />}
-              {expanded && <ChevronUp size={24} />}
+              {!expanded && <ChevronDown className="formChevron" size={24} />}
+              {expanded && <ChevronUp className="formChevron" size={24} />}
             </DropdownIconWrapper>
           </DropdownBoxContents>
 

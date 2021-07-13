@@ -23,6 +23,7 @@ const Dropdown = styled.div`
   }
 
   z-index: 1;
+  max-height: 85px;
 `;
 
 const DropdownLabel = styled.label`
@@ -42,24 +43,26 @@ const DropdownIconWrapper = styled.span`
   display: flex;
   align-items: center;
 
-  position: relative;
-  top: 0px;
-
   margin-left: auto;
   height: 24px;
   width: 24px;
 
   border-radius: 4px;
 
-  svg {
+  .formChevron {
     margin: auto;
+
+    position: relative;
+    top: 0px;
+
+    transition: ${(props: PropsWithTheme) =>
+      `top ${props.theme.transitions.short}`};
   }
 
-  transition: ${(props: PropsWithTheme) =>
-    `top ${props.theme.transitions.short}`};
-
   &:hover {
-    top: 4px;
+    .formChevron {
+      top: 4px;
+    }
   }
 `;
 
@@ -95,7 +98,9 @@ const DropdownBox = styled.div`
   }
 
   &:hover ${DropdownIconWrapper} {
-    ${(props: DropdownBoxProps) => (props.expanded ? '' : `top: 4px;`)}
+    .formChevron {
+      ${(props: DropdownBoxProps) => (props.expanded ? '' : `top: 4px;`)}
+    }
   }
 
   &:hover ${DropdownSelectedValueText} {

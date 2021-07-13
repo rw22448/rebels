@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { PropsWithTheme } from '../../../Styles/Themes/Themes';
 
-const SummonerName = styled.div``;
+const SummonerName = styled.div`
+  max-height: 85px;
+`;
 
 const LabelWrapper = styled.div`
   margin-bottom: 4px;
