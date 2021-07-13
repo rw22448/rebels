@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { PropsWithTheme } from '../../Themes/Themes';
+import { ThemeObject } from '../../Themes/Themes';
 
-interface BaseVerticalRuleProps extends PropsWithTheme {
+interface BaseVerticalRuleProps extends ThemeObject {
   height: number | 'full';
   ruleColour?: string;
   padding?: number;

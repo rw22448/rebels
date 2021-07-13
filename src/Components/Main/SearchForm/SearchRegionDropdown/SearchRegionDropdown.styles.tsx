@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { down } from 'styled-breakpoints';
-import { PropsWithTheme } from '../../../Styles/Themes/Themes';
+import { ThemeObject } from '../../../Styles/Themes/Themes';
 
-interface DropdownBoxProps extends PropsWithTheme {
+interface DropdownBoxProps extends ThemeObject {
   expanded: boolean;
   length: number;
 }
 
-interface DropdownListProps extends PropsWithTheme {
+interface DropdownListProps extends ThemeObject {
   expanded: boolean;
 }
 
@@ -55,8 +55,8 @@ const DropdownIconWrapper = styled.span`
     position: relative;
     top: 0px;
 
-    transition: ${(props: PropsWithTheme) =>
-      `top ${props.theme.transitions.short}`};
+    transition: ${(object: ThemeObject) =>
+      `top ${object.theme.transitions.short}`};
   }
 
   &:hover {

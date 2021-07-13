@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { down } from 'styled-breakpoints';
-import { PropsWithTheme } from '../../../Styles/Themes/Themes';
+import { ThemeObject } from '../../../Styles/Themes/Themes';
 
 const AccountInfoContainer = styled.div`
   text-align: center;
@@ -32,9 +32,9 @@ const Badge = styled.div`
 const IconLevelContainer = styled.div``;
 
 const SummonerLevelBadge = styled(Badge)`
-  background-color: ${(props: PropsWithTheme) =>
-    props.theme.invertedContainerColour};
-  color: ${(props: PropsWithTheme) => props.theme.invertedContentColour};
+  background-color: ${(object: ThemeObject) =>
+    object.theme.invertedContainerColour};
+  color: ${(object: ThemeObject) => object.theme.invertedContentColour};
 
   position: relative;
   bottom: 16px;
@@ -60,10 +60,10 @@ const RegionBadgeContainer = styled.div`
 `;
 
 const RegionBadge = styled(Badge)`
-  background-color: ${(props: PropsWithTheme) => props.theme.colours.blue.blue};
+  background-color: ${(object: ThemeObject) => object.theme.colours.blue.blue};
   color: #e0e0e0;
 
-  font-weight: ${(props: PropsWithTheme) => props.theme.fontWeights.semiBold};
+  font-weight: ${(object: ThemeObject) => object.theme.fontWeights.semiBold};
 `;
 
 const LastOnlineSpan = styled.span`

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PropsWithTheme } from '../Styles/Themes/Themes';
+import { ThemeObject } from '../Styles/Themes/Themes';
 import { LogoProps } from './Logo';
 
 const LogoContainer = styled.div`
@@ -17,7 +17,7 @@ const Square = styled.div`
 `;
 
 const RebelSquare = styled(Square)`
-  background-color: ${(props: PropsWithTheme) => props.theme.colours.black};
+  background-color: ${(object: ThemeObject) => object.theme.colours.black};
   bottom: ${(props: LogoProps) => props.size * 4 + 'px'};
   left: ${(props: LogoProps) => props.size * 4 + 'px'};
 `;
@@ -25,7 +25,7 @@ const RebelSquare = styled(Square)`
 const BackgroundSquare = styled(Square)`
   box-sizing: border-box;
   border: ${(props: LogoProps) => props.size * 4 + 'px'} solid
-    ${(props: PropsWithTheme) => props.theme.colours.blue.blue};
+    ${(object: ThemeObject) => object.theme.colours.blue.blue};
   top: ${(props: LogoProps) => props.size * 4 + 'px'};
   right: ${(props: LogoProps) => props.size * 4 + 'px'};
 `;

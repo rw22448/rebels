@@ -94,7 +94,7 @@ interface Theme {
   };
 }
 
-interface PropsWithTheme {
+interface ThemeObject {
   theme: Theme;
 }
 
@@ -259,4 +259,4 @@ const darkTheme: Theme = {
 };
 
 export { lightTheme, darkTheme };
-export type { PropsWithTheme, Theme };
+export type { ThemeObject, Theme };

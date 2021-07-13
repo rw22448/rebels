@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { down } from 'styled-breakpoints';
-import { PropsWithTheme } from '../../Styles/Themes/Themes';
+import { ThemeObject } from '../../Styles/Themes/Themes';
 
 const getAverageRankContainerColour = (averageRank: string): string => {
   const i = Math.floor(parseInt(averageRank));
@@ -53,7 +53,7 @@ const AverageRankNumberContainer = styled.div`
 
 const AverageRank = styled.h1`
   font-size: 32px;
-  color: ${(props: PropsWithTheme) => props.theme.colours.white};
+  color: ${(object: ThemeObject) => object.theme.colours.white};
 
   ${down('md')} {
     font-size: 24px;
@@ -69,7 +69,7 @@ const AverageRankText = styled.div`
 `;
 
 const SubText = styled.div`
-  color: ${(props: PropsWithTheme) => props.theme.colours.grey.darkGrey};
+  color: ${(object: ThemeObject) => object.theme.colours.grey.darkGrey};
 `;
 
 const LatestStatsContainer = styled.div`
@@ -97,12 +97,12 @@ const StatsSummaryContainer = styled.div`
 
 const Newest = styled.div`
   text-align: start;
-  color: ${(props: PropsWithTheme) => props.theme.colours.grey.grey};
+  color: ${(object: ThemeObject) => object.theme.colours.grey.grey};
 `;
 
 const Oldest = styled.div`
   text-align: end;
-  color: ${(props: PropsWithTheme) => props.theme.colours.grey.grey};
+  color: ${(object: ThemeObject) => object.theme.colours.grey.grey};
 `;
 
 const Text = styled.div`
@@ -110,7 +110,7 @@ const Text = styled.div`
 `;
 
 const Wins = styled(Text)`
-  color: ${(props: PropsWithTheme) => props.theme.colours.green};
+  color: ${(object: ThemeObject) => object.theme.colours.green};
 `;
 
 const Tops = styled(Text)``;
@@ -118,7 +118,7 @@ const Tops = styled(Text)``;
 const WinsAndTops = styled(Text)``;
 
 const GreenText = styled.span`
-  color: ${(props: PropsWithTheme) => props.theme.colours.green};
+  color: ${(object: ThemeObject) => object.theme.colours.green};
 
   display: contents;
 `;
@@ -151,7 +151,7 @@ const DetailTextAlt = styled.div`
 `;
 
 const Warning = styled.div`
-  color: ${(props: PropsWithTheme) => props.theme.colours.grey.grey};
+  color: ${(object: ThemeObject) => object.theme.colours.grey.grey};
 `;
 
 export {

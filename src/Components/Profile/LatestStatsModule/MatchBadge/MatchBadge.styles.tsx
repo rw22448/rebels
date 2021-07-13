@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PropsWithTheme } from '../../../Styles/Themes/Themes';
+import { ThemeObject } from '../../../Styles/Themes/Themes';
 
 interface MatchBadgeContainerProps {
   placement: number;
@@ -38,8 +38,8 @@ const MatchBadgeContainer = styled.div`
 
 const Placement = styled.div`
   font-size: 14px;
-  font-weight: ${(props: PropsWithTheme) => props.theme.fontWeights.semiBold};
-  color: ${(props: PropsWithTheme) => props.theme.colours.white};
+  font-weight: ${(object: ThemeObject) => object.theme.fontWeights.semiBold};
+  color: ${(object: ThemeObject) => object.theme.colours.white};
 `;
 
 export { MatchBadgeContainer, Placement };

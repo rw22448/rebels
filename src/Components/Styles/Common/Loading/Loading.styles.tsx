@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
-import { PropsWithTheme } from '../../Themes/Themes';
+import { ThemeObject } from '../../Themes/Themes';
 
-interface StyledLoadingProps extends PropsWithTheme {
+interface StyledLoadingProps extends ThemeObject {
   size: number;
 }
 

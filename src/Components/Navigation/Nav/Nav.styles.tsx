@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { PropsWithTheme } from '../../Styles/Themes/Themes';
+import { ThemeObject } from '../../Styles/Themes/Themes';
 
-interface NavigationProps extends PropsWithTheme {
+interface NavigationProps extends ThemeObject {
   expanded: boolean;
 }
 

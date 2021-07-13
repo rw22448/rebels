@@ -1,6 +1,6 @@
 import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
-import { PropsWithTheme } from '../Styles/Themes/Themes';
+import { ThemeObject } from '../Styles/Themes/Themes';
 
 const ProfileContainer = styled.div`
   width: 100%;
@@ -13,14 +13,14 @@ const ProfileContent = styled.div`
   > div {
     margin: 0 auto;
 
-    max-width: ${(props: PropsWithTheme) => props.theme.contentSizes.xl};
+    max-width: ${(object: ThemeObject) => object.theme.contentSizes.xl};
 
     ${down('lg')} {
-      max-width: ${(props: PropsWithTheme) => props.theme.contentSizes.lg};
+      max-width: ${(object: ThemeObject) => object.theme.contentSizes.lg};
     }
 
     ${down('md')} {
-      max-width: ${(props: PropsWithTheme) => props.theme.contentSizes.md};
+      max-width: ${(object: ThemeObject) => object.theme.contentSizes.md};
     }
 
     ${down('sm')} {

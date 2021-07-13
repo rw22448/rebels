@@ -1,6 +1,6 @@
 import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
-import { PropsWithTheme } from '../../../../Styles/Themes/Themes';
+import { ThemeObject } from '../../../../Styles/Themes/Themes';
 
 const ProfileIcon = styled.img`
   width: 120px;
@@ -25,7 +25,7 @@ const ProfileIconContainer = styled.div`
 
   border-radius: 64px;
 
-  background-color: ${(props: PropsWithTheme) => props.theme.background};
+  background-color: ${(object: ThemeObject) => object.theme.background};
 
   ${down('sm')} {
     width: 100px;

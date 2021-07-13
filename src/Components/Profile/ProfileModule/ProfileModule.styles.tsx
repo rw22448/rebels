@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PropsWithTheme } from '../../Styles/Themes/Themes';
+import { ThemeObject } from '../../Styles/Themes/Themes';
 
 const ProfileModuleHeader = styled.h2`
   margin-bottom: 4px;
@@ -8,9 +8,9 @@ const ProfileModuleHeader = styled.h2`
 const ProfileModuleContent = styled.div`
   border-radius: 8px;
   box-sizing: border-box;
-  box-shadow: ${(props: PropsWithTheme) => props.theme.shadows.downShadow};
+  box-shadow: ${(object: ThemeObject) => object.theme.shadows.downShadow};
   padding: 24px;
-  background-color: ${(props: PropsWithTheme) => props.theme.containerColour};
+  background-color: ${(object: ThemeObject) => object.theme.containerColour};
 `;
 
 const ModuleContainer = styled(ProfileModuleContent)`

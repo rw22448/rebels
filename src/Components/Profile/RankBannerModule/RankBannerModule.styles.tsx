@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { down } from 'styled-breakpoints';
-import { PropsWithTheme, Theme } from '../../Styles/Themes/Themes';
+import { ThemeObject, Theme } from '../../Styles/Themes/Themes';
 import { ProfileModuleContent } from '../ProfileModule/ProfileModule.styles';
 import { Tier } from './RankBannerModule';
 
@@ -94,7 +94,7 @@ const getDetailedRankInfoTextColour = (tier: Tier): string => {
   }
 };
 
-interface RankBannerProps extends PropsWithTheme {
+interface RankBannerProps extends ThemeObject {
   tier: Tier;
 }
 
@@ -205,13 +205,13 @@ const RankDetailText = styled.div`
 `;
 
 const Wins = styled(RankDetailText)`
-  color: ${(props: PropsWithTheme) => props.theme.colours.green};
+  color: ${(object: ThemeObject) => object.theme.colours.green};
 `;
 
 const Losses = styled(RankDetailText)``;
 
 const WinRate = styled(RankDetailText)`
-  color: ${(props: PropsWithTheme) => props.theme.colours.blue.blue};
+  color: ${(object: ThemeObject) => object.theme.colours.blue.blue};
 `;
 
 const GamesPlayed = styled(RankDetailText)``;

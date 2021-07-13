@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PropsWithTheme } from '../../../Styles/Themes/Themes';
+import { ThemeObject } from '../../../Styles/Themes/Themes';
 
 const SummonerName = styled.div`
   max-height: 85px;
@@ -26,17 +26,17 @@ const StyledSearchTextField = styled.input`
   border: none;
   border-radius: 8px;
 
-  box-shadow: ${(props: PropsWithTheme) => props.theme.shadows.downShadow};
-  background-color: ${(props: PropsWithTheme) => props.theme.containerColour};
+  box-shadow: ${(object: ThemeObject) => object.theme.shadows.downShadow};
+  background-color: ${(object: ThemeObject) => object.theme.containerColour};
 
   &:focus {
     outline: none;
   }
 
-  color: ${(props: PropsWithTheme) => props.theme.contentColour};
+  color: ${(object: ThemeObject) => object.theme.contentColour};
   font-size: 16px;
   font-family: 'Nunito Sans', sans-serif;
-  font-weight: ${(props: PropsWithTheme) => props.theme.fontWeights.regular};
+  font-weight: ${(object: ThemeObject) => object.theme.fontWeights.regular};
 
   &:hover {
     &::placeholder {
@@ -45,13 +45,13 @@ const StyledSearchTextField = styled.input`
   }
 
   &::placeholder {
-    color: ${(props: PropsWithTheme) => props.theme.colours.grey.darkGrey};
+    color: ${(object: ThemeObject) => object.theme.colours.grey.darkGrey};
   }
 `;
 
 const ErrorText = styled.div`
   margin-top: 8px;
-  color: ${(props: PropsWithTheme) => props.theme.colours.red.red};
+  color: ${(object: ThemeObject) => object.theme.colours.red.red};
 `;
 
 export {

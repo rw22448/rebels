@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { PropsWithTheme } from './Themes/Themes';
+import { ThemeObject } from './Themes/Themes';
 
 const Flex = styled.div`
   display: flex;
@@ -25,12 +25,12 @@ const StyledButton = styled.button`
 
   font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
-  font-weight: ${(props: PropsWithTheme) => props.theme.fontWeights.semiBold};
+  font-weight: ${(object: ThemeObject) => object.theme.fontWeights.semiBold};
 
-  color: ${(props: PropsWithTheme) => props.theme.colours.white};
-  background-color: ${(props: PropsWithTheme) => props.theme.colours.blue.blue};
+  color: ${(object: ThemeObject) => object.theme.colours.white};
+  background-color: ${(object: ThemeObject) => object.theme.colours.blue.blue};
 
-  box-shadow: ${(props: PropsWithTheme) => props.theme.shadows.downShadow};
+  box-shadow: ${(object: ThemeObject) => object.theme.shadows.downShadow};
 
   &:focus {
     outline: none;
@@ -42,13 +42,13 @@ const StyledButton = styled.button`
   }
 
   &:hover {
-    background-color: ${(props: PropsWithTheme) =>
-      props.theme.colours.blue.darkBlue};
+    background-color: ${(object: ThemeObject) =>
+      object.theme.colours.blue.darkBlue};
   }
 
   &:active {
-    background-color: ${(props: PropsWithTheme) =>
-      props.theme.colours.blue.darkerBlue};
+    background-color: ${(object: ThemeObject) =>
+      object.theme.colours.blue.darkerBlue};
   }
 `;
 

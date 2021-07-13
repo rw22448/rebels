@@ -1,9 +1,8 @@
 import styled from 'styled-components';
+import { ThemeObject } from '../../Styles/Themes/Themes';
 
 const DescriptionContainer = styled.div`
-  background-color: white;
-
-  margin-top: 120px;
+  margin-top: 240px;
 `;
 
 export { DescriptionContainer };

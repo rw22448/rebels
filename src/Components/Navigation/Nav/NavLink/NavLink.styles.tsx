@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { PropsWithTheme } from '../../../Styles/Themes/Themes';
+import { ThemeObject } from '../../../Styles/Themes/Themes';
 
-interface NavIconContainerProps extends PropsWithTheme {
+interface NavIconContainerProps extends ThemeObject {
   text: string | undefined;
   expanded: boolean | undefined;
 }
 
-interface TextProps extends PropsWithTheme {
+interface TextProps extends ThemeObject {
   expanded: boolean | undefined;
 }
 

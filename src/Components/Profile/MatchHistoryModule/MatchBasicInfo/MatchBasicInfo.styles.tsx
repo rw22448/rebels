@@ -1,7 +1,7 @@
 import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
 import { Flex } from '../../../Styles/CommonStyles';
-import { PropsWithTheme } from '../../../Styles/Themes/Themes';
+import { ThemeObject } from '../../../Styles/Themes/Themes';
 
 interface PlacementProps {
   placement: number;
@@ -53,7 +53,7 @@ const CircleDivider = styled.div`
   border-radius: 50%;
   margin: 0px 18px;
   align-self: center;
-  background-color: ${(props: PropsWithTheme) => props.theme.colours.grey.grey};
+  background-color: ${(object: ThemeObject) => object.theme.colours.grey.grey};
 
   ${down('md')} {
     display: none;

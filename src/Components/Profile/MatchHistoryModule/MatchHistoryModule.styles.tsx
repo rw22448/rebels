@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { PropsWithTheme } from '../../Styles/Themes/Themes';
+import { ThemeObject } from '../../Styles/Themes/Themes';
 
 const Warning = styled.div`
-  color: ${(props: PropsWithTheme) => props.theme.colours.grey.grey};
+  color: ${(object: ThemeObject) => object.theme.colours.grey.grey};
 `;
 
 const MatchHistoryGrid = styled.div`

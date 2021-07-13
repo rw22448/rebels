@@ -1,17 +1,16 @@
 import styled from 'styled-components';
 import { down, up } from 'styled-breakpoints';
-import { PropsWithTheme } from '../../../Styles/Themes/Themes';
+import { ThemeObject } from '../../../Styles/Themes/Themes';
 
 const AltText = styled.span`
-  font-weight: ${(props: PropsWithTheme) => props.theme.fontWeights.semiBold};
-  color: ${(props: PropsWithTheme) => props.theme.navAlt.contentColour};
+  font-weight: ${(object: ThemeObject) => object.theme.fontWeights.semiBold};
+  color: ${(object: ThemeObject) => object.theme.navAlt.contentColour};
   cursor: pointer;
 
   &:hover,
   &:active {
     text-decoration: underline;
-    color: ${(props: PropsWithTheme) =>
-      props.theme.navAlt.pseudo.contentColour};
+    color: ${(object: ThemeObject) => object.theme.navAlt.pseudo.contentColour};
   }
 
   transition: color ${({ theme }) => theme.transitions.short};
@@ -24,8 +23,8 @@ const AltText = styled.span`
 const IconBadge = styled.div`
   cursor: pointer;
 
-  background-color: ${(props: PropsWithTheme) =>
-    props.theme.navAlt.special.backgroundColour};
+  background-color: ${(object: ThemeObject) =>
+    object.theme.navAlt.special.backgroundColour};
   border-radius: 4px;
 
   padding: 8px;
@@ -38,19 +37,19 @@ const IconBadge = styled.div`
   &:hover,
   &:active {
     svg {
-      stroke: ${(props: PropsWithTheme) =>
-        props.theme.navAlt.pseudo.contentColour};
+      stroke: ${(object: ThemeObject) =>
+        object.theme.navAlt.pseudo.contentColour};
     }
   }
 
   &:hover {
-    background-color: ${(props: PropsWithTheme) =>
-      props.theme.navAlt.special.hover.backgroundColour};
+    background-color: ${(object: ThemeObject) =>
+      object.theme.navAlt.special.hover.backgroundColour};
   }
 
   &:active {
-    background-color: ${(props: PropsWithTheme) =>
-      props.theme.navAlt.special.active.backgroundColour};
+    background-color: ${(object: ThemeObject) =>
+      object.theme.navAlt.special.active.backgroundColour};
   }
 `;
 
