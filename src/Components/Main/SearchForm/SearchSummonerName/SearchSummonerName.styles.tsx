@@ -1,8 +1,13 @@
+import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
 import { ThemeObject } from '../../../Styles/Themes/Themes';
 
 const SummonerName = styled.div`
   max-height: 85px;
+
+  ${down('md')} {
+    max-height: 115px;
+  }
 `;
 
 const LabelWrapper = styled.div`
@@ -42,6 +47,9 @@ const StyledSearchTextField = styled.input`
     &::placeholder {
       text-decoration: underline;
     }
+
+    background-color: ${(object: ThemeObject) =>
+      object.theme.secondaryContainerColour};
   }
 
   &::placeholder {

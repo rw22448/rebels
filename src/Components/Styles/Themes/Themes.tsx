@@ -53,6 +53,7 @@ interface Theme {
   background: string;
   contentColour: string;
   containerColour: string;
+  secondaryContainerColour: string;
   invertedContentColour: string;
   invertedContainerColour: string;
 
@@ -170,6 +171,7 @@ const lightTheme: Theme = {
   background: '#EFEFEF',
   contentColour: '#24292e',
   containerColour: '#FFFFFF',
+  secondaryContainerColour: '#F5F5F5',
   invertedContentColour: '#E0E0E0',
   invertedContainerColour: '#1B1E22',
 
@@ -217,6 +219,7 @@ const darkTheme: Theme = {
   background: '#363D45',
   contentColour: '#E0E0E0',
   containerColour: '#1B1E22',
+  secondaryContainerColour: '#24282D',
   invertedContentColour: '#24292e',
   invertedContainerColour: '#E0E0E0',
 

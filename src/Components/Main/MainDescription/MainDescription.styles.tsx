@@ -9,7 +9,7 @@ const Description = styled.div`
 
 const DescriptionContainer = styled.div`
   min-width: 275px;
-  max-width: calc(918px - 17px);
+  max-width: 918px;
   padding: 40px 80px;
 
   ${down('md')} {

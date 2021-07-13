@@ -108,6 +108,11 @@ const DropdownBox = styled.div`
       props.expanded ? '' : 'text-decoration: underline;'}
   }
 
+  &:hover {
+    background-color: ${(props: DropdownBoxProps) =>
+      props.theme.secondaryContainerColour};
+  }
+
   user-select: none;
 `;
 
