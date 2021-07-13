@@ -10,6 +10,8 @@ const BannerContainer = styled.div`
   z-index: 1;
   height: 100vh;
 
+  position: absolute;
+  right: 40px;
   overflow: hidden;
 
   ${down('lg')} {
