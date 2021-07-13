@@ -53,6 +53,21 @@ const returnChampionListForPuuid = (
   return output;
 };
 
+const calculateTimeEliminated = (
+  match: MatchDTO,
+  puuid: string | undefined
+): number => {
+  let output: number = 0;
+
+  match.info.participants.forEach((participant) => {
+    if (participant.puuid === puuid) {
+      output = participant.time_eliminated;
+    }
+  });
+
+  return output;
+};
+
 const MatchHistoryModule = ({
   matchesIsError,
   matchesIsLoading,
@@ -82,7 +97,7 @@ const MatchHistoryModule = ({
                         gameType={
                           match.info.queue_id === 1100 ? 'Ranked' : 'Normal'
                         }
-                        gameLength={match.info.game_length}
+                        gameLength={calculateTimeEliminated(match, puuid)}
                         datePlayed={match.info.game_datetime}
                       />
                       <VerticalRule
@@ -106,7 +121,7 @@ const MatchHistoryModule = ({
 
             {data.length < 1 && (
               <ProfileModuleContent>
-                <Warning>No recent matches to display.</Warning>
+                <Warning>No recent matches from this set to display.</Warning>
               </ProfileModuleContent>
             )}
           </>

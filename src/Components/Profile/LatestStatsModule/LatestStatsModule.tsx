@@ -161,7 +161,7 @@ const LatestStatsModule = ({
                 </>
               )}
               {data.length < 1 && (
-                <Warning>No recent matches to display.</Warning>
+                <Warning>No recent matches from this set to display.</Warning>
               )}
             </LatestStatsContent>
           </ProfileModuleContent>

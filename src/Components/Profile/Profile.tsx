@@ -145,7 +145,19 @@ export const Profile = () => {
       onSuccess: (data) => {
         console.log(data);
 
-        setAllMatchData(data.results);
+        let filteredResults: MatchDTO[] = [];
+
+        filteredResults = data.results.filter((match) => {
+          if (
+            `${match.info.tft_set_number}` ===
+            process.env.REACT_APP_TFT_SET_NUMBER
+          ) {
+            return true;
+          }
+          return false;
+        });
+
+        setAllMatchData(filteredResults);
         setLatestMatchDateTime(data.latestMatchDateTime);
       },
       enabled: !!(regionalRoute && summonerData?.puuid),
