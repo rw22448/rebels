@@ -30,13 +30,9 @@ const calculateMatchDateTimeAgo = (dateTime: number): string => {
   const currentDate = new Date();
   const date = new Date(dateTime);
 
-  console.log(date.toString());
-
   const differenceInDays = Math.floor(
     (currentDate.getTime() - date.getTime()) / (1000 * 60 * 60 * 24)
   );
-
-  console.log(differenceInDays);
 
   if (differenceInDays === 0) {
     return 'Today';

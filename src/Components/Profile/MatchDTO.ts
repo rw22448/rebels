@@ -21,7 +21,7 @@ interface TraitsDTO {
 interface UnitsDTO {
   items: number[];
   character_id: string;
-  chosen: string;
+  chosen?: string;
   name: string;
   rarity: number;
   tier: number;
@@ -56,4 +56,4 @@ interface MatchDTO {
   info: InfoDTO;
 }
 
-export type { MatchDTO };
+export type { MatchDTO, UnitsDTO };
