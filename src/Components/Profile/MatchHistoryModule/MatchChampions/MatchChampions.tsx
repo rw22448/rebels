@@ -1,6 +1,7 @@
 import React from 'react';
 import { UnitsDTO } from '../../MatchDTO';
 import { ChampionSquare } from './ChampionSquare/ChampionSquare';
+import { MatchChampionsContainer } from './MatchChampions.styles';
 
 interface MatchChampionsProps {
   championList: UnitsDTO[];
@@ -9,9 +10,11 @@ interface MatchChampionsProps {
 const MatchChampions = ({ championList }: MatchChampionsProps) => {
   return (
     <>
-      {championList.map((champion, index) => (
-        <ChampionSquare champion={champion} key={index} />
-      ))}
+      <MatchChampionsContainer>
+        {championList.map((champion, index) => (
+          <ChampionSquare champion={champion} key={index} />
+        ))}
+      </MatchChampionsContainer>
     </>
   );
 };
