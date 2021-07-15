@@ -133,12 +133,12 @@ const RankInfoContainer = styled.div`
   padding: 24px 0px;
 
   ${down('md')} {
-    padding: 8px 16px 8px 0px;
+    padding: 7px 16px 7px 0px;
   }
 `;
 
 const RankBorder = styled.div`
-  margin: 0 auto;
+  margin: 13px auto 14px auto;
   box-sizing: border-box;
   width: 120px;
   height: 120px;
@@ -149,6 +149,7 @@ const RankBorder = styled.div`
   ${down('md')} {
     width: 80px;
     height: 80px;
+    margin: 0 auto;
 
     border: 4px solid
       ${(props: RankBannerProps) =>
