@@ -33,10 +33,17 @@ const StyledHorizontalRuleContainer = styled.div`
   }
 `;
 
+const AltStyledVerticalRuleContainer = styled(StyledVerticalRuleContainer)`
+  ${down('md')} {
+    display: none;
+  }
+`;
+
 export {
   Warning,
   MatchHistoryGrid,
   MatchContent,
   StyledVerticalRuleContainer,
   StyledHorizontalRuleContainer,
+  AltStyledVerticalRuleContainer,
 };

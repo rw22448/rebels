@@ -8,6 +8,7 @@ import { ProfileModuleContent } from '../ProfileModule/ProfileModule.styles';
 import {
   MatchContent,
   MatchHistoryGrid,
+  AltStyledVerticalRuleContainer,
   StyledHorizontalRuleContainer,
   StyledVerticalRuleContainer,
 } from './MatchHistoryModule.styles';
@@ -124,13 +125,13 @@ const MatchHistoryModule = ({
                       <MatchChampions
                         championList={returnChampionListForPuuid(match, puuid)}
                       />
-                      <StyledVerticalRuleContainer>
+                      <AltStyledVerticalRuleContainer>
                         <VerticalRule
                           height="full"
                           padding={24}
                           ruleColour="#C4C4C4"
                         />
-                      </StyledVerticalRuleContainer>
+                      </AltStyledVerticalRuleContainer>
                     </MatchContent>
                   </ProfileModuleContent>
                 ))}
