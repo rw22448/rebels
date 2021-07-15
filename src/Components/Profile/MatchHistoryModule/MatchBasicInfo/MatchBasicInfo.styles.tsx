@@ -22,11 +22,30 @@ const getPlacementColour = (rank: number): string => {
   }
 };
 
+const BasicInfoGridContainer = styled.div`
+  display: grid;
+  grid-template-columns: 34px 6px 68px;
+  gap: 18px;
+
+  ${down('md')} {
+    grid-template-columns: 80px;
+    grid-template-rows: 30px 19px 19px;
+    gap: 0px;
+  }
+
+  ${down('sm')} {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+`;
+
 const ColouredPlacementBar = styled.div`
   background-color: ${(props: PlacementProps) =>
     getPlacementColour(props.placement)};
 
   width: 8px;
+  height: 68px;
   border-radius: 2px;
 
   ${down('sm')} {
@@ -51,7 +70,6 @@ const CircleDivider = styled.div`
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  margin: 0px 18px;
   align-self: center;
   background-color: ${(object: ThemeObject) => object.theme.colours.grey.grey};
 
@@ -63,21 +81,47 @@ const CircleDivider = styled.div`
 const TextFlex = styled(Flex)`
   flex-direction: column;
   width: 68px;
+
+  ${down('sm')} {
+    flex-direction: row;
+    width: auto;
+    align-self: flex-end;
+  }
 `;
 
 const BasicInfoText = styled.div`
   font-size: 14px;
 `;
 
+const MatchDuration = styled(BasicInfoText)`
+  ${down('md')} {
+    display: none;
+  }
+`;
+
 const DatePlayed = styled(BasicInfoText)`
   margin-top: auto;
+
+  ${down('sm')} {
+    margin: 0px;
+  }
+`;
+
+const MiddotContainer = styled.span`
+  display: none;
+  ${down('sm')} {
+    display: initial;
+  }
 `;
 
 export {
+  BasicInfoGridContainer,
   ColouredPlacementBar,
   PlacementNumber,
   CircleDivider,
   BasicInfoText,
+  MatchDuration,
   DatePlayed,
   TextFlex,
+  MiddotContainer,
 };

@@ -5,10 +5,14 @@ import { ErrorLoadingModule } from '../../Styles/Common/ErrorLoadingModule/Error
 import { Warning } from '../LatestStatsModule/LatestStatsModule.styles';
 import { MatchDTO, UnitsDTO } from '../MatchDTO';
 import { ProfileModuleContent } from '../ProfileModule/ProfileModule.styles';
-import { MatchContent, MatchHistoryGrid } from './MatchHistoryModule.styles';
+import {
+  MatchContent,
+  MatchHistoryGrid,
+  StyledVerticalRuleContainer,
+} from './MatchHistoryModule.styles';
 import { MatchBasicInfo } from './MatchBasicInfo/MatchBasicInfo';
-import { VerticalRule } from '../../Styles/Common/VerticalRule/VerticalRule';
 import { MatchChampions } from './MatchChampions/MatchChampions';
+import { VerticalRule } from '../../Styles/Common/VerticalRule/VerticalRule';
 
 interface MatchHistoryModuleProps {
   matchesIsError: boolean;
@@ -100,19 +104,23 @@ const MatchHistoryModule = ({
                         gameLength={calculateTimeEliminated(match, puuid)}
                         datePlayed={match.info.game_datetime}
                       />
-                      <VerticalRule
-                        height="full"
-                        padding={24}
-                        ruleColour="#C4C4C4"
-                      />
+                      <StyledVerticalRuleContainer>
+                        <VerticalRule
+                          height="full"
+                          padding={24}
+                          ruleColour="#C4C4C4"
+                        />
+                      </StyledVerticalRuleContainer>
                       <MatchChampions
                         championList={returnChampionListForPuuid(match, puuid)}
                       />
-                      <VerticalRule
-                        height="full"
-                        padding={24}
-                        ruleColour="#C4C4C4"
-                      />
+                      <StyledVerticalRuleContainer>
+                        <VerticalRule
+                          height="full"
+                          padding={24}
+                          ruleColour="#C4C4C4"
+                        />
+                      </StyledVerticalRuleContainer>
                     </MatchContent>
                   </ProfileModuleContent>
                 ))}

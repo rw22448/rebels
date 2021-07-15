@@ -1,3 +1,4 @@
+import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
 import { ThemeObject } from '../../Styles/Themes/Themes';
 
@@ -12,7 +13,12 @@ const MatchHistoryGrid = styled.div`
 
 const MatchContent = styled.div`
   display: flex;
-  height: 68px;
 `;
 
-export { Warning, MatchHistoryGrid, MatchContent };
+const StyledVerticalRuleContainer = styled.div`
+  ${down('sm')} {
+    display: none;
+  }
+`;
+
+export { Warning, MatchHistoryGrid, MatchContent, StyledVerticalRuleContainer };

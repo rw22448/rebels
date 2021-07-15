@@ -1,9 +1,12 @@
 import React from 'react';
 import {
+  BasicInfoGridContainer,
   BasicInfoText,
   CircleDivider,
   ColouredPlacementBar,
   DatePlayed,
+  MatchDuration,
+  MiddotContainer,
   PlacementNumber,
   TextFlex,
 } from './MatchBasicInfo.styles';
@@ -71,13 +74,16 @@ const MatchBasicInfo = ({
   return (
     <>
       <ColouredPlacementBar placement={placement} />
-      <PlacementNumber placement={placement}>#{placement}</PlacementNumber>
-      <CircleDivider />
-      <TextFlex>
-        <BasicInfoText>{gameType}</BasicInfoText>
-        <BasicInfoText>{formatGameLength(gameLength)}</BasicInfoText>
-        <DatePlayed>{calculateMatchDateTimeAgo(datePlayed)}</DatePlayed>
-      </TextFlex>
+      <BasicInfoGridContainer>
+        <PlacementNumber placement={placement}>#{placement}</PlacementNumber>
+        <CircleDivider />
+        <TextFlex>
+          <BasicInfoText>{gameType}</BasicInfoText>
+          <MatchDuration>{formatGameLength(gameLength)}</MatchDuration>
+          <MiddotContainer>&nbsp;&middot;&nbsp;</MiddotContainer>
+          <DatePlayed>{calculateMatchDateTimeAgo(datePlayed)}</DatePlayed>
+        </TextFlex>
+      </BasicInfoGridContainer>
     </>
   );
 };
