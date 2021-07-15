@@ -36,7 +36,7 @@ const BasicInfoGridContainer = styled.div`
   ${down('sm')} {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: calc(100% - 8px - 12px);
   }
 `;
 

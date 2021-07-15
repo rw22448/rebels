@@ -8,11 +8,13 @@ import { ProfileModuleContent } from '../ProfileModule/ProfileModule.styles';
 import {
   MatchContent,
   MatchHistoryGrid,
+  StyledHorizontalRuleContainer,
   StyledVerticalRuleContainer,
 } from './MatchHistoryModule.styles';
 import { MatchBasicInfo } from './MatchBasicInfo/MatchBasicInfo';
 import { MatchChampions } from './MatchChampions/MatchChampions';
 import { VerticalRule } from '../../Styles/Common/VerticalRule/VerticalRule';
+import { HorizontalRule } from '../../Styles/Common/HorizontalRule/HorizontalRule';
 
 interface MatchHistoryModuleProps {
   matchesIsError: boolean;
@@ -54,7 +56,9 @@ const returnChampionListForPuuid = (
     }
   });
 
-  return output;
+  return output.sort((unitA, unitB) =>
+    unitA.rarity > unitB.rarity ? -1 : unitB.rarity > unitA.rarity ? 1 : 0
+  );
 };
 
 const calculateTimeEliminated = (
@@ -111,6 +115,12 @@ const MatchHistoryModule = ({
                           ruleColour="#C4C4C4"
                         />
                       </StyledVerticalRuleContainer>
+                      <StyledHorizontalRuleContainer>
+                        <HorizontalRule
+                          width="full"
+                          padding={16}
+                        ></HorizontalRule>
+                      </StyledHorizontalRuleContainer>
                       <MatchChampions
                         championList={returnChampionListForPuuid(match, puuid)}
                       />

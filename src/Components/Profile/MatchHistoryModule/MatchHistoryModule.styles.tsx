@@ -13,6 +13,8 @@ const MatchHistoryGrid = styled.div`
 
 const MatchContent = styled.div`
   display: flex;
+
+  flex-flow: row wrap;
 `;
 
 const StyledVerticalRuleContainer = styled.div`
@@ -21,4 +23,20 @@ const StyledVerticalRuleContainer = styled.div`
   }
 `;
 
-export { Warning, MatchHistoryGrid, MatchContent, StyledVerticalRuleContainer };
+const StyledHorizontalRuleContainer = styled.div`
+  flex-basis: 100%;
+
+  display: none;
+
+  ${down('sm')} {
+    display: initial;
+  }
+`;
+
+export {
+  Warning,
+  MatchHistoryGrid,
+  MatchContent,
+  StyledVerticalRuleContainer,
+  StyledHorizontalRuleContainer,
+};
