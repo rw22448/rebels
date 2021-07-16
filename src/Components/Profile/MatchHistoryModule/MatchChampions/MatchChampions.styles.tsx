@@ -12,7 +12,7 @@ const MatchChampionsContainer = styled.div`
     grid-template-columns: repeat(5, 40px);
     grid-template-rows: repeat(2, 68px);
 
-    /* 100% of container (flex for mobile) - 240px (24px wide badges * 10 per row) / 9 (9 grid gaps between 10 elements) */
+    /* 100% of container (flex for mobile) - 200px (20px wide squares * 5 per row) / 4 (4 grid gaps between 5 elements per row) */
     gap: 8px calc((100% - 200px) / 4);
   }
 `;
