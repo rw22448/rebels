@@ -45,8 +45,8 @@ const ChampionSquare = ({ champion }: ChampionSquareProps) => {
 const Rarity = ({ tier, rarity }: RarityProps) => {
   return (
     <StyledGrid repeat={tier}>
-      {Array.from(Array(tier), (element) => element).map(() => (
-        <Center>
+      {Array.from(Array(tier), (element) => element).map((element, index) => (
+        <Center key={index}>
           <svg
             style={{ position: 'relative', bottom: '8px' }}
             xmlns="http://www.w3.org/2000/svg"

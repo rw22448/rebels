@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { UnitsDTO } from '../../MatchDTO';
 import { ChampionSquare } from './ChampionSquare/ChampionSquare';
 import { MatchChampionsContainer } from './MatchChampions.styles';
@@ -7,14 +7,65 @@ interface MatchChampionsProps {
   championList: UnitsDTO[];
 }
 
+interface RegularChampionListProps {
+  championList: UnitsDTO[];
+  blanks: number;
+}
+
+interface ExtendedChampionListProps {
+  championList: UnitsDTO[];
+  extras: number;
+}
+
 const MatchChampions = ({ championList }: MatchChampionsProps) => {
+  useEffect(() => {});
+
   return (
     <>
       <MatchChampionsContainer>
-        {championList.map((champion, index) => (
-          <ChampionSquare champion={champion} key={index} />
-        ))}
+        {championList.length > 10 && (
+          <ExtendedChampionList
+            championList={championList}
+            extras={championList.length - 9}
+          />
+        )}
+        {championList.length <= 10 && (
+          <RegularChampionList
+            championList={championList}
+            blanks={10 - championList.length}
+          />
+        )}
       </MatchChampionsContainer>
+    </>
+  );
+};
+
+const RegularChampionList = ({
+  championList,
+  blanks,
+}: RegularChampionListProps) => {
+  return (
+    <>
+      {blanks} / {championList.length}
+    </>
+  );
+};
+
+const ExtendedChampionList = ({
+  championList,
+  extras,
+}: ExtendedChampionListProps) => {
+  useEffect(() => {
+    setRegularChampions(championList.slice(0, 9));
+    setExtendedChampions(championList.slice(9));
+  }, [championList]);
+
+  const [regularChampions, setRegularChampions] = useState<UnitsDTO[]>([]);
+  const [extendedChampions, setExtendedChampions] = useState<UnitsDTO[]>([]);
+
+  return (
+    <>
+      {extras} / {championList.length}
     </>
   );
 };
