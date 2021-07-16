@@ -9,8 +9,10 @@ import {
   RarityCircle,
   RaritySvg,
   Square,
-  StyledGrid,
+  RarityGrid,
   StyledImage,
+  ItemsGrid,
+  Item,
 } from './ChampionSquare.styles';
 
 interface ChampionSquareProps {
@@ -20,6 +22,10 @@ interface ChampionSquareProps {
 interface RarityProps {
   tier: number;
   rarity: number;
+}
+
+interface ItemsProps {
+  items: number[];
 }
 
 const getPrimaryColour = (rarity: number): string => {
@@ -48,9 +54,11 @@ const ChampionSquare = ({ champion }: ChampionSquareProps) => {
           <Square>
             <StyledImage
               src={`/images/5/champions/${champion.character_id}.png`}
+              alt="Champion icon"
             ></StyledImage>
           </Square>
         </ChampionSquareBorder>
+        <Items items={champion.items} />
       </ChampionSquareContainer>
     </>
   );
@@ -66,7 +74,7 @@ const BlankChampionSquare = () => {
 
 const Rarity = ({ tier, rarity }: RarityProps) => {
   return (
-    <StyledGrid repeat={tier}>
+    <RarityGrid repeat={tier}>
       {Array.from(Array(tier), (element) => element).map((element, index) => (
         <Center key={index}>
           <RaritySvg
@@ -85,7 +93,24 @@ const Rarity = ({ tier, rarity }: RarityProps) => {
           </RaritySvg>
         </Center>
       ))}
-    </StyledGrid>
+    </RarityGrid>
+  );
+};
+
+const Items = ({ items }: ItemsProps) => {
+  return (
+    <ItemsGrid repeat={items.length}>
+      {items.map((item, index) => (
+        <Item
+          key={index}
+          src={`/images/5/items/${item.toLocaleString('en-US', {
+            minimumIntegerDigits: 2,
+            useGrouping: false,
+          })}.png`}
+          alt="Item icon"
+        />
+      ))}
+    </ItemsGrid>
   );
 };
 

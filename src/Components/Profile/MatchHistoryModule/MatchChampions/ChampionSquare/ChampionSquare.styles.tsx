@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { ThemeObject } from '../../../../Styles/Themes/Themes';
 
-interface StyledGridProps {
+interface RarityGridProps {
   repeat: number;
 }
 
@@ -58,10 +58,14 @@ const Center = styled.span`
 
 const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: ${({ repeat }: StyledGridProps) =>
+
+  margin: 0px auto;
+`;
+
+const RarityGrid = styled(StyledGrid)`
+  grid-template-columns: ${({ repeat }: RarityGridProps) =>
     `repeat(${repeat}, 8px)`};
   gap: 2px;
-  margin: 0px auto;
 `;
 
 const RaritySvg = styled.svg`
@@ -71,6 +75,17 @@ const RaritySvg = styled.svg`
 
 const RarityCircle = styled.circle``;
 
+const ItemsGrid = styled(StyledGrid)`
+  grid-template-columns: ${({ repeat }: RarityGridProps) =>
+    `repeat(${repeat}, 12px)`};
+  gap: 2px;
+`;
+
+const Item = styled.img`
+  width: 12px;
+  height: 12px;
+`;
+
 export {
   ChampionSquareContainer,
   BlankChampionSquareBorder,
@@ -79,7 +94,9 @@ export {
   Square,
   StyledImage,
   Center,
-  StyledGrid,
+  RarityGrid,
   RaritySvg,
   RarityCircle,
+  ItemsGrid,
+  Item,
 };
