@@ -1,9 +1,16 @@
 import React from 'react';
 import { UnitsDTO } from '../../../MatchDTO';
 import {
+  BlankChampionSquareBorder,
+  BlankSquare,
   Center,
+  ChampionSquareBorder,
   ChampionSquareContainer,
+  RarityCircle,
+  RaritySvg,
+  Square,
   StyledGrid,
+  StyledImage,
 } from './ChampionSquare.styles';
 
 interface ChampionSquareProps {
@@ -37,8 +44,23 @@ const ChampionSquare = ({ champion }: ChampionSquareProps) => {
     <>
       <ChampionSquareContainer>
         <Rarity tier={champion.tier} rarity={champion.rarity} />
+        <ChampionSquareBorder primaryColour={getPrimaryColour(champion.rarity)}>
+          <Square>
+            <StyledImage
+              src={`/images/5/champions/${champion.character_id}.png`}
+            ></StyledImage>
+          </Square>
+        </ChampionSquareBorder>
       </ChampionSquareContainer>
     </>
+  );
+};
+
+const BlankChampionSquare = () => {
+  return (
+    <BlankChampionSquareBorder>
+      <BlankSquare />
+    </BlankChampionSquareBorder>
   );
 };
 
@@ -47,25 +69,24 @@ const Rarity = ({ tier, rarity }: RarityProps) => {
     <StyledGrid repeat={tier}>
       {Array.from(Array(tier), (element) => element).map((element, index) => (
         <Center key={index}>
-          <svg
-            style={{ position: 'relative', bottom: '8px' }}
+          <RaritySvg
             xmlns="http://www.w3.org/2000/svg"
             width="8"
             height="8"
             viewBox="0 0 8 8"
           >
-            <circle
+            <RarityCircle
               id="Star"
               cx="4"
               cy="4"
               r="4"
               fill={getPrimaryColour(rarity)}
             />
-          </svg>
+          </RaritySvg>
         </Center>
       ))}
     </StyledGrid>
   );
 };
 
-export { ChampionSquare };
+export { ChampionSquare, BlankChampionSquare };

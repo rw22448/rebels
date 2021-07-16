@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { UnitsDTO } from '../../MatchDTO';
-import { ChampionSquare } from './ChampionSquare/ChampionSquare';
+import {
+  BlankChampionSquare,
+  ChampionSquare,
+} from './ChampionSquare/ChampionSquare';
 import { MatchChampionsContainer } from './MatchChampions.styles';
 
 interface MatchChampionsProps {
@@ -16,6 +19,12 @@ interface ExtendedChampionListProps {
   championList: UnitsDTO[];
   extras: number;
 }
+
+const returnChampionSquares = (championList: UnitsDTO[]) => {
+  return championList.map((champion, index) => (
+    <ChampionSquare champion={champion} key={index} />
+  ));
+};
 
 const MatchChampions = ({ championList }: MatchChampionsProps) => {
   useEffect(() => {});
@@ -46,7 +55,10 @@ const RegularChampionList = ({
 }: RegularChampionListProps) => {
   return (
     <>
-      {blanks} / {championList.length}
+      {returnChampionSquares(championList)}
+      {Array.from(Array(blanks), (element) => element).map((element, index) => (
+        <BlankChampionSquare key={index} />
+      ))}
     </>
   );
 };
@@ -65,7 +77,7 @@ const ExtendedChampionList = ({
 
   return (
     <>
-      {extras} / {championList.length}
+      <>{returnChampionSquares(regularChampions)}</>
     </>
   );
 };
