@@ -30,7 +30,7 @@ export const Main = () => {
 
       <DividerImageContainer>
         <DividerImage
-          src="../../../images/tft-divider.png"
+          src="/images/tft-divider.png"
           alt="Stylised page divider"
         />
       </DividerImageContainer>
