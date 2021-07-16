@@ -4,6 +4,12 @@ import {
   BlankChampionSquare,
   ChampionSquare,
 } from './ChampionSquare/ChampionSquare';
+import {
+  ExtraSquareContainer,
+  ExtraSquare,
+  ExtraSquareText,
+  ExtraChampions,
+} from './ChampionSquare/ChampionSquare.styles';
 import { MatchChampionsContainer } from './MatchChampions.styles';
 
 interface MatchChampionsProps {
@@ -74,10 +80,25 @@ const ExtendedChampionList = ({
 
   const [regularChampions, setRegularChampions] = useState<UnitsDTO[]>([]);
   const [extendedChampions, setExtendedChampions] = useState<UnitsDTO[]>([]);
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <>
       <>{returnChampionSquares(regularChampions)}</>
+      <ExtraSquareContainer>
+        <ExtraSquare
+          onClick={() => {
+            setExpanded(!expanded);
+          }}
+        >
+          <ExtraSquareText>+{extras}</ExtraSquareText>
+        </ExtraSquare>
+        {expanded && (
+          <ExtraChampions size={extras}>
+            {returnChampionSquares(extendedChampions)}
+          </ExtraChampions>
+        )}
+      </ExtraSquareContainer>
     </>
   );
 };
